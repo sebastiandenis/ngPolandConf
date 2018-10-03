@@ -1,0 +1,9 @@
+<Label text="Workshops" textWrap="true" class="h2 m-x-auto" color="blue"></Label>
+
+<ListView class="list-group" [items]="workshops$ | async" style="height: 100%;">
+	<ng-template let-workshop="item">
+
+		<Workshop [workshop]="workshop"></Workshop>
+
+	</ng-template>
+</ListView>

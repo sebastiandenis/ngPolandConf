@@ -9,12 +9,13 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 })
 export class SpeakersComponent implements OnInit {
 
+
     constructor() {
         // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {
-        // Init your component properties here.
+
     }
 
     onDrawerButtonTap(): void {

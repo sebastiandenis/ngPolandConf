@@ -42,3 +42,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
+
+# Sebek
+/src/environments/environment.ts
+/src/environments/environment.js
+/src/environments/environment.prod.ts
+/src/environments/environment.prod.js

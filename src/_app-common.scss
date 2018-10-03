@@ -24,7 +24,7 @@
 
 //Action bar
 ActionBar .action-bar-title {
-    horizontal-align: center;
+    horizontal-align: left;
 }
 
  // Drawer navigation custom styles
@@ -88,3 +88,5 @@ $sidedrawer-list-icon-size: 20;
         }
     }
 }
+
+@import 'ngpoland';

@@ -1,0 +1,7 @@
+<ListView class="list-group" [items]="speakers$ | async" style="height: 100%;">
+	<ng-template let-speaker="item">
+
+		<Speaker [speaker]="speaker"></Speaker>
+
+	</ng-template>
+</ListView>

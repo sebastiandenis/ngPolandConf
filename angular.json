@@ -6,12 +6,12 @@
     "defaultCollection": "@nativescript/schematics"
   },
   "projects": {
-    "drawer-navigation": {
+    "event-app": {
       "root": "",
       "sourceRoot": ".",
       "projectType": "application",
       "prefix": "ns"
     }
   },
-  "defaultProject": "drawer-navigation"
+  "defaultProject": "event-app"
 }

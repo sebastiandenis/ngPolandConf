@@ -1,0 +1,9 @@
+<Label text="NG Poland" textWrap="true" class="h2 m-x-auto" color="blue"></Label>
+
+<ListView class="list-group" [items]="events$ | async" style="height:100%;">
+	<ng-template let-event="item">
+
+		<EventItem [eventItem]="event"></EventItem>
+
+	</ng-template>
+</ListView>

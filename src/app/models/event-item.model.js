@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var EventItem = /** @class */ (function () {
+    function EventItem(title, type, shortDescription, description, startDate, endDate, presenter) {
+        this.title = title;
+        this.type = type;
+        this.shortDescription = shortDescription;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.presenter = presenter;
+    }
+    return EventItem;
+}());
+exports.EventItem = EventItem;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZXZlbnQtaXRlbS5tb2RlbC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImV2ZW50LWl0ZW0ubW9kZWwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFZQTtJQUNJLG1CQUNXLEtBQWEsRUFDYixJQUFZLEVBQ1osZ0JBQXdCLEVBQ3hCLFdBQW1CLEVBQ25CLFNBQWlCLEVBQ2pCLE9BQWUsRUFDZixTQUFrQjtRQU5sQixVQUFLLEdBQUwsS0FBSyxDQUFRO1FBQ2IsU0FBSSxHQUFKLElBQUksQ0FBUTtRQUNaLHFCQUFnQixHQUFoQixnQkFBZ0IsQ0FBUTtRQUN4QixnQkFBVyxHQUFYLFdBQVcsQ0FBUTtRQUNuQixjQUFTLEdBQVQsU0FBUyxDQUFRO1FBQ2pCLFlBQU8sR0FBUCxPQUFPLENBQVE7UUFDZixjQUFTLEdBQVQsU0FBUyxDQUFTO0lBQzFCLENBQUM7SUFDUixnQkFBQztBQUFELENBQUMsQUFWRCxJQVVDO0FBVlksOEJBQVMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBTcGVha2VyIH0gZnJvbSBcIi4vc3BlYWtlci5tb2RlbFwiO1xyXG5cclxuZXhwb3J0IGludGVyZmFjZSBJRXZlbnRJdGVtIHtcclxuICAgIHRpdGxlOiBzdHJpbmc7XHJcbiAgICB0eXBlOiBzdHJpbmc7XHJcbiAgICBzaG9ydERlc2NyaXB0aW9uPzogc3RyaW5nO1xyXG4gICAgZGVzY3JpcHRpb24/OiBzdHJpbmc7XHJcbiAgICBzdGFydERhdGU/OiBzdHJpbmc7XHJcbiAgICBlbmREYXRlPzogc3RyaW5nO1xyXG4gICAgcHJlc2VudGVyPzogU3BlYWtlcjtcclxufVxyXG5cclxuZXhwb3J0IGNsYXNzIEV2ZW50SXRlbSBpbXBsZW1lbnRzIElFdmVudEl0ZW0ge1xyXG4gICAgY29uc3RydWN0b3IoXHJcbiAgICAgICAgcHVibGljIHRpdGxlOiBzdHJpbmcsXHJcbiAgICAgICAgcHVibGljIHR5cGU6IHN0cmluZyxcclxuICAgICAgICBwdWJsaWMgc2hvcnREZXNjcmlwdGlvbjogc3RyaW5nLFxyXG4gICAgICAgIHB1YmxpYyBkZXNjcmlwdGlvbjogc3RyaW5nLFxyXG4gICAgICAgIHB1YmxpYyBzdGFydERhdGU6IHN0cmluZyxcclxuICAgICAgICBwdWJsaWMgZW5kRGF0ZTogc3RyaW5nLFxyXG4gICAgICAgIHB1YmxpYyBwcmVzZW50ZXI6IFNwZWFrZXJcclxuICAgICkge31cclxufVxyXG4iXX0=

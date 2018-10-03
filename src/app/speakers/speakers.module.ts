@@ -3,6 +3,8 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { SpeakersRoutingModule } from "./speakers-routing.module";
 import { SpeakersComponent } from "./speakers.component";
+import { SpeakerComponent } from "./components/speaker/speaker.component";
+import { SpeakersListComponent } from "./containters/speakers-list/speakers-list.component";
 
 @NgModule({
     imports: [
@@ -10,10 +12,12 @@ import { SpeakersComponent } from "./speakers.component";
         SpeakersRoutingModule
     ],
     declarations: [
-        SpeakersComponent
+        SpeakersComponent,
+        SpeakerComponent,
+        SpeakersListComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
 })
-export class BrowseModule { }
+export class SpeakersModule { }

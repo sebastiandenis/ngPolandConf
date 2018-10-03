@@ -1,0 +1,16 @@
+<FlexboxLayout width="350" height="320" borderColor="black" borderWidth="1" flexDirection="column">
+    <FlexboxLayout height="17%" style="background-color: red;" flexDirection="column" alignItems="center" justifyContent="center">
+        <Label [text]="speaker.name" fontWeight="bold" fontSize="20" verticalAlignment="center" textAlignment="center"></Label>
+    </FlexboxLayout>
+    <FlexboxLayout height="83%" flexDirection="column" justifyContent="space-around" alignItems="center" backgroundColor="yellow">
+        <FlexboxLayout height="73%" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="green">
+            <Image [src]="speaker.photo.getImageUrl()"
+             borderRadius="500" horizontalAlignment="center" width="auto" height="90%"></Image>
+        </FlexboxLayout>
+        <FlexboxLayout height="27%" backgroundColor="blue" flexDirection="column" alignItems="center" justifyContent="center">
+            <Label [text]="speaker.role" textWrap="true"
+             textAlignment="center" fontSize="14"></Label>
+        </FlexboxLayout>
+    </FlexboxLayout>
+
+</FlexboxLayout>
