@@ -1,6 +1,15 @@
-<StackLayout >
-    <Label [text]="eventItem.title" style="color: black;"></Label>
-    <Label [text]="eventItem.shortDescription" style="color: black;"></Label>
-    <Label [text]="eventItem.description" style="color: black;"></Label>
-    <Label [text]="eventItem.startdate + ' - ' + eventItem.endDate" style="color: black;"></Label>
+<StackLayout width="100%" backgroundColor="yellow">
+    <GridLayout columns="75, *, 50" rows="auto, 70" width="100%" height="auto" backgroundColor="#ffffff"
+        horizontalAlignment="center" verticalAlignment="center" style="padding: 10 5;">
+            <Label [text]="eventItem.startDate | date:'HH:mm'" col="0" row="0" rowSpan="2" style="color: #3949ab;"
+            textWrap="true" verticalAlignment="center" textAlignment="center" fontSize="18"></Label>
+        <Label [text]="eventItem.title" fontWeight="normal" fontSize="16" verticalAlignment="center" textAlignment="left"
+            textWrap="true" col="1" row="0" style="color: #000000;"></Label>
+            
+        <Label [text]="eventItem.shortDescription" col="1" row="1" verticalAlignment="top" textAlignment="left" style="color: #555555;font-size: 14;"></Label>
+        <Label class="fa" text="&#xf05a;"  col="3" row="0" rowSpan="2" verticalAlignment="center" textAlignment="left" 
+        style="color: #bbbbbb; font-size: 24;"></Label>
+
+    </GridLayout>
 </StackLayout>
+

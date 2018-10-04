@@ -6,6 +6,7 @@ import { SpeakersComponent } from "./speakers.component";
 import { SpeakerComponent } from "./components/speaker/speaker.component";
 import { SpeakersListComponent } from "./containters/speakers-list/speakers-list.component";
 
+
 @NgModule({
     imports: [
         NativeScriptCommonModule,

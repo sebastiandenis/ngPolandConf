@@ -1,18 +1,14 @@
-<FlexboxLayout width="auto" height="auto" borderColor="black" borderWidth="1" flexDirection="column">
-    <FlexboxLayout height="25%" style="background-color: red;" flexDirection="column" alignItems="center" justifyContent="center">
-        <Label [text]="workshop.title" fontWeight="bold" fontSize="16" verticalAlignment="center" textAlignment="center"
-         textWrap="true"></Label>
-    </FlexboxLayout>
-    <FlexboxLayout height="75%" flexDirection="column" justifyContent="space-around" alignItems="center" backgroundColor="yellow">
-        <FlexboxLayout height="auto" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="green">
+<StackLayout style="padding: 10 10;">
+    <CardView class="cardStyle" margin="10" elevation="10" radius="1" style="max-width: 450;margin: 10;"
+        shadowOffsetHeight="1">
+        <GridLayout columns="*" rows="50, 30, auto, 15" width="auto" height="auto" backgroundColor="#ffffff"
+            horizontalAlignment="center" verticalAlignment="center" style="padding: 10 20;">
+            <Label [text]="workshop.title" fontWeight="bold" fontSize="16" verticalAlignment="center" textAlignment="center"
+                textWrap="true" col="0" row="0" style="color: #ff1744;"></Label>
+            <Label text="by Nir Kaufman" col="0" row="1" verticalAlignment="top" textAlignment="center" style="color: #3949ab;"></Label>
+            <Label [text]="workshop.description" textWrap="true" textAlignment="left" verticalAlignment="center"
+                fontSize="14" col="0" row="2" style="color: #000000;"></Label>
 
-            <Label text="by Nir Kaufman"></Label>
-
-
-        </FlexboxLayout>
-        <FlexboxLayout height="95%" backgroundColor="blue" flexDirection="column" alignItems="center" justifyContent="center">
-            <Label [text]="workshop.description" textWrap="true" textAlignment="center" fontSize="14"></Label>
-        </FlexboxLayout>
-    </FlexboxLayout>
-
-</FlexboxLayout>
+        </GridLayout>
+    </CardView>
+</StackLayout>

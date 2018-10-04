@@ -7,7 +7,8 @@ import { ContentfulService } from "~/app/services/contentful.service";
 @Component({
     selector: "SpeakersList",
     moduleId: module.id,
-    templateUrl: "./speakers-list.component.html"
+    templateUrl: "./speakers-list.component.html",
+    styleUrls: ["./speakers-list.component.css"]
 })
 export class SpeakersListComponent implements OnInit {
 

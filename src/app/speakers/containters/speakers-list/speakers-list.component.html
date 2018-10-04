@@ -1,4 +1,4 @@
-<ListView class="list-group" [items]="speakers$ | async" style="height: 100%;">
+<ListView class="list-group myclass" [items]="speakers$ | async" style="height: 100%;" separatorColor="white">
 	<ng-template let-speaker="item">
 
 		<Speaker [speaker]="speaker"></Speaker>

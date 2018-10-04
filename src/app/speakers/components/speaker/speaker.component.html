@@ -1,16 +1,20 @@
-<FlexboxLayout width="350" height="320" borderColor="black" borderWidth="1" flexDirection="column">
-    <FlexboxLayout height="17%" style="background-color: red;" flexDirection="column" alignItems="center" justifyContent="center">
-        <Label [text]="speaker.name" fontWeight="bold" fontSize="20" verticalAlignment="center" textAlignment="center"></Label>
-    </FlexboxLayout>
-    <FlexboxLayout height="83%" flexDirection="column" justifyContent="space-around" alignItems="center" backgroundColor="yellow">
-        <FlexboxLayout height="73%" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="green">
-            <Image [src]="speaker.photo.getImageUrl()"
-             borderRadius="500" horizontalAlignment="center" width="auto" height="90%"></Image>
-        </FlexboxLayout>
-        <FlexboxLayout height="27%" backgroundColor="blue" flexDirection="column" alignItems="center" justifyContent="center">
-            <Label [text]="speaker.role" textWrap="true"
-             textAlignment="center" fontSize="14"></Label>
-        </FlexboxLayout>
-    </FlexboxLayout>
+<StackLayout style="padding: 10 10;">
+    <CardView class="cardStyle" margin="10" elevation="10" radius="1" style="max-width: 450;margin: 10;">
+        <FlexboxLayout width="auto" height="320" flexDirection="column" style="padding: 10 20;">
+            <FlexboxLayout height="15%" flexDirection="column" alignItems="center" justifyContent="center">
+                <Label [text]="speaker.name" fontWeight="bold" fontSize="20" verticalAlignment="center" textAlignment="center"
+                    style="color: #ff1744;"></Label>
+            </FlexboxLayout>
+            <FlexboxLayout height="85%" flexDirection="column" justifyContent="space-around" alignItems="center">
+                <FlexboxLayout height="73%" flexDirection="column" alignItems="center" justifyContent="center">
+                    <Image [src]="speaker.photo.getImageUrl()" borderRadius="500" horizontalAlignment="center" width="auto"
+                        height="90%"></Image>
+                </FlexboxLayout>
+                <FlexboxLayout height="auto" flexDirection="column" alignItems="center" justifyContent="center">
+                    <Label [text]="speaker.role" textWrap="true" textAlignment="center" fontSize="14" style="color: #000000;"></Label>
+                </FlexboxLayout>
+            </FlexboxLayout>
 
-</FlexboxLayout>
+        </FlexboxLayout>
+    </CardView>
+</StackLayout>

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from "@angular/core";
-import * as app from "application";
 import { Speaker } from "~/app/models/speaker.model";
 
 @Component({
