@@ -7,7 +7,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
 import { registerElement } from 'nativescript-angular/element-registry';
-import { CardView } from 'nativescript-cardview';
+import { CardView } from '~/app/tns_modules/nativescript-cardview';
 registerElement('CardView', () => CardView);
 
 @NgModule({

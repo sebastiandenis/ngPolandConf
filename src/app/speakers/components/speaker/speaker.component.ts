@@ -1,23 +1,41 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input, OnInit, ViewContainerRef } from "@angular/core";
+import {
+  ModalDialogOptions,
+  ModalDialogService
+} from "nativescript-angular/modal-dialog";
 import { Speaker } from "~/app/models/speaker.model";
+import { SpeakerDetailsComponent } from "../speaker-details/speaker-details.component";
 
 @Component({
-    selector: "Speaker",
-    moduleId: module.id,
-    templateUrl: "./speaker.component.html",
-    styleUrls: ["./speaker.component.css"]
+  selector: "Speaker",
+  moduleId: module.id,
+  templateUrl: "./speaker.component.html",
+  styleUrls: ["./speaker.component.css"]
 })
 export class SpeakerComponent implements OnInit {
+  @Input()
+  speaker: Speaker;
 
-    @Input()
-    speaker: Speaker;
+  constructor(
+    private modalService: ModalDialogService,
+    private viewContainerRef: ViewContainerRef
+  ) {
+    // Use the component constructor to inject providers.
+  }
 
-    constructor() {
-        // Use the component constructor to inject providers.
-    }
+  ngOnInit(): void {
+    // Init your component properties here.
+  }
 
-    ngOnInit(): void {
-        // Init your component properties here.
-    }
-
+  showModal() {
+    const options: ModalDialogOptions = {
+      viewContainerRef: this.viewContainerRef,
+      fullscreen: true,
+      animated: true,
+      context: {
+        speaker: this.speaker
+      }
+    };
+    this.modalService.showModal(SpeakerDetailsComponent, options);
+  }
 }

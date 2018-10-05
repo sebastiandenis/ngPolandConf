@@ -5,6 +5,7 @@ import { SpeakersRoutingModule } from "./speakers-routing.module";
 import { SpeakersComponent } from "./speakers.component";
 import { SpeakerComponent } from "./components/speaker/speaker.component";
 import { SpeakersListComponent } from "./containters/speakers-list/speakers-list.component";
+import { SpeakerDetailsComponent } from "./components/speaker-details/speaker-details.component";
 
 
 @NgModule({
@@ -15,10 +16,14 @@ import { SpeakersListComponent } from "./containters/speakers-list/speakers-list
     declarations: [
         SpeakersComponent,
         SpeakerComponent,
-        SpeakersListComponent
+        SpeakersListComponent,
+        SpeakerDetailsComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
+    ],
+    entryComponents: [
+        SpeakerDetailsComponent
     ]
 })
 export class SpeakersModule { }

@@ -1,18 +1,23 @@
 <StackLayout style="padding: 10 10;">
     <CardView class="cardStyle" margin="10" elevation="10" radius="1" style="max-width: 450;margin: 10;">
-        <FlexboxLayout width="auto" height="320" flexDirection="column" style="padding: 10 20;">
-            <FlexboxLayout height="15%" flexDirection="column" alignItems="center" justifyContent="center">
+        <FlexboxLayout width="auto" height="380" flexDirection="column" style="padding: 10 20;">
+            <FlexboxLayout height="13%" flexDirection="column" alignItems="center" justifyContent="center">
                 <Label [text]="speaker.name" fontWeight="bold" fontSize="20" verticalAlignment="center" textAlignment="center"
                     style="color: #ff1744;"></Label>
             </FlexboxLayout>
-            <FlexboxLayout height="85%" flexDirection="column" justifyContent="space-around" alignItems="center">
-                <FlexboxLayout height="73%" flexDirection="column" alignItems="center" justifyContent="center">
+            <FlexboxLayout height="87%" flexDirection="column" justifyContent="space-around" alignItems="center">
+                <FlexboxLayout height="60%" flexDirection="column" alignItems="center" justifyContent="center">
                     <Image [src]="speaker.photo.getImageUrl()" borderRadius="500" horizontalAlignment="center" width="auto"
                         height="90%"></Image>
                 </FlexboxLayout>
                 <FlexboxLayout height="auto" flexDirection="column" alignItems="center" justifyContent="center">
                     <Label [text]="speaker.role" textWrap="true" textAlignment="center" fontSize="14" style="color: #000000;"></Label>
                 </FlexboxLayout>
+                <FlexboxLayout height="20%" flexDirection="column" alignItems="center" justifyContent="center">
+                    <Button text="&#xf141;" (tap)="showModal()" class="btn btn-active fa" fontSize="28"></Button>
+                </FlexboxLayout>
+
+
             </FlexboxLayout>
 
         </FlexboxLayout>
