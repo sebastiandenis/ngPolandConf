@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { EventItem } from "~/app/models/event-item.model";
 
 @Component({
@@ -7,13 +7,11 @@ import { EventItem } from "~/app/models/event-item.model";
   templateUrl: "./event-item.component.html",
   styleUrls: ["./event-item.component.css"]
 })
-export class EventItemComponent implements OnInit {
+export class EventItemComponent {
   @Input()
   eventItem: EventItem;
 
   constructor() {
     // Use the component constructor to inject providers.
   }
-
-  ngOnInit(): void {}
 }

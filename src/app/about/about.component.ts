@@ -3,11 +3,11 @@ import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
 @Component({
-    selector: "Settings",
+    selector: "About",
     moduleId: module.id,
-    templateUrl: "./settings.component.html"
+    templateUrl: "./about.component.html"
 })
-export class SettingsComponent implements OnInit {
+export class AboutComponent implements OnInit {
 
     constructor() {
         // Use the component constructor to inject providers.

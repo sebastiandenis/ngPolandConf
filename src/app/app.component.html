@@ -5,7 +5,7 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
 -->
 <RadSideDrawer [drawerTransition]="sideDrawerTransition">
     <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
-        <StackLayout row="0" class="sidedrawer-header">
+        <StackLayout row="0" class="sidedrawer-header" style="background-color: white;">
             <Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label>
             <Label class="sidedrawer-header-brand" text="User Name"></Label>
             <Label class="footnote" text="username@mail.com"></Label>
@@ -14,30 +14,32 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
         <ScrollView row="1">
             <StackLayout class="sidedrawer-content">
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/schedule')" (tap)="onNavItemTap('/schedule')">
-                    <Label col="0" text="&#xf015;" class="fa"></Label>
+                    <Label col="0" text="&#xf017;" class="fa"></Label>
                     <Label col="1" text="Schedule" class="p-r-10"></Label>
                 </GridLayout>
 
+                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/workshops')" (tap)="onNavItemTap('/workshops')">
+                    <Label col="0" text="&#xf11c;" class="fa"></Label>
+                    <Label col="1" text="Workshops" class="p-r-10"></Label>
+                </GridLayout>
+
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/speakers')" (tap)="onNavItemTap('/speakers')">
-                    <Label col="0" text="&#xf1ea;" class="fa"></Label>
+                    <Label col="0" text="&#xf0c0;" class="fa"></Label>
                     <Label col="1" text="Speakers" class="p-r-10"></Label>
                 </GridLayout>
 
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/search')" (tap)="onNavItemTap('/search')">
-                    <Label col="0" text="&#xf002;" class="fa"></Label>
-                    <Label col="1" text="Search" class="p-r-10"></Label>
-                </GridLayout>
+               
 
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/featured')" (tap)="onNavItemTap('/featured')">
-                    <Label col="0" text="&#xf005;" class="fa"></Label>
-                    <Label col="1" text="Featured" class="p-r-10"></Label>
+                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/info')" (tap)="onNavItemTap('/info')">
+                    <Label col="0" text="&#xf05a;" class="fa"></Label>
+                    <Label col="1" text="Info" class="p-r-10"></Label>
                 </GridLayout>
     
                 <StackLayout class="hr-light"></StackLayout>
 
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/settings')" (tap)="onNavItemTap('/settings')">
-                    <Label col="0" text="&#xf013;" class="fa"></Label>
-                    <Label col="1" text="Settings" class="p-r-10"></Label>
+                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/about')" (tap)="onNavItemTap('/about')">
+                    <Label col="0" text="&#xf121;" class="fa"></Label>
+                    <Label col="1" text="About" class="p-r-10"></Label>
                 </GridLayout>
             </StackLayout>
         </ScrollView>

@@ -6,9 +6,9 @@ const routes: Routes = [
     { path: "", redirectTo: "/schedule", pathMatch: "full" },
     { path: "schedule", loadChildren: "~/app/schedule/schedule.module#ScheduleModule" },
     { path: "speakers", loadChildren: "~/app/speakers/speakers.module#SpeakersModule" },
-    { path: "search", loadChildren: "~/app/search/search.module#SearchModule" },
-    { path: "featured", loadChildren: "~/app/featured/featured.module#FeaturedModule" },
-    { path: "settings", loadChildren: "~/app/settings/settings.module#SettingsModule" }
+    { path: "workshops", loadChildren: "~/app/workshops/workshops.module#WorkshopsModule" },
+    { path: "info", loadChildren: "~/app/info/info.module#InfoModule" },
+    { path: "about", loadChildren: "~/app/about/about.module#AboutModule" }
 ];
 
 @NgModule({
