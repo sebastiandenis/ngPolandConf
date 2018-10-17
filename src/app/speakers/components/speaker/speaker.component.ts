@@ -27,7 +27,13 @@ export class SpeakerComponent implements OnInit {
     // Init your component properties here.
   }
 
-  showModal() {
+  showModal(sl: any) {
+    sl.className = "";
+    sl.className = "highlighted";
+    setTimeout(() => this.openModal(), 300);
+  }
+
+  private openModal(): void {
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: true,

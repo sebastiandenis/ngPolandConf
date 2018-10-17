@@ -3,6 +3,7 @@ import { Speaker } from "./speaker.model";
 export interface IEventItem {
     title: string;
     type: string;
+    category: string;
     shortDescription?: string;
     description?: string;
     startDate?: string;
@@ -14,6 +15,7 @@ export class EventItem implements IEventItem {
     constructor(
         public title: string,
         public type: string,
+        public category: string,
         public shortDescription: string,
         public description: string,
         public startDate: string,

@@ -14,4 +14,20 @@ export class EventItemComponent {
   constructor() {
     // Use the component constructor to inject providers.
   }
+
+  isNow(): boolean {
+    const now = new Date();
+    // console.log("Now: " + now);
+
+    const eventStart = new Date(this.eventItem.startDate);
+    const eventEnd = new Date(this.eventItem.endDate);
+
+    if (eventStart <= now && eventEnd >= now) {
+      console.log("tak to teraz!");
+
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

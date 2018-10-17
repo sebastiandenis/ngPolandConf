@@ -11,11 +11,11 @@ export class Image implements IImage {
     public imgDesc?: string
   ) {}
 
-  public getImageUrl():string {
-    if(this.imgUrl){
-      return 'https:'+this.imgUrl;
-    } else{
-      return '';
+  getImageUrl(): string {
+    if (this.imgUrl) {
+      return "https:" + this.imgUrl;
+    } else {
+      return "";
     }
   }
 }

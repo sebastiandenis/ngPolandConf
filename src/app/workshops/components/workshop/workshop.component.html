@@ -1,14 +1,19 @@
 <StackLayout style="padding: 10 10;">
-    <CardView class="cardStyle" margin="10" elevation="10" radius="1" style="max-width: 450;margin: 10;"
-        shadowOffsetHeight="1">
-        <GridLayout columns="*" rows="50, 30, auto, 15" width="auto" height="auto" backgroundColor="#ffffff"
+    <StackLayout class="cardStyle2">
+        <GridLayout columns="70, *" rows="auto, 30, auto, 15" width="auto" height="auto" backgroundColor="#ffffff"
             horizontalAlignment="center" verticalAlignment="center" style="padding: 10 20;">
-            <Label [text]="workshop.title" fontWeight="bold" fontSize="16" verticalAlignment="center" textAlignment="center"
-                textWrap="true" col="0" row="0" style="color: #ff1744;"></Label>
-            <Label text="by Nir Kaufman" col="0" row="1" verticalAlignment="top" textAlignment="center" style="color: #3949ab;"></Label>
+            <Label [text]="workshop.title" fontWeight="bold" fontSize="16" verticalAlignment="center" textAlignment="left"
+                textWrap="true" col="1" row="0" style="color: #ff1744;"></Label>
+            <Label [text]="'by '+ workshop.instructor.name" col="1" row="1" verticalAlignment="center" textAlignment="left"
+                style="color: #3949ab;"></Label>
+
+            <Image [src]="workshop.instructor.photo.getImageUrl()" row="0" col="0" rowSpan="2"
+            borderRadius="500" horizontalAlignment="center" width="auto" verticalAlignment="center"
+            height="98%" style="margin-right: 15;"></Image>
+
             <Label [text]="workshop.description" textWrap="true" textAlignment="left" verticalAlignment="center"
-                fontSize="14" col="0" row="2" style="color: #000000;"></Label>
+                fontSize="14" col="0" row="2" colSpan="2" style="color: #3C4043;padding-top: 15;"></Label>
 
         </GridLayout>
-    </CardView>
+    </StackLayout>
 </StackLayout>

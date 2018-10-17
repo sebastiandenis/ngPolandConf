@@ -1,15 +1,38 @@
 <StackLayout width="100%" backgroundColor="yellow">
-    <GridLayout columns="75, *, 50" rows="auto, 70" width="100%" height="auto" backgroundColor="#ffffff"
-        horizontalAlignment="center" verticalAlignment="center" style="padding: 10 5;">
-            <Label [text]="eventItem.startDate | date:'HH:mm'" col="0" row="0" rowSpan="2" style="color: #3949ab;"
-            textWrap="true" verticalAlignment="center" textAlignment="center" fontSize="18"></Label>
-        <Label [text]="eventItem.title" fontWeight="normal" fontSize="16" verticalAlignment="center" textAlignment="left"
-            textWrap="true" col="1" row="0" style="color: #000000;"></Label>
-            
-        <Label [text]="eventItem.shortDescription" col="1" row="1" verticalAlignment="top" textAlignment="left" style="color: #555555;font-size: 14;"></Label>
-        <Label class="fa" text="&#xf05a;"  col="3" row="0" rowSpan="2" verticalAlignment="center" textAlignment="left" 
-        style="color: #bbbbbb; font-size: 24;"></Label>
+    <GridLayout columns="75, *" rows="auto, 60" width="100%" height="auto" backgroundColor="#ffffff"
+        horizontalAlignment="center" verticalAlignment="top" style="padding: 10 5;">
+        <GridLayout columns="*" rows="auto, *" col="0" row="0" rowSpan="2">
+            <Label [text]="eventItem.startDate | date:'HH:mm'" col="0" row="0" style="color: #3949ab;" textWrap="true"
+                verticalAlignment="top" textAlignment="center" fontSize="18"></Label>
+            <Label visibility="{{ isNow() ? 'visible' : 'collapsed' }}" col="0" row="1"  class="fa" text="&#xf0a9;"
+                verticalAlignment="center" textAlignment="center" style="color: #FBBC04; font-size: 24;margin-top: 5;"></Label>
+        </GridLayout>
+
+
+        <Label [text]="eventItem.title" fontWeight="normal" fontSize="14" verticalAlignment="center" textAlignment="left"
+            textWrap="true" col="1" row="0" style="color: #3C4043;"></Label>
+
+
+
+        <StackLayout col="1" row="1">
+            <GridLayout columns="auto, auto, auto, *">
+                <Label col="0" row="0" class="fa" text="&#xf2f2;" verticalAlignment="center" textAlignment="center"
+                    style="color: #ff4d70; font-size: 18;margin-right: 10;"></Label>
+                <Label col="1" row="0" text="45 min" textWrap="true" style="color: #3C4043;font-size: 13;margin-right: 30;"
+                    verticalAlignment="center" textAlignment="center"></Label>
+                <Label col="2" row="0" class="fa" text="&#xf007;" verticalAlignment="center" textAlignment="center"
+                    style="color: #ff4d70; font-size: 18;margin-right: 10;"></Label>
+                <Label col="3" row="0" text="Nir Kaufman" textWrap="true" style="color: #3C4043;font-size: 12;"
+                    verticalAlignment="center" textAlignment="left"></Label>
+            </GridLayout>
+
+
+
+
+
+
+        </StackLayout>
+
 
     </GridLayout>
 </StackLayout>
-

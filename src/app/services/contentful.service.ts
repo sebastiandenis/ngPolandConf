@@ -1,13 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Asset, EntryCollection, Entry } from "contentful";
+import { Asset, Entry, EntryCollection } from "contentful";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { environment } from "../../environments/environment.prod";
 import { SettingsService } from "./settings.service";
 
-import { Speaker } from "../models/speaker.model";
 import { EventItem } from "../models/event-item.model";
+import { Speaker } from "../models/speaker.model";
 import { Workshop } from "../models/workshop.model";
 
 export enum EventContentTypes {
@@ -19,6 +19,13 @@ export enum EventContentTypes {
 export enum EventItemType {
   NGPOLAND = "ngPoland",
   JSPOLAND = "jsPoland"
+}
+
+export enum EventItemCategory {
+  PRESENTATION = "presentation",
+  BREAK = "break",
+  EATING = "eating",
+  QA = "qa"
 }
 
 @Injectable({
@@ -46,11 +53,14 @@ export class ContentfulService {
       .join("&");
   }
 
-  getEventItems(howMany: number, type: EventItemType): Observable<Array<EventItem>> {
+  getEventItems(
+    howMany: number,
+    type: EventItemType
+  ): Observable<Array<EventItem>> {
     const query = {
       content_type: EventContentTypes.EVENT_ITEM,
       locale: this.settings.getLocale(),
-      'fields.type': type,
+      "fields.type": type,
       order: "fields.startDate",
       limit: howMany
     };
@@ -64,14 +74,15 @@ export class ContentfulService {
       )
       .pipe(
         map((entries: EntryCollection<any>) => {
-          //const assets: Array<Asset> = entries.includes.Asset;
+          // const assets: Array<Asset> = entries.includes.Asset;
 
-          return entries.items.map(item => {
+          return entries.items.map((item: Entry<any>) => {
             //  const profilePhoto: Asset = this.getAssetById(assets, item.fields.photo.sys.id);
 
             return new EventItem(
               item.fields.title,
               item.fields.type,
+              item.fields.category,
               item.fields.shortDescription,
               item.fields.description,
               item.fields.startDate,
@@ -100,21 +111,43 @@ export class ContentfulService {
       )
       .pipe(
         map((entries: EntryCollection<any>) => {
-          //const assets: Array<Asset> = entries.includes.Asset;
+          const assets: Array<Asset> = entries.includes.Asset;
+          const links: Array<Entry<any>> = entries.includes.Entry;
 
-          return entries.items.map(item => {
+          return entries.items.map((item: Entry<any>) => {
             //  const profilePhoto: Asset = this.getAssetById(assets, item.fields.photo.sys.id);
+            const speaker = this.getEntryById(
+              links,
+              item.fields.instructor.sys.id
+            );
+            // console.log("Spekaer: ", speaker);
+            const speakerPhoto = this.getAssetById(
+              assets,
+              speaker.fields.photo.sys.id
+            );
 
             return new Workshop(
               item.fields.title,
               item.fields.description,
-              undefined, // TODO: zamienić na pobieranie Speakera
+              new Speaker(
+                speaker.fields.name,
+                speaker.fields.role,
+                speaker.fields.bio,
+                speakerPhoto ? speakerPhoto.fields.file.url : undefined,
+                speakerPhoto ? speakerPhoto.fields.title : undefined,
+                speakerPhoto ? speakerPhoto.fields.description : undefined,
+                speaker.fields.email,
+                speaker.fields.urlGithub,
+                speaker.fields.urlLinkedIn,
+                speaker.fields.urlTwitter,
+                speaker.fields.urlWww
+              ),
               item.fields.startDate,
               item.fields.endDate,
               0, // TODO: zamienić na współrzędne
               0, // TODO: zamienić na współrzędne
               item.fields.locationDescription,
-              item.fields.pricePln,
+              item.fields.pricePln
             );
           });
         })
@@ -140,7 +173,7 @@ export class ContentfulService {
         map((entries: EntryCollection<any>) => {
           const assets: Array<Asset> = entries.includes.Asset;
 
-          return entries.items.map(item => {
+          return entries.items.map((item: Entry<any>) => {
             const profilePhoto: Asset = this.getAssetById(
               assets,
               item.fields.photo.sys.id
@@ -175,7 +208,19 @@ export class ContentfulService {
     return {};
   }
 
-  private getEntryById(entriesArray: Entry<any>[], id: string): any {
+  private getAssetsByIds(assetArray: Array<Asset>, ids: Array<string>): any {
+    if (assetArray && assetArray.length > 0 && ids && ids.length > 0) {
+      const newArray = assetArray.filter((item: Asset) => {
+        return ids.includes(item.sys.id);
+      });
+
+      return newArray;
+    }
+
+    return {};
+  }
+
+  private getEntryById(entriesArray: Array<Entry<any>>, id: string): any {
     if (entriesArray && entriesArray.length > 0) {
       const newArray = entriesArray.filter(
         (item: Entry<any>) => item.sys.id === id
@@ -184,11 +229,12 @@ export class ContentfulService {
         return newArray[0];
       }
     }
+
     return {};
   }
 
   private getEntriesByContentType(
-    entriesArray: Entry<any>[],
+    entriesArray: Array<Entry<any>>,
     contentType: EventContentTypes
   ): any {
     if (entriesArray && entriesArray.length > 0) {
@@ -199,7 +245,7 @@ export class ContentfulService {
         return newArray;
       }
     }
+
     return {};
   }
-
 }

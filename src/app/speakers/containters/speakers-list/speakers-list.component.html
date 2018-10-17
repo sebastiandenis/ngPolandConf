@@ -1,7 +1,7 @@
-<ListView class="list-group myclass" [items]="speakers$ | async" style="height: 100%;" separatorColor="white">
+<ListView class="list-group myclass" [items]="speakers$ | async" style="height: 100%;" separatorColor="#ff1744" >
 	<ng-template let-speaker="item">
 
-		<Speaker [speaker]="speaker"></Speaker>
+		<Speaker [speaker]="speaker" ></Speaker>
 
 	</ng-template>
 </ListView>

@@ -15,8 +15,8 @@
 </ActionBar>
 
 <GridLayout class="page page-content">
-	<StackLayout>
-		<ListView class="list-group" [items]="workshops$ | async" style="height: 100%;" separatorColor="white">
+	<StackLayout style="padding: 10 5;">
+		<ListView class="list-group" [items]="workshops$ | async" style="height: 100%;" separatorColor="#ff1744">
 			<ng-template let-workshop="item">
 
 				<Workshop [workshop]="workshop"></Workshop>
