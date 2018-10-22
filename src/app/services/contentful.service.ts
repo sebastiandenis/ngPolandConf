@@ -76,10 +76,13 @@ export class ContentfulService {
       )
       .pipe(
         map((entries: EntryCollection<any>) => {
-          // const assets: Array<Asset> = entries.includes.Asset;
+          const links: Array<Entry<any>> = entries.includes.Entry;
 
           return entries.items.map((item: Entry<any>) => {
-            //  const profilePhoto: Asset = this.getAssetById(assets, item.fields.photo.sys.id);
+            const speaker = this.getEntryById(
+              links,
+              item.fields.instructor.sys.id
+            );
 
             return new EventItem(
               item.fields.title,
