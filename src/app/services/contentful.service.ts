@@ -2,18 +2,20 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Asset, Entry, EntryCollection } from "contentful";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import { environment } from "../../environments/environment.prod";
 import { SettingsService } from "./settings.service";
 
 import { EventItem } from "../models/event-item.model";
+import { SimpleContent } from "../models/simple-content.model";
 import { Speaker } from "../models/speaker.model";
 import { Workshop } from "../models/workshop.model";
 
 export enum EventContentTypes {
   SPEAKER = "speaker",
   WORKSHOP = "workshop",
-  EVENT_ITEM = "eventItem"
+  EVENT_ITEM = "eventItem",
+  SIMPLE_CONTENT = "simpleContent"
 }
 
 export enum EventItemType {
@@ -90,6 +92,36 @@ export class ContentfulService {
               undefined // TODO: zamienić na pobieranie Speakera
             );
           });
+        })
+      );
+  }
+
+  getSimpleContentById(myId: string): Observable<SimpleContent> {
+    const query = {
+      content_type: EventContentTypes.SIMPLE_CONTENT,
+      locale: this.settings.getLocale(),
+      "fields.myId": myId,
+      limit: 1
+    };
+
+    return this.http
+      .get(
+        `${this.CONTENTFUL_URL_ENTRIES}&${this.getContentfulUrlParameters(
+          query
+        )}`,
+        { responseType: "json" }
+      )
+      .pipe(
+        map((entries: EntryCollection<SimpleContent>) => {
+          if (entries && entries.items && entries.items[0]) {
+            return new SimpleContent(
+              entries.items[0].fields.myId,
+              entries.items[0].fields.title,
+              entries.items[0].fields.text
+            );
+          } else {
+            return new SimpleContent("000", "nie udało się", "nie wyszło coś");
+          }
         })
       );
   }

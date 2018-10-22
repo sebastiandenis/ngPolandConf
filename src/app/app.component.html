@@ -6,7 +6,7 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
 <RadSideDrawer [drawerTransition]="sideDrawerTransition">
     <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
         <StackLayout row="0" class="sidedrawer-header" style="background-color: white;">
-           <Image src="https://images.ctfassets.net/87a5voy5in4s/9uRJGpXuBGsACgMcUuikm/031824a03fc64a6b22dcd24675196f98/logo.png" ></Image>
+           <Image src="res://logong" ></Image>
            
         </StackLayout>
     
@@ -24,7 +24,7 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/ng-girls')" (tap)="onNavItemTap('/ng-girls')">
                     <Label col="0" text="&#xf182;" class="fa"></Label>
-                    <Label col="1" text="NG Girls" class="p-r-10"></Label>
+                    <Label col="1" text="ngGirls" class="p-r-10"></Label>
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/speakers')" (tap)="onNavItemTap('/speakers')">
