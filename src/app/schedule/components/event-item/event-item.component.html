@@ -1,4 +1,5 @@
-<StackLayout width="100%" backgroundColor="yellow">
+<StackLayout width="100%" >
+      
     <GridLayout columns="75, *" rows="auto, 60" width="100%" height="auto" backgroundColor="#ffffff"
         horizontalAlignment="center" verticalAlignment="top" style="padding: 10 5;">
         <GridLayout columns="*" rows="auto, *" col="0" row="0" rowSpan="2">
@@ -12,17 +13,19 @@
         <Label [text]="eventItem.title" fontWeight="normal" fontSize="14" verticalAlignment="center" textAlignment="left"
             textWrap="true" col="1" row="0" style="color: #3C4043;"></Label>
 
-
+            
 
         <StackLayout col="1" row="1">
+              
+   
             <GridLayout columns="auto, auto, auto, *">
                 <Label col="0" row="0" class="fa" text="&#xf2f2;" verticalAlignment="center" textAlignment="center"
                     style="color: #ff4d70; font-size: 18;margin-right: 10;"></Label>
-                <Label col="1" row="0" text="45 min" textWrap="true" style="color: #3C4043;font-size: 13;margin-right: 30;"
+                <Label col="1" row="0" [text]="eventItem.getEventDuration()+' min'" textWrap="true" style="color: #3C4043;font-size: 13;margin-right: 30;"
                     verticalAlignment="center" textAlignment="center"></Label>
                 <Label col="2" row="0" class="fa" text="&#xf007;" verticalAlignment="center" textAlignment="center"
                     style="color: #ff4d70; font-size: 18;margin-right: 10;"></Label>
-                <Label col="3" row="0" text="Nir Kaufman" textWrap="true" style="color: #3C4043;font-size: 12;"
+                <Label col="3" row="0" [text]="eventItem.presenter?.name" textWrap="true" style="color: #3C4043;font-size: 12;"
                     verticalAlignment="center" textAlignment="left"></Label>
             </GridLayout>
 

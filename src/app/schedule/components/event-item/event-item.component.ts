@@ -30,4 +30,5 @@ export class EventItemComponent {
       return false;
     }
   }
+
 }

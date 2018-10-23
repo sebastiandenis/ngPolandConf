@@ -75,14 +75,28 @@ export class ContentfulService {
         { responseType: "json" }
       )
       .pipe(
-        map((entries: EntryCollection<any>) => {
-          const links: Array<Entry<any>> = entries.includes.Entry;
+        map((entries: EntryCollection<EventItem>) => {
+          let assets: Array<Asset> = null;
+          let links: Array<Entry<any>> = null;
+
+          if (entries.includes) {
+            assets = entries.includes.Asset;
+            links = entries.includes.Entry;
+          }
 
           return entries.items.map((item: Entry<any>) => {
-            const speaker = this.getEntryById(
-              links,
-              item.fields.instructor.sys.id
-            );
+            let speaker = null;
+            if (links && item.fields.presenter) {
+              speaker = this.getEntryById(links, item.fields.presenter.sys.id);
+            }
+
+            let speakerPhoto = null;
+            if (speaker) {
+              speakerPhoto = this.getAssetById(
+                assets,
+                speaker.fields.photo.sys.id
+              );
+            }
 
             return new EventItem(
               item.fields.title,
@@ -92,7 +106,21 @@ export class ContentfulService {
               item.fields.description,
               item.fields.startDate,
               item.fields.endDate,
-              undefined // TODO: zamienić na pobieranie Speakera
+              speaker
+                ? new Speaker(
+                    speaker.fields.name,
+                    speaker.fields.role,
+                    speaker.fields.bio,
+                    speakerPhoto ? speakerPhoto.fields.file.url : undefined,
+                    speakerPhoto ? speakerPhoto.fields.title : undefined,
+                    speakerPhoto ? speakerPhoto.fields.description : undefined,
+                    speaker.fields.email,
+                    speaker.fields.urlGithub,
+                    speaker.fields.urlLinkedIn,
+                    speaker.fields.urlTwitter,
+                    speaker.fields.urlWww
+                  )
+                : undefined
             );
           });
         })
