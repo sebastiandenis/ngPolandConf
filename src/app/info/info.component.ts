@@ -9,6 +9,8 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 })
 export class InfoComponent implements OnInit {
 
+
+
     constructor() {
         // Use the component constructor to inject providers.
     }
