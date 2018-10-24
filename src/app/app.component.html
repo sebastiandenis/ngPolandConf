@@ -13,36 +13,36 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
         <ScrollView row="1">
             <StackLayout class="sidedrawer-content">
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/schedule')" (tap)="onNavItemTap('/schedule')">
-                    <Label col="0" text="&#xf017;" class="fa" style="margin-left: 10"></Label>
+                    <Label col="0" text="&#xf017;" class="fa" style="margin-left: 10;text-align: center;"></Label>
                     <Label col="1" text="Schedule" class="p-r-10"></Label>
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/workshops')" (tap)="onNavItemTap('/workshops')">
-                    <Label col="0" text="&#xf11c;" class="fa" style="margin-left: 10"></Label>
+                    <Label col="0" text="&#xf11c;" class="fa" style="margin-left: 10;text-align: center;"></Label>
                     <Label col="1" text="Workshops" class="p-r-10"></Label>
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/ng-girls')" (tap)="onNavItemTap('/ng-girls')">
-                    <Label col="0" text="&#xf182;" class="fa" style="margin-left: 10"></Label>
+                    <Label col="0" text="&#xf182;" class="fa" style="margin-left: 10;text-align: center;" ></Label>
                     <Label col="1" text="ngGirls" class="p-r-10"></Label>
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/speakers')" (tap)="onNavItemTap('/speakers')">
-                    <Label col="0" text="&#xf0c0;" class="fa" style="margin-left: 10"></Label>
+                    <Label col="0" android:text="&#xf0c0;" ios:text="&#xf406;" class="fa" style="margin-left: 10;text-align: center;"></Label>
                     <Label col="1" text="Speakers" class="p-r-10"></Label>
                 </GridLayout>
 
                
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/info')" (tap)="onNavItemTap('/info')">
-                    <Label col="0" text="&#xf05a;" class="fa" style="margin-left: 10"></Label>
+                    <Label col="0" text="&#xf05a;" class="fa" style="margin-left: 10;text-align: center;"></Label>
                     <Label col="1" text="Info" class="p-r-10"></Label>
                 </GridLayout>
     
                 <StackLayout class="hr-light"></StackLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/about')" (tap)="onNavItemTap('/about')">
-                    <Label col="0" text="&#xf121;" class="fa" style="margin-left: 10"></Label>
+                    <Label col="0" android:text="&#xf121;" ios:text="&#xf0eb;" class="fa" style="margin-left: 10;text-align: center;"></Label>
                     <Label col="1" text="About" class="p-r-10"></Label>
                 </GridLayout>
             </StackLayout>
