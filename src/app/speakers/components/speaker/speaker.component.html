@@ -24,8 +24,8 @@
     </StackLayout>
 </StackLayout> -->
 
-<StackLayout style="padding: 10 5;">
-    <StackLayout class="cardStyle2"style="margin: 5;" #sl (tap)="showModal(sl)">
+<StackLayout style="padding: 10 5;" #sl (tap)="showModal(sl)">
+    <StackLayout class="cardStyle2"style="margin: 5;" >
         <GridLayout rows="auto, *" columns="100, *" style="padding: 5 5;">
             <Image row="0" col="0" rowSpan="2" [src]="speaker.photo.getImageUrl()" borderRadius="500" horizontalAlignment="center" width="auto"
             height="95%" style="margin-right: 15;"></Image>

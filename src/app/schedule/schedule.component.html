@@ -15,12 +15,12 @@
     <Label class="action-bar-title" text="Schedule" fontSize="16"></Label>
 </ActionBar>
 
-<TabView selectedIndex="0" sdkExampleTitle sdkToggleNavButton androidTabsPosition="bottom"  >
+<TabView selectedIndex="0" sdkExampleTitle sdkToggleNavButton androidTabsPosition="bottom" iosIconRenderingMode="alwaysOriginal" >
   
-    <StackLayout *tabItem="{title: 'NG Poland'}">
+    <StackLayout *tabItem="{title: 'NG Poland', iconSource: 'res://ngpolandlogo'}" >
         <NgPoland></NgPoland>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'JS Poland'}">
+    <StackLayout *tabItem="{title: 'JS Poland'}" >
         <JsPoland></JsPoland>
     </StackLayout>
 </TabView>

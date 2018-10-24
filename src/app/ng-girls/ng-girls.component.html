@@ -17,7 +17,7 @@
 <ScrollView>
     
     
-    <StackLayout style="padding: 15 15;" *ngIf="content$ | async as content; else nocontent">
+    <StackLayout style="padding: 15 20;" *ngIf="content$ | async as content; else nocontent">
             <Image src="res://nggirls" style="width: 70%;margin-bottom: 20;margin-top: 20;" ios:style="margin-top: 50"></Image>
         <Label [text]="content.text" textWrap="true" style="color: #3C4043;"></Label>
     </StackLayout>

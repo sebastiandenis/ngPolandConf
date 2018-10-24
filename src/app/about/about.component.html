@@ -9,13 +9,38 @@
     NavigationButton as a side-drawer button in iOS is not possible,
     because its function is to always navigate back in the application.
     -->
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-        ios.position="left">
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
     <Label class="action-bar-title" text="About"></Label>
 </ActionBar>
 
-<GridLayout class="page page-content">
-    <Label class="page-icon fa" text="&#xf121;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-</GridLayout>
+<ScrollView>
+
+
+    <StackLayout style="padding: 15 20;">
+        <Image src="res://logong" style="width: 70%;margin-bottom: 20;margin-top: 20;" ios:style="margin-top: 50;"></Image>
+        <Label text="This app is built with NativeScript + Angular!" textWrap="true" style="color: #3949ab;font-size: 14; text-align: center;margin-bottom: 15;"
+        verticalAlignment="center"></Label>
+        <StackLayout class="hr-light m-10"></StackLayout>
+        <GridLayout rows="30, 80, 80" columns="70, *" style="margin-top: 15;margin-bottom: 15;">
+            <Label row="0" col="0" colSpan="2"  text="Authors:" textWrap="true" style="color: #ff1744;font-size: 14;" ></Label>
+            <Image row="1" col="0" src="res://sd" borderRadius="200" horizontalAlignment="center" width="60" height="60"
+             ></Image>
+            <Label row="1" col="1" text="Sebastian Denis"  fontSize="14" verticalAlignment="center" textAlignment="left"
+            style="color: #3C4043;margin-left: 15;"></Label>
+            <Image row="2" col="0" src="res://dk" borderRadius="200" horizontalAlignment="center" width="60" height="60"
+             ></Image>
+            <Label row="2" col="1" text="Dariusz Kalbarczyk" fontSize="14" verticalAlignment="center" textAlignment="left"
+            style="color: #3C4043;margin-left: 15;" ></Label>
+        </GridLayout>
+
+        <StackLayout class="hr-light m-10"></StackLayout>
+        <GridLayout rows="auto" columns="70, *" style="margin-top: 15;">
+            <Label text="&#xf09b;"  class="fa-b" row="0" col="0" fontSize="36" color="#3C4043" verticalAlignment="center" textAlignment="center"></Label>
+            <Label row="0" col="1" text="https://github.com/sebastiandenis/NS-Event-App" textWrap="true"  verticalAlignment="center" textAlignment="left"
+            style="color: #3C4043;font-size: 12;color: #3949ab;text-decoration: underline;" (tap)="onGitHubLinkTap()"></Label>
+        </GridLayout>
+
+    </StackLayout>
+
+</ScrollView>
