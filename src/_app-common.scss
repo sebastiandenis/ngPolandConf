@@ -31,6 +31,10 @@ ActionBar .action-bar-title {
     horizontal-align: left;
 }
 
+ActivityIndicator {
+    margin-top: 50;
+}
+
  // Drawer navigation custom styles
 $sidedrawer-header-image-size: 60;
 $sidedrawer-header-image-offset-top: 20;

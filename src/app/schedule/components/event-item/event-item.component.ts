@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { EventItem } from "~/app/models/event-item.model";
 
 @Component({
@@ -23,12 +23,11 @@ export class EventItemComponent {
     const eventEnd = new Date(this.eventItem.endDate);
 
     if (eventStart <= now && eventEnd >= now) {
-      console.log("tak to teraz!");
+      // console.log("tak to teraz!");
 
       return true;
     } else {
       return false;
     }
   }
-
 }

@@ -26,13 +26,6 @@ export enum EventItemType {
   JSPOLAND = "jsPoland"
 }
 
-export enum EventItemCategory {
-  PRESENTATION = "presentation",
-  BREAK = "break",
-  EATING = "eating",
-  QA = "qa"
-}
-
 @Injectable({
   providedIn: "root"
 })
@@ -75,7 +68,6 @@ export class ContentfulService {
       )
       .pipe(
         map((entries: EntryCollection<InfoItem>) => {
-
           return entries.items.map((item: Entry<any>) => {
             return new InfoItem(
               item.fields.title,
@@ -349,5 +341,4 @@ export class ContentfulService {
 
     return {};
   }
-
 }

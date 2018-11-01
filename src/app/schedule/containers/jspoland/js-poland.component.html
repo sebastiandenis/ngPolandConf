@@ -1,9 +1,12 @@
-<Label text="JS Poland" textWrap="true" class="h2 m-x-auto" color="blue"></Label>
-
-<ListView class="list-group" [items]="events$ | async" style="height:100%;">
-	<ng-template let-event="item">
-
-		<EventItem [eventItem]="event"></EventItem>
-
-	</ng-template>
-</ListView>
+<StackLayout *ngIf="events$ | async as events; else nocontent">
+		<ListView class="list-group" [items]="events" style="height:100%;" separatorColor="#ffffff">
+				<ng-template let-event="item">
+			
+					<EventItem [eventItem]="event"></EventItem>
+			
+				</ng-template>
+			</ListView>
+</StackLayout>
+<ng-template #nocontent>
+		<ActivityIndicator row="1" #activityIndicator busy="true" width="100" height="100" class="activity-indicator"></ActivityIndicator>
+</ng-template>
