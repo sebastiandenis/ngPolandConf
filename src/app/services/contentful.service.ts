@@ -1,12 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Asset, Entry, EntryCollection } from "contentful";
+import * as marked from "marked";
 import { Observable } from "rxjs";
 import { map, tap } from "rxjs/operators";
 import { environment } from "../../environments/environment.prod";
 import { SettingsService } from "./settings.service";
 
 import { EventItem } from "../models/event-item.model";
+import { InfoItem } from "../models/info-item.model";
 import { SimpleContent } from "../models/simple-content.model";
 import { Speaker } from "../models/speaker.model";
 import { Workshop } from "../models/workshop.model";
@@ -15,7 +17,8 @@ export enum EventContentTypes {
   SPEAKER = "speaker",
   WORKSHOP = "workshop",
   EVENT_ITEM = "eventItem",
-  SIMPLE_CONTENT = "simpleContent"
+  SIMPLE_CONTENT = "simpleContent",
+  INFO_ITEM = "infoItem"
 }
 
 export enum EventItemType {
@@ -53,6 +56,37 @@ export class ContentfulService {
     return Object.entries(params)
       .map(([key, val]) => `${key}=${val}`)
       .join("&");
+  }
+
+  getInfoItems(howMany: number): Observable<Array<InfoItem>> {
+    const query = {
+      content_type: EventContentTypes.INFO_ITEM,
+      locale: this.settings.getLocale(),
+      order: "fields.order",
+      limit: howMany
+    };
+
+    return this.http
+      .get(
+        `${this.CONTENTFUL_URL_ENTRIES}&${this.getContentfulUrlParameters(
+          query
+        )}`,
+        { responseType: "json" }
+      )
+      .pipe(
+        map((entries: EntryCollection<InfoItem>) => {
+
+          return entries.items.map((item: Entry<any>) => {
+            return new InfoItem(
+              item.fields.title,
+              item.fields.ordre,
+              item.fields.icon,
+              item.fields.description,
+              item.fields.urlLink
+            );
+          });
+        })
+      );
   }
 
   getEventItems(
@@ -260,6 +294,10 @@ export class ContentfulService {
       );
   }
 
+  markdownToHtml(md: string) {
+    return marked(md);
+  }
+
   private getAssetById(assetArray: Array<Asset>, id: string): any {
     if (assetArray && assetArray.length > 0) {
       const newArray = assetArray.filter((item: Asset) => item.sys.id === id);
@@ -311,4 +349,5 @@ export class ContentfulService {
 
     return {};
   }
+
 }

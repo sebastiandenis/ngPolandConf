@@ -15,5 +15,7 @@ export class WorkshopComponent implements OnInit {
     // Use the component constructor to inject providers.
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // ngInit here
+  }
 }

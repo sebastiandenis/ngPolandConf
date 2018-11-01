@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~6.1.0",
     "@angular/router": "~6.1.0",
     "contentful": "^7.0.4",
+    "marked": "^0.5.1",
     "nativescript-angular": "~6.1.0",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-sidedrawer": "~4.2.0",
