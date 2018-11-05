@@ -1,36 +1,10 @@
-<!-- <StackLayout style="padding: 10 10;">
-    <StackLayout class="cardStyle"style="max-width: 450;margin: 10;">
-        <FlexboxLayout width="auto" height="380" flexDirection="column" style="padding: 10 20;">
-            <FlexboxLayout height="13%" flexDirection="column" alignItems="center" justifyContent="center">
-                <Label [text]="speaker.name" fontWeight="bold" fontSize="20" verticalAlignment="center" textAlignment="center"
-                    style="color: #ff1744;"></Label>
-            </FlexboxLayout>
-            <FlexboxLayout height="87%" flexDirection="column" justifyContent="space-around" alignItems="center">
-                <FlexboxLayout height="60%" flexDirection="column" alignItems="center" justifyContent="center">
-                    <Image [src]="speaker.photo.getImageUrl()" borderRadius="500" horizontalAlignment="center" width="auto"
-                        height="90%"></Image>
-                </FlexboxLayout>
-                <FlexboxLayout height="auto" flexDirection="column" alignItems="center" justifyContent="center">
-                    <Label [text]="speaker.role" textWrap="true" textAlignment="center" fontSize="14" style="color: #000000;"></Label>
-                </FlexboxLayout>
-                <FlexboxLayout height="20%" flexDirection="column" alignItems="center" justifyContent="center">
-                    <Button text="&#xf141;" (tap)="showModal()" class="btn btn-active fa" fontSize="28"></Button>
-                </FlexboxLayout>
-
-
-            </FlexboxLayout>
-
-        </FlexboxLayout>
-    </StackLayout>
-</StackLayout> -->
-
 <StackLayout style="padding: 10 5;" #sl (tap)="showModal(sl)">
-    <StackLayout class="cardStyle2"style="margin: 5;" >
+    <StackLayout class="cardStyle2" style="margin: 5;">
         <GridLayout rows="auto, *" columns="100, *" style="padding: 5 5;">
-            <Image row="0" col="0" rowSpan="2" [src]="speaker.photo.getImageUrl()" borderRadius="500" horizontalAlignment="center" width="auto"
-            height="95%" style="margin-right: 15;"></Image>
-            <Label row="0" col="1" [text]="speaker.name" fontWeight="bold" fontSize="14" verticalAlignment="center" textAlignment="left"
-            style="color: #3C4043;"></Label>
+            <Image row="0" col="0" rowSpan="2" [src]="speaker.photo.getImageUrl()" borderRadius="500"
+                horizontalAlignment="center" width="auto" height="95%" style="margin-right: 15;"></Image>
+            <Label row="0" col="1" [text]="speaker.name" fontWeight="bold" fontSize="14" verticalAlignment="center"
+                textAlignment="left" style="color: #3C4043;"></Label>
             <Label row="1" col="1" [text]="speaker.role" textWrap="true" textAlignment="left" fontSize="12" style="color: #3C4043;"></Label>
         </GridLayout>
     </StackLayout>

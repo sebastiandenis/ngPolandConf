@@ -29,12 +29,16 @@ export class HomeComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
-  onNavItemTap(navItemRoute: string): void {
-    this.routerExtensions.navigate([navItemRoute], {
-      transition: {
-        name: "flip"
-      }
-    });
+  onNavItemTap(navItemRoute: string, sl: any): void {
+    sl.className = "";
+    sl.className = "highlighted";
+    setTimeout(() => {
+      this.routerExtensions.navigate([navItemRoute], {
+        transition: {
+          name: "flip"
+        }
+      });
+    }, 300);
 
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
