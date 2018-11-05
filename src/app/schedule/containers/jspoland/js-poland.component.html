@@ -1,5 +1,5 @@
 <StackLayout *ngIf="events$ | async as events; else nocontent">
-		<ListView class="list-group" [items]="events" style="height:100%;" separatorColor="#ffffff">
+		<ListView class="list-group" [items]="events" style="height:100%;padding-top: 3;" separatorColor="#ffffff">
 				<ng-template let-event="item">
 			
 					<EventItem [eventItem]="event"></EventItem>

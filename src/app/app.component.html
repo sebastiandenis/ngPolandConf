@@ -12,6 +12,11 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
     
         <ScrollView row="1">
             <StackLayout class="sidedrawer-content">
+                    <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
+                        <Label col="0" text="&#xf58e;" class="fa" style="margin-left: 10;text-align: center;"></Label>
+                        <Label col="1" text="Home" class="p-r-10"></Label>
+                    </GridLayout>
+
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/schedule')" (tap)="onNavItemTap('/schedule')">
                     <Label col="0" text="&#xf017;" class="fa" style="margin-left: 10;text-align: center;"></Label>
                     <Label col="1" text="Schedule" class="p-r-10"></Label>

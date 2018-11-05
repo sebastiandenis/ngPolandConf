@@ -1,29 +1,29 @@
-<StackLayout width="100%" style="background-color: red;" >
+<StackLayout width="100%" style="padding: 2 5;" >
       
-    <GridLayout columns="75, *, 75" rows="auto, 40, 10" width="100%" height="auto" backgroundColor="#ffffff"
+    <GridLayout columns="75, *, 75" rows="5, auto, 40, 10" width="100%" height="auto" backgroundColor="#F1F3F4"
         horizontalAlignment="left" verticalAlignment="top" style="padding: 10 5;">
-        <GridLayout columns="*" rows="auto, *" col="0" row="0" rowSpan="2">
-            <Label [text]="eventItem.startDate | date:'HH:mm'" col="0" row="0" style="color: #3949ab;" textWrap="true"
+        <GridLayout columns="*" rows="auto, *" col="0" row="1" rowSpan="2">
+            <Label [text]="eventItem.startDate | date:'HH:mm'" col="0" row="1" style="color: #3949ab;" textWrap="true"
                 verticalAlignment="top" textAlignment="center" fontSize="18"></Label>
-            <Label visibility="{{ isNow() ? 'visible' : 'collapsed' }}" col="0" row="1"  class="fa" text="&#xf0a9;"
+            <Label visibility="{{ isNow() ? 'visible' : 'collapsed' }}" col="0" row="2"  class="fa" text="&#xf0a9;"
                 verticalAlignment="center" textAlignment="center" style="color: #FBBC04; font-size: 24;margin-top: 5;"></Label>
         </GridLayout>
 
 
         <Label [text]="eventItem.title" fontWeight="bold" fontSize="14" verticalAlignment="center" textAlignment="left"
-            textWrap="true" col="1" row="0" style="color: #3C4043;"></Label>
+            textWrap="true" col="1" row="1" style="color: #3C4043;"></Label>
 
             
 
-        <StackLayout col="1" row="1">
+        <StackLayout col="1" row="2">
             <GridLayout columns="auto, auto, auto, *">
-                <Label col="0" row="0" class="fa" text="&#xf2f2;" verticalAlignment="center" textAlignment="center"
+                <Label col="0" row="1" class="fa" text="&#xf2f2;" verticalAlignment="center" textAlignment="center"
                     style="color: #80868B; font-size: 16;margin-right: 10;"></Label>
-                <Label col="1" row="0" [text]="eventItem.getEventDuration()+' min'" textWrap="true" style="color: #5F6368;font-size: 13;margin-right: 30;"
+                <Label col="1" row="1" [text]="eventItem.getEventDuration()+' min'" textWrap="true" style="color: #5F6368;font-size: 13;margin-right: 30;"
                     verticalAlignment="center" textAlignment="center"></Label>
-                <Label *ngIf="eventItem.presenter" col="2" row="0" class="fa" text="&#xf007;" verticalAlignment="center" textAlignment="center"
+                <Label *ngIf="eventItem.presenter" col="2" row="1" class="fa" text="&#xf007;" verticalAlignment="center" textAlignment="center"
                     style="color: #80868B; font-size: 16;margin-right: 10;"></Label>
-                <Label *ngIf="eventItem.presenter" col="3" row="0" [text]="eventItem.presenter?.name" textWrap="true" style="color: #5F6368;font-size: 12;"
+                <Label *ngIf="eventItem.presenter" col="3" row="1" [text]="eventItem.presenter?.name" textWrap="true" style="color: #5F6368;font-size: 12;"
                     verticalAlignment="center" textAlignment="left"></Label>
             </GridLayout>
 
@@ -31,7 +31,7 @@
 
         <Label [text]="eventItem.getEventItemIcon()" class="fa" fontWeight="normal" fontSize="18" 
         verticalAlignment="center" textAlignment="center" horizontalAlignment="center"
-        textWrap="true" col="2" row="0" rowSpan="2" style="color: #ff8099;"></Label>
+        textWrap="true" col="2" row="1" rowSpan="2" style="color: #ff8099;"></Label>
 
 
     </GridLayout>
