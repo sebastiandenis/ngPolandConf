@@ -47,5 +47,5 @@
     "@ngtools/webpack": "~6.2.0"
   },
   "readme": "NativeScript Application",
-  "author": "ngPoland"
+  "author": "Sebastian Denis"
 }
