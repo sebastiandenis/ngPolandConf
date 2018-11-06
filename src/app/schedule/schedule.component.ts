@@ -13,7 +13,6 @@ import { Page } from "ui/page";
 })
 export class ScheduleComponent implements OnInit {
 
-
   constructor(private page: Page) {
     // Use the component constructor to inject providers.
   }
@@ -30,7 +29,7 @@ export class ScheduleComponent implements OnInit {
   onSelectedIndexChanged($event): void {
     const actionBarText = <Label>this.page.getViewById("abScheduleText");
     $event.newIndex === 0
-      ? (actionBarText.text = "Schedule - ngPoland")
-      : (actionBarText.text = "Schedule - jsPoland");
+      ? (actionBarText.text = "Schedule - NG Poland")
+      : (actionBarText.text = "Schedule - JS Poland");
   }
 }

@@ -22,6 +22,6 @@
         <Label [text]="content.text" textWrap="true" style="color: #3C4043;"></Label>
     </StackLayout>
     <ng-template #nocontent>
-        <Label text="No content" fontSize="28" textAlignment="center"></Label>
-    </ng-template>
+		<ActivityIndicator row="1" #activityIndicator busy="true" width="100" height="100" class="activity-indicator"></ActivityIndicator>
+</ng-template>
 </ScrollView>

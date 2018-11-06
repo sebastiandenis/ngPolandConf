@@ -2,8 +2,15 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Asset, Entry, EntryCollection } from "contentful";
 import * as marked from "marked";
-import { Observable } from "rxjs";
-import { map, tap } from "rxjs/operators";
+import { Observable, timer } from "rxjs";
+import {
+  delayWhen,
+  map,
+  retryWhen,
+  shareReplay,
+  tap,
+  timeout
+} from "rxjs/operators";
 import { environment } from "../../environments/environment.prod";
 import { SettingsService } from "./settings.service";
 
@@ -12,6 +19,7 @@ import { InfoItem } from "../models/info-item.model";
 import { SimpleContent } from "../models/simple-content.model";
 import { Speaker } from "../models/speaker.model";
 import { Workshop } from "../models/workshop.model";
+import { ErrorService } from "./error.service";
 
 export enum EventContentTypes {
   SPEAKER = "speaker",
@@ -30,15 +38,18 @@ export enum EventItemType {
   providedIn: "root"
 })
 export class ContentfulService {
-  private readonly CONTENTFUL_URL = "https://cdn.contentful.com";
+  timeoutTime = 20000;
+  delayWhenTime = 2000;
+
+  private readonly CONTENTFUL_URL = "http://cdn.contentful.com";
   private readonly CONTENTFUL_URL_ENTRIES = `${this.CONTENTFUL_URL}/spaces/${
     environment.contentful.spaceId
   }/environments/master/entries?access_token=${environment.contentful.token}`;
 
-  constructor(private settings: SettingsService, private http: HttpClient) {}
+  constructor(private settings: SettingsService, private http: HttpClient, private errorService: ErrorService) {}
 
   getContentfulUrlEntry(entryId: string): string {
-    return `https://cdn.contentful.com/spaces/${
+    return `http://cdn.contentful.com/spaces/${
       environment.contentful.spaceId
     }/environments/master/entries/${entryId}?access_token=${
       environment.contentful.token
@@ -67,6 +78,16 @@ export class ContentfulService {
         { responseType: "json" }
       )
       .pipe(
+        shareReplay(),
+        timeout(this.timeoutTime),
+        retryWhen((errors: any) => {
+          return errors.pipe(
+            delayWhen(() => timer(this.delayWhenTime)),
+            tap(() => {
+              this.errorService.showNoConnectionDlg();
+            })
+          );
+        }),
         map((entries: EntryCollection<InfoItem>) => {
           return entries.items.map((item: Entry<any>) => {
             return new InfoItem(
@@ -101,6 +122,16 @@ export class ContentfulService {
         { responseType: "json" }
       )
       .pipe(
+        shareReplay(),
+        timeout(this.timeoutTime),
+        retryWhen((errors: any) => {
+          return errors.pipe(
+            delayWhen(() => timer(this.delayWhenTime)),
+            tap(() => {
+              this.errorService.showNoConnectionDlg();
+            })
+          );
+        }),
         map((entries: EntryCollection<EventItem>) => {
           let assets: Array<Asset> = null;
           let links: Array<Entry<any>> = null;
@@ -169,6 +200,16 @@ export class ContentfulService {
         { responseType: "json" }
       )
       .pipe(
+        shareReplay(),
+        timeout(this.timeoutTime),
+        retryWhen((errors: any) => {
+          return errors.pipe(
+            delayWhen(() => timer(this.delayWhenTime)),
+            tap(() => {
+              this.errorService.showNoConnectionDlg();
+            })
+          );
+        }),
         map((entries: EntryCollection<SimpleContent>) => {
           if (entries && entries.items && entries.items[0]) {
             return new SimpleContent(
@@ -199,6 +240,16 @@ export class ContentfulService {
         { responseType: "json" }
       )
       .pipe(
+        shareReplay(),
+        timeout(this.timeoutTime),
+        retryWhen((errors: any) => {
+          return errors.pipe(
+            delayWhen(() => timer(this.delayWhenTime)),
+            tap(() => {
+              this.errorService.showNoConnectionDlg();
+            })
+          );
+        }),
         map((entries: EntryCollection<any>) => {
           const assets: Array<Asset> = entries.includes.Asset;
           const links: Array<Entry<any>> = entries.includes.Entry;
@@ -259,6 +310,16 @@ export class ContentfulService {
         { responseType: "json" }
       )
       .pipe(
+        shareReplay(),
+        timeout(this.timeoutTime),
+        retryWhen((errors: any) => {
+          return errors.pipe(
+            delayWhen(() => timer(this.delayWhenTime)),
+            tap(() => {
+              this.errorService.showNoConnectionDlg();
+            })
+          );
+        }),
         map((entries: EntryCollection<any>) => {
           const assets: Array<Asset> = entries.includes.Asset;
 

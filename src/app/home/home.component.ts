@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
     if (orientation.getOrientation() === "landscape") {
       this.isLandscape = true;
     } else {
@@ -31,7 +30,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.changeDetectorRef.detectChanges();
 
     this.orientationApplier = orientation.addOrientationApplier((o: any) => {
-
       if (orientation.getOrientation() === "landscape") {
         this.isLandscape = true;
       } else {
@@ -47,7 +45,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onNavItemTap(navItemRoute: string, sl: any): void {
-
     sl.className = "";
     sl.className = "highlighted";
     setTimeout(() => {

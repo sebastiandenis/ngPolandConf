@@ -13,10 +13,10 @@
     </ActionItem>
     <Label class="action-bar-title" text="ngPolandConf" fontSize="18"></Label>
 </ActionBar>
-<ScrollView style="background-color: #F1F3F4;">
+<ScrollView style="background-color: #FFFFFF;">
     <GridLayout rows="auto, *" columns="*" style="height: 100%;" ios:style="padding-top: 60;">
         <StackLayout *ngIf="!isLandscape" row="0" col="0" style="height: 120;width: 100%;"
-            verticalAlignment="middle" horizontalAlignment="center" ios:style="background-color: #F1F3F4;"
+            verticalAlignment="middle" horizontalAlignment="center" ios:style="background-color: #FFFFFF;"
             android:style="background-color: #3949ab;">
             <Label text="Welcome to ngPoland Conference." style="font-size: 16;padding-left: 10;padding-right: 10;"
                 textWrap="true" textAlignment="center" android:style="color: #ffffff;" ios:style="color: #3949ab;">
@@ -27,7 +27,7 @@
         </StackLayout>
 
         <StackLayout *ngIf="isLandscape" row="0" col="0" style="height: 70;width: 100%;"
-            verticalAlignment="middle" horizontalAlignment="center" ios:style="background-color: #F1F3F4;"
+            verticalAlignment="middle" horizontalAlignment="center" ios:style="background-color: #FFFFFF;"
             android:style="background-color: #3949ab;">
             <Label text="Welcome to ngPoland Conference, the biggest Angular Conference in CEE." 
             style="font-size: 16;padding-left: 10;padding-right: 10;"
@@ -39,7 +39,7 @@
 
         <GridLayout *ngIf="!isLandscape" row="1" col="0" rows="*, *, *" columns="*, *" style="height: 100%;">
             <StackLayout row="0" col="0" style="width: 100%;height: 100%">
-                <StackLayout #sl1 (tap)="onNavItemTap('/schedule',sl1)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl1 (tap)="onNavItemTap('/schedule',sl1)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center">
                     <Label text="&#xf017;" class="fa" style="color: #3949ab ;font-size: 50;margin-bottom: 10;"
                         textAlignment="center"></Label>
@@ -48,7 +48,7 @@
             </StackLayout>
 
             <StackLayout row="0" col="1" style="width: 100%;height: 100%">
-                <StackLayout #sl2 (tap)="onNavItemTap('/workshops', sl2)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl2 (tap)="onNavItemTap('/workshops', sl2)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center">
                     <Label text="&#xf11c;" class="fa" style="color: #3949ab ;font-size: 48;margin-bottom: 10;"
                         textAlignment="center"></Label>
@@ -57,7 +57,7 @@
             </StackLayout>
 
             <StackLayout row="1" col="0" style="width: 100%;height: 100%">
-                <StackLayout #sl3 (tap)="onNavItemTap('/ng-girls',sl3)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl3 (tap)="onNavItemTap('/ng-girls',sl3)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center">
                     <Label text="&#xf182;" class="fa" style="color: #3949ab ;font-size: 52;margin-bottom: 10;"
                         textAlignment="center"></Label>
@@ -66,7 +66,7 @@
             </StackLayout>
 
             <StackLayout row="1" col="1" style="width: 100%;height: 100%">
-                <StackLayout #sl4 (tap)="onNavItemTap('/speakers', sl4)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl4 (tap)="onNavItemTap('/speakers', sl4)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center">
                     <Label text="&#xf0c0;" class="fa" style="color: #3949ab ;font-size: 48;margin-bottom: 10;"
                         textAlignment="center"></Label>
@@ -75,7 +75,7 @@
             </StackLayout>
 
             <StackLayout row="2" col="0" style="width: 100%;height: 100%">
-                <StackLayout #sl5 (tap)="onNavItemTap('/info', sl5)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl5 (tap)="onNavItemTap('/info', sl5)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center">
                     <Label text="&#xf05a;" class="fa" style="color: #3949ab ;font-size: 50;margin-bottom: 10;"
                         textAlignment="center"></Label>
@@ -84,7 +84,7 @@
             </StackLayout>
 
             <StackLayout row="2" col="1" style="width: 100%;height: 100%">
-                <StackLayout #sl6 (tap)="onNavItemTap('/about', sl6)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl6 (tap)="onNavItemTap('/about', sl6)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center">
                     <Label text="&#xf121;" class="fa" style="color: #3949ab ;font-size: 48;margin-bottom: 10;"
                         textAlignment="center"></Label>
@@ -98,7 +98,7 @@
 
         <GridLayout *ngIf="isLandscape" row="1" col="0" rows="*, *" columns="*, *, *" style="height: 100%;">
             <StackLayout row="0" col="0" style="width: 100%;height: 100%">
-                <StackLayout #sl1 (tap)="onNavItemTap('/schedule',sl1)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl1 (tap)="onNavItemTap('/schedule',sl1)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf017;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
@@ -109,7 +109,7 @@
             </StackLayout>
 
             <StackLayout row="0" col="1" style="width: 100%;height: 100%">
-                <StackLayout #sl2 (tap)="onNavItemTap('/workshops', sl2)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl2 (tap)="onNavItemTap('/workshops', sl2)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf11c;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
@@ -119,7 +119,7 @@
             </StackLayout>
 
             <StackLayout row="0" col="2" style="width: 100%;height: 100%">
-                <StackLayout #sl3 (tap)="onNavItemTap('/ng-girls',sl3)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl3 (tap)="onNavItemTap('/ng-girls',sl3)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf182;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
@@ -129,7 +129,7 @@
             </StackLayout>
 
             <StackLayout row="1" col="0" style="width: 100%;height: 100%">
-                <StackLayout #sl4 (tap)="onNavItemTap('/speakers', sl4)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl4 (tap)="onNavItemTap('/speakers', sl4)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf0c0;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
@@ -139,7 +139,7 @@
             </StackLayout>
 
             <StackLayout row="1" col="1" style="width: 100%;height: 100%">
-                <StackLayout #sl5 (tap)="onNavItemTap('/info', sl5)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl5 (tap)="onNavItemTap('/info', sl5)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf05a;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
@@ -148,7 +148,7 @@
             </StackLayout>
 
             <StackLayout row="1" col="2" style="width: 100%;height: 100%">
-                <StackLayout #sl6 (tap)="onNavItemTap('/about', sl6)" style="background-color: #F1F3F4;height: 100%;width: 100%;"
+                <StackLayout #sl6 (tap)="onNavItemTap('/about', sl6)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
                     verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf121;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
