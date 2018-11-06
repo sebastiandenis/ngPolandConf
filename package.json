@@ -27,6 +27,7 @@
     "contentful": "^7.0.4",
     "marked": "^0.5.1",
     "nativescript-angular": "~6.1.0",
+    "nativescript-orientation": "^2.2.1",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-sidedrawer": "~4.2.0",
     "reflect-metadata": "~0.1.10",

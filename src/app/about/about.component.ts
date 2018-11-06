@@ -27,4 +27,12 @@ export class AboutComponent implements OnInit {
     onGitHubLinkTap(): void {
         utils.openUrl("https://github.com/sebastiandenis/NS-Event-App");
     }
+
+    showSebekDetails(): void {
+        utils.openUrl("https://twitter.com/SebekD");
+    }
+
+    showDarekDetails(): void {
+        utils.openUrl("https://www.linkedin.com/in/ngkalbarczyk/");
+    }
 }

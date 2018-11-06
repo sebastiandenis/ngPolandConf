@@ -21,10 +21,11 @@
                     style="color: #80868B; font-size: 16;margin-right: 10;"></Label>
                 <Label col="1" row="1" [text]="eventItem.getEventDuration()+' min'" textWrap="true" style="color: #5F6368;font-size: 13;margin-right: 30;"
                     verticalAlignment="center" textAlignment="center"></Label>
-                <Label *ngIf="eventItem.presenter" col="2" row="1" class="fa" text="&#xf007;" verticalAlignment="center" textAlignment="center"
+                <Label *ngIf="eventItem.presenter" col="2" row="1" class="fa" text="&#xf007;" 
+                verticalAlignment="center" textAlignment="center" (tap)="showModal()"
                     style="color: #80868B; font-size: 16;margin-right: 10;"></Label>
                 <Label *ngIf="eventItem.presenter" col="3" row="1" [text]="eventItem.presenter?.name" textWrap="true" style="color: #5F6368;font-size: 12;"
-                    verticalAlignment="center" textAlignment="left"></Label>
+                    verticalAlignment="center" textAlignment="left" (tap)="showModal()"></Label>
             </GridLayout>
 
         </StackLayout>

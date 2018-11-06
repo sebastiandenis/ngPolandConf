@@ -4,7 +4,8 @@ import {
   ModalDialogService
 } from "nativescript-angular/modal-dialog";
 import { Speaker } from "~/app/models/speaker.model";
-import { SpeakerDetailsComponent } from "../speaker-details/speaker-details.component";
+import { SpeakerDetailsComponent } from "~/app/shared/components/speaker-details/speaker-details.component";
+
 
 @Component({
   selector: "Speaker",

@@ -27,11 +27,13 @@
             <Image row="1" col="0" src="res://sd" borderRadius="200" horizontalAlignment="center" width="60" height="60"
              ></Image>
             <Label row="1" col="1" text="Sebastian Denis"  fontSize="14" verticalAlignment="center" textAlignment="left"
-            style="color: #3C4043;margin-left: 15;"></Label>
+            style="color: #3C4043;margin-left: 15;"  (tap)="showSebekDetails()" ></Label>
             <Image row="2" col="0" src="res://dk" borderRadius="200" horizontalAlignment="center" width="60" height="60"
-             ></Image>
-            <Label row="2" col="1" text="Dariusz Kalbarczyk" fontSize="14" verticalAlignment="center" textAlignment="left"
-            style="color: #3C4043;margin-left: 15;" ></Label>
+            (tap)="showDarekDetails()" 
+            ></Image>
+            <Label row="2" col="1" text="Dariusz Kalbarczyk" fontSize="14" verticalAlignment="center" 
+            textAlignment="left"
+            style="color: #3C4043;margin-left: 15;" (tap)="showDarekDetails()" ></Label>
         </GridLayout>
 
         <StackLayout class="hr-light m-10"></StackLayout>

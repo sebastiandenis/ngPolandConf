@@ -1,29 +1,30 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 
-import { SpeakersRoutingModule } from "./speakers-routing.module";
-import { SpeakersComponent } from "./speakers.component";
+import { SharedModule } from "../shared/shared.module";
 import { SpeakerComponent } from "./components/speaker/speaker.component";
 import { SpeakersListComponent } from "./containters/speakers-list/speakers-list.component";
-import { SpeakerDetailsComponent } from "./components/speaker-details/speaker-details.component";
+import { SpeakersRoutingModule } from "./speakers-routing.module";
+import { SpeakersComponent } from "./speakers.component";
+
+
+
+
 
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
-        SpeakersRoutingModule
+        SpeakersRoutingModule,
+        SharedModule
     ],
     declarations: [
         SpeakersComponent,
         SpeakerComponent,
-        SpeakersListComponent,
-        SpeakerDetailsComponent
+        SpeakersListComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
-    ],
-    entryComponents: [
-        SpeakerDetailsComponent
     ]
 })
 export class SpeakersModule { }

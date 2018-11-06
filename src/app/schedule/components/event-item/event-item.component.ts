@@ -1,5 +1,8 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ViewContainerRef } from "@angular/core";
+import { ModalDialogOptions, ModalDialogService  } from "nativescript-angular/modal-dialog";
 import { EventItem } from "~/app/models/event-item.model";
+import { SpeakerDetailsComponent } from "~/app/shared/components/speaker-details/speaker-details.component";
+
 
 @Component({
   selector: "EventItem",
@@ -11,7 +14,10 @@ export class EventItemComponent {
   @Input()
   eventItem: EventItem;
 
-  constructor() {
+  constructor(
+    private modalService: ModalDialogService,
+    private viewContainerRef: ViewContainerRef
+  ) {
     // Use the component constructor to inject providers.
   }
 
@@ -29,5 +35,21 @@ export class EventItemComponent {
     } else {
       return false;
     }
+  }
+
+  showModal() {
+    this.openModal();
+  }
+
+  private openModal(): void {
+    const options: ModalDialogOptions = {
+      viewContainerRef: this.viewContainerRef,
+      fullscreen: true,
+      animated: true,
+      context: {
+        speaker: this.eventItem.presenter
+      }
+    };
+    this.modalService.showModal(SpeakerDetailsComponent, options);
   }
 }

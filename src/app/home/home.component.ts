@@ -1,10 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit, ChangeDetectorRef } from "@angular/core";
 import * as app from "application";
+import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
-import { NavigationEnd, Router } from "@angular/router";
-import { RouterExtensions } from "nativescript-angular/router";
-import { filter } from "rxjs/operators";
+const orientation = require("nativescript-orientation");
 
 @Component({
   selector: "Home",
@@ -12,16 +11,34 @@ import { filter } from "rxjs/operators";
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  orientationApplier: any;
+  isLandscape = false;
   constructor(
-    private router: Router,
-    private routerExtensions: RouterExtensions
+    private routerExtensions: RouterExtensions,
+    private changeDetectorRef: ChangeDetectorRef
   ) {
     // Use the component constructor to inject providers.
   }
 
   ngOnInit(): void {
-    // Init your component properties here.
+
+    if (orientation.getOrientation() === "landscape") {
+      this.isLandscape = true;
+    } else {
+      this.isLandscape = false;
+    }
+    this.changeDetectorRef.detectChanges();
+
+    this.orientationApplier = orientation.addOrientationApplier((o: any) => {
+
+      if (orientation.getOrientation() === "landscape") {
+        this.isLandscape = true;
+      } else {
+        this.isLandscape = false;
+      }
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
   onDrawerButtonTap(): void {
@@ -30,6 +47,7 @@ export class HomeComponent implements OnInit {
   }
 
   onNavItemTap(navItemRoute: string, sl: any): void {
+
     sl.className = "";
     sl.className = "highlighted";
     setTimeout(() => {
@@ -42,5 +60,9 @@ export class HomeComponent implements OnInit {
 
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
+  }
+
+  ngOnDestroy(): void {
+    orientation.removeOrientationApplier(this.orientationApplier);
   }
 }
