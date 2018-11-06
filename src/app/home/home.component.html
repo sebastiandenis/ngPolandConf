@@ -14,21 +14,24 @@
     <Label class="action-bar-title" text="ngPolandConf" fontSize="18"></Label>
 </ActionBar>
 <ScrollView style="background-color: #F1F3F4;">
-    <GridLayout rows="auto, *" columns="*" style="height: 100%;">
-        <StackLayout *ngIf="!isLandscape" row="0" col="0" style="background-color: #3949ab;height: 120;width: 100%;"
-            verticalAlignment="middle" horizontalAlignment="center">
-            <Label text="Welcome to ngPoland Conference." style="color: white;font-size: 16;padding-left: 10;padding-right: 10;"
-                textWrap="true" textAlignment="center">
+    <GridLayout rows="auto, *" columns="*" style="height: 100%;" ios:style="padding-top: 60;">
+        <StackLayout *ngIf="!isLandscape" row="0" col="0" style="height: 120;width: 100%;"
+            verticalAlignment="middle" horizontalAlignment="center" ios:style="background-color: #F1F3F4;"
+            android:style="background-color: #3949ab;">
+            <Label text="Welcome to ngPoland Conference." style="font-size: 16;padding-left: 10;padding-right: 10;"
+                textWrap="true" textAlignment="center" android:style="color: #ffffff;" ios:style="color: #3949ab;">
             </Label>
-            <Label text="The biggest Angular Conference in CEE." style="color: white;font-size: 16;margin-top: 5;padding-left: 10;padding-right: 10;"
-                textWrap="true" textAlignment="center">
+            <Label text="The biggest Angular Conference in CEE." style="font-size: 16;margin-top: 5;padding-left: 10;padding-right: 10;"
+                textWrap="true" textAlignment="center" android:style="color: #ffffff;" ios:style="color: #3949ab;" >
             </Label>
         </StackLayout>
 
-        <StackLayout *ngIf="isLandscape" row="0" col="0" style="background-color: #3949ab;height: 70;width: 100%;"
-            verticalAlignment="middle" horizontalAlignment="center">
-            <Label text="Welcome to ngPoland Conference, the biggest Angular Conference in CEE." style="color: white;font-size: 16;padding-left: 10;padding-right: 10;"
-                textWrap="true" textAlignment="center">
+        <StackLayout *ngIf="isLandscape" row="0" col="0" style="height: 70;width: 100%;"
+            verticalAlignment="middle" horizontalAlignment="center" ios:style="background-color: #F1F3F4;"
+            android:style="background-color: #3949ab;">
+            <Label text="Welcome to ngPoland Conference, the biggest Angular Conference in CEE." 
+            style="font-size: 16;padding-left: 10;padding-right: 10;"
+                textWrap="true" textAlignment="center" android:style="color: #ffffff;" ios:style="color: #3949ab;">
             </Label>
 
         </StackLayout>
