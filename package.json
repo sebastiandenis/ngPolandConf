@@ -8,7 +8,7 @@
       "version": "4.2.0"
     }
   },
-  "description": "NativeScript app for ngPoland conference",
+  "description": "NativeScript app for the NG Poland conference",
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "scripts": {
