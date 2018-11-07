@@ -6,9 +6,13 @@ import * as dialogs from "tns-core-modules/ui/dialogs";
   providedIn: "root"
 })
 export class ErrorService {
-  isDialogBoxShown = false;
-  howManyTimes = 0;
+  private isDialogBoxShown = false;
+  private howManyTimes = 0;
 
+  resetCounter(): void {
+    this.howManyTimes = 0;
+  }
+  
   showNoConnectionDlg(): void {
     if (!this.isDialogBoxShown) {
       this.isDialogBoxShown = true;

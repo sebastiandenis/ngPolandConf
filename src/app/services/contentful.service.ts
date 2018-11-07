@@ -6,8 +6,10 @@ import { Observable, timer } from "rxjs";
 import {
   delayWhen,
   map,
+  retry,
   retryWhen,
   shareReplay,
+  take,
   tap,
   timeout
 } from "rxjs/operators";
@@ -39,7 +41,7 @@ export enum EventItemType {
 })
 export class ContentfulService {
   timeoutTime = 20000;
-  delayWhenTime = 2000;
+  delayWhenTime = 10000;
 
   private readonly CONTENTFUL_URL = "http://cdn.contentful.com";
   private readonly CONTENTFUL_URL_ENTRIES = `${this.CONTENTFUL_URL}/spaces/${
@@ -69,6 +71,7 @@ export class ContentfulService {
       order: "fields.order",
       limit: howMany
     };
+    this.errorService.resetCounter();
 
     return this.http
       .get(
@@ -83,6 +86,7 @@ export class ContentfulService {
         retryWhen((errors: any) => {
           return errors.pipe(
             delayWhen(() => timer(this.delayWhenTime)),
+            take(5),
             tap(() => {
               this.errorService.showNoConnectionDlg();
             })
@@ -113,6 +117,7 @@ export class ContentfulService {
       order: "fields.startDate",
       limit: howMany
     };
+    this.errorService.resetCounter();
 
     return this.http
       .get(
@@ -127,6 +132,7 @@ export class ContentfulService {
         retryWhen((errors: any) => {
           return errors.pipe(
             delayWhen(() => timer(this.delayWhenTime)),
+            take(5),
             tap(() => {
               this.errorService.showNoConnectionDlg();
             })
@@ -191,6 +197,7 @@ export class ContentfulService {
       "fields.myId": myId,
       limit: 1
     };
+    this.errorService.resetCounter();
 
     return this.http
       .get(
@@ -205,6 +212,7 @@ export class ContentfulService {
         retryWhen((errors: any) => {
           return errors.pipe(
             delayWhen(() => timer(this.delayWhenTime)),
+            take(5),
             tap(() => {
               this.errorService.showNoConnectionDlg();
             })
@@ -231,6 +239,7 @@ export class ContentfulService {
       order: "sys.createdAt",
       limit: howMany
     };
+    this.errorService.resetCounter();
 
     return this.http
       .get(
@@ -245,6 +254,7 @@ export class ContentfulService {
         retryWhen((errors: any) => {
           return errors.pipe(
             delayWhen(() => timer(this.delayWhenTime)),
+            take(5),
             tap(() => {
               this.errorService.showNoConnectionDlg();
             })
@@ -301,6 +311,7 @@ export class ContentfulService {
       order: "sys.createdAt",
       limit: howMany
     };
+    this.errorService.resetCounter();
 
     return this.http
       .get(
@@ -315,6 +326,7 @@ export class ContentfulService {
         retryWhen((errors: any) => {
           return errors.pipe(
             delayWhen(() => timer(this.delayWhenTime)),
+            take(5),
             tap(() => {
               this.errorService.showNoConnectionDlg();
             })
