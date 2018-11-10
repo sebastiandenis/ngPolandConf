@@ -1,7 +1,7 @@
 <StackLayout style="padding: 10 10;">
-    <StackLayout class="cardStyle2">
-        <GridLayout columns="70, *" rows="auto, 30, auto, 15" width="auto" height="auto" backgroundColor="#ffffff"
-            horizontalAlignment="center" verticalAlignment="center" style="padding: 10 20;">
+    <StackLayout class="cardStyle2" >
+        <GridLayout columns="70, *" rows="auto, 30, auto, 15" width="auto" height="auto" width="100%" backgroundColor="#ffffff"
+            horizontalAlignment="center" verticalAlignment="center" style="padding: 10 20;" textAlignment="left">
             <Label [text]="workshop.title" fontWeight="bold" fontSize="16" verticalAlignment="center" textAlignment="left"
                 textWrap="true" col="1" row="0" style="color: #ff1744;"></Label>
             <Label [text]="workshop.instructor.name" col="1" row="1" verticalAlignment="center" textAlignment="left"
@@ -12,7 +12,8 @@
             height="98%" style="margin-right: 15;" (tap)="showModal()"></Image>
 
             <Label [text]="workshop.description" textWrap="true" textAlignment="left" verticalAlignment="center"
-                fontSize="14" col="0" row="2" colSpan="2" style="color: #3C4043;padding-top: 15;"></Label>
+                fontSize="14" col="0" row="2" colSpan="2" style="color: #3C4043;padding-top: 15;" 
+                horlizontalAlignmet="left"></Label>
 
         </GridLayout>
     </StackLayout>
