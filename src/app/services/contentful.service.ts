@@ -308,7 +308,7 @@ export class ContentfulService {
     const query = {
       content_type: EventContentTypes.SPEAKER,
       locale: this.settings.getLocale(),
-      order: "sys.createdAt",
+      order: "fields.name",
       limit: howMany
     };
     this.errorService.resetCounter();

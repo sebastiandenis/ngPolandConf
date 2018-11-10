@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.nativescript.ngPolandConf",
+    "id": "pl.ngPoland.ngPolandConf",
     "tns-android": {
       "version": "4.2.0"
     },
@@ -8,9 +8,9 @@
       "version": "4.2.0"
     }
   },
-  "description": "NativeScript app for the NG Poland conference",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "repository": "<fill-your-repository-here>",
+  "description": "NativeScript app for NG Poland and JS Poland conferences",
+  "license": "MIT",
+  "repository": "https://github.com/sebastiandenis/ngPolandConf",
   "scripts": {
     "lint": "tslint \"app/**/*.ts\""
   },
