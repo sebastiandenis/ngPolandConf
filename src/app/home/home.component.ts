@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.routerExtensions.navigate([navItemRoute], {
         transition: {
-          name: "flip"
+          name: "fade"
         }
       });
     }, 300);
