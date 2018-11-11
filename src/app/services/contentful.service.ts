@@ -43,7 +43,7 @@ export class ContentfulService {
   timeoutTime = 20000;
   delayWhenTime = 10000;
 
-  private readonly CONTENTFUL_URL = "http://cdn.contentful.com";
+  private readonly CONTENTFUL_URL = "https://cdn.contentful.com";
   private readonly CONTENTFUL_URL_ENTRIES = `${this.CONTENTFUL_URL}/spaces/${
     environment.contentful.spaceId
   }/environments/master/entries?access_token=${environment.contentful.token}`;
@@ -51,7 +51,7 @@ export class ContentfulService {
   constructor(private settings: SettingsService, private http: HttpClient, private errorService: ErrorService) {}
 
   getContentfulUrlEntry(entryId: string): string {
-    return `http://cdn.contentful.com/spaces/${
+    return `https://cdn.contentful.com/spaces/${
       environment.contentful.spaceId
     }/environments/master/entries/${entryId}?access_token=${
       environment.contentful.token

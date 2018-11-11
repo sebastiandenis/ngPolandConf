@@ -13,7 +13,7 @@ export class Image implements IImage {
 
   getImageUrl(): string {
     if (this.imgUrl) {
-      return "http:" + this.imgUrl;
+      return "https:" + this.imgUrl;
     } else {
       return "";
     }
