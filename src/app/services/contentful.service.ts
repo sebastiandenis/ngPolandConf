@@ -13,7 +13,7 @@ import {
   tap,
   timeout
 } from "rxjs/operators";
-import { environment } from "../../environments/environment.prod";
+import { environment } from "../settings/settings";
 import { SettingsService } from "./settings.service";
 
 import { EventItem } from "../models/event-item.model";

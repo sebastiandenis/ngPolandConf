@@ -48,3 +48,8 @@ Thumbs.db
 /src/environments/environment.js
 /src/environments/environment.prod.ts
 /src/environments/environment.prod.js
+/src/app/settings/settings.ts
+/src/app/settings/settings.js
+/src/app/environments/environment.prod.ts
+/src/app/environments/environment.prod.js
+src/app/settings/environment.prod.js

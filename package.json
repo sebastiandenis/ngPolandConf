@@ -8,7 +8,7 @@
       "version": "4.2.0"
     }
   },
-  "description": "NativeScript app for NG Poland and JS Poland conferences",
+  "description": "NativeScript app for the NG Poland and JS Poland conferences",
   "license": "MIT",
   "repository": "https://github.com/sebastiandenis/ngPolandConf",
   "scripts": {

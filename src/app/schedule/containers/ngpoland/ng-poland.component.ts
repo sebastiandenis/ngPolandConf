@@ -21,4 +21,5 @@ export class NgPolandComponent implements OnInit {
     // Init your component properties here.
     this.events$ = this.contentful.getEventItems(100, EventItemType.NGPOLAND);
   }
+
 }

@@ -1,2 +1,2 @@
-# NativeScript NG Poland and JS Poland conference app
+# NativeScript app for the NG Poland and JS Poland conferences
 

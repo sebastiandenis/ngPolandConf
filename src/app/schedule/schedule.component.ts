@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import { BehaviorSubject } from "rxjs";
+
 import { Label } from "ui/label";
 import { Page } from "ui/page";
 
@@ -32,4 +32,5 @@ export class ScheduleComponent implements OnInit {
       ? (actionBarText.text = "Schedule - NG Poland")
       : (actionBarText.text = "Schedule - JS Poland");
   }
+
 }
