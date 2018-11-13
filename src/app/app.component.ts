@@ -5,6 +5,9 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import { filter } from "rxjs/operators";
 
+
+import {initializeOnAngular} from "nativescript-web-image-cache";
+
 @Component({
     moduleId: module.id,
     selector: "ns-app",
@@ -16,6 +19,7 @@ export class AppComponent implements OnInit {
 
     constructor(private router: Router, private routerExtensions: RouterExtensions) {
         // Use the component constructor to inject services.
+        initializeOnAngular();
     }
 
     ngOnInit(): void {
