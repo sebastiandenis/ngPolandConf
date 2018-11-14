@@ -15,7 +15,7 @@
 </ActionBar>
 
 <GridLayout class="page page-content">
-	<StackLayout style="padding: 10 5;">
+	<StackLayout>
 
 			<StackLayout *ngIf="workshops$ | async as workshops; else nocontent">
 					<ListView class="list-group" [items]="workshops" style="height: 100%;" separatorColor="#ff1744">

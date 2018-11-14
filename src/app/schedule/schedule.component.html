@@ -17,12 +17,33 @@
 <TabView  selectedIndex="0" sdkExampleTitle sdkToggleNavButton androidTabsPosition="bottom" 
 iosIconRenderingMode="alwaysOriginal"
     textTransform="none" (selectedIndexChanged)="onSelectedIndexChanged($event)"
-   >
+    ios:visibility="collapsed" >
 
-    <StackLayout *tabItem="{title: 'NG Poland', iconSource: 'res://ngpolandlogo'}"  >
+    <StackLayout *tabItem="{title: 'NG Poland', iconSource: 'res://ngpolandlogo'}" 
+   >
         <NgPoland></NgPoland>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'JS Poland',  iconSource: 'res://jspolandlogo'}"  >
+    <StackLayout *tabItem="{title: 'JS Poland',  iconSource: 'res://jspolandlogo'}" 
+  >
         <JsPoland ></JsPoland>
     </StackLayout>
+
+    
+</TabView>
+
+<TabView  selectedIndex="0" sdkExampleTitle sdkToggleNavButton androidTabsPosition="bottom" 
+iosIconRenderingMode="alwaysOriginal"
+    textTransform="none" (selectedIndexChanged)="onSelectedIndexChanged($event)"
+    android:visibility="collapsed" class="ios-tab">
+
+    <StackLayout *tabItem="{title: 'NG Poland'}" 
+   >
+        <NgPoland></NgPoland>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'JS Poland'}" 
+  >
+        <JsPoland ></JsPoland>
+    </StackLayout>
+
+    
 </TabView>
