@@ -9,7 +9,7 @@ import { Page } from "ui/page";
   selector: "Schedule",
   moduleId: module.id,
   templateUrl: "./schedule.component.html",
-  styleUrls: ["./schedule.component.css"]
+  styleUrls: ["./schedule.component.scss"]
 })
 export class ScheduleComponent implements OnInit {
 
