@@ -13,8 +13,8 @@
     </ActionItem>
     <Label class="action-bar-title" text="ngGirls"></Label>
 </ActionBar>
-
-<ScrollView>
+<GridLayout class="page page-content">
+	<ScrollView >
     
     
     <StackLayout style="padding: 15 20;" *ngIf="content$ | async as content; else nocontent">
@@ -24,4 +24,7 @@
     <ng-template #nocontent>
 		<ActivityIndicator row="1" #activityIndicator busy="true" width="100" height="100" class="activity-indicator"></ActivityIndicator>
 </ng-template>
+
 </ScrollView>
+
+</GridLayout>
