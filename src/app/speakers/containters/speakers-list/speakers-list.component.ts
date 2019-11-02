@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { Speaker } from "~/app/models/speaker.model";
 import { ContentfulService } from "~/app/services/contentful.service";
+import { AppStateFacadeService } from "~/app/services/app-state-facade.service";
 
 
 @Component({
@@ -14,12 +15,11 @@ export class SpeakersListComponent implements OnInit {
 
     speakers$: Observable<Array<Speaker>>;
 
-    constructor(private contentful: ContentfulService) {
-        // Use the component constructor to inject providers.
+    constructor(private appStateFacade: AppStateFacadeService) {
     }
 
     ngOnInit(): void {
-        this.speakers$ = this.contentful.getSpeakers(100);
+        this.speakers$ = this.appStateFacade.getSpeakers();
     }
 
 }

@@ -2,11 +2,7 @@
 // This is where the vast majority of your CSS code goes.
 // Font icon class
 .fa {
-    font-family: "FontAwesome",  "Font Awesome 5 Free";
-}
-
-.fa-b {
-    font-family: "FontAwesomeBrands", "Font Awesome 5 Brands";
+    font-family: "FontAwesome";
 }
 // Common page class
 .page-content {
@@ -28,11 +24,7 @@
 
 //Action bar
 ActionBar .action-bar-title {
-    horizontal-align: left;
-}
-
-ActivityIndicator {
-    margin-top: 50;
+    horizontal-align: center;
 }
 
  // Drawer navigation custom styles
@@ -96,5 +88,3 @@ $sidedrawer-list-icon-size: 20;
         }
     }
 }
-
-@import 'ngpoland';

@@ -3,7 +3,7 @@ import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { Observable } from "rxjs";
 import { SimpleContent } from "../models/simple-content.model";
-import { ContentfulService } from "../services/contentful.service";
+import { AppStateFacadeService } from "../services/app-state-facade.service";
 
 @Component({
     selector: "NgGirls",
@@ -14,13 +14,11 @@ export class NgGirlsComponent implements OnInit {
 
     content$: Observable<SimpleContent>;
 
-    constructor(private contentful: ContentfulService) {
-        // Use the component constructor to inject providers.
+    constructor(private appStateFacade: AppStateFacadeService) {
     }
 
     ngOnInit(): void {
-        // Init your component properties here.
-        this.content$ = this.contentful.getSimpleContentById("ng-girls-workshops");
+        this.content$ = this.appStateFacade.getNgGirls();
     }
 
     onDrawerButtonTap(): void {

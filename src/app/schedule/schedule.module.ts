@@ -7,15 +7,14 @@ import { EventItemComponent } from "./components/event-item/event-item.component
 import { JsPolandComponent } from "./containers/jspoland/js-poland.component";
 import { NgPolandComponent } from "./containers/ngpoland/ng-poland.component";
 
-
 @NgModule({
-  imports: [NativeScriptCommonModule, ScheduleRoutingModule, SharedModule],
-  declarations: [
-    EventItemComponent,
-    ScheduleComponent,
-    NgPolandComponent,
-    JsPolandComponent
-  ],
-  schemas: [NO_ERRORS_SCHEMA]
+    imports: [NativeScriptCommonModule, ScheduleRoutingModule, SharedModule],
+    declarations: [
+        EventItemComponent,
+        ScheduleComponent,
+        NgPolandComponent,
+        JsPolandComponent
+    ],
+    schemas: [NO_ERRORS_SCHEMA]
 })
 export class ScheduleModule {}

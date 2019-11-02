@@ -1,42 +1,32 @@
-
 <GridLayout class="page page-content" style="padding-top: 30;">
-       
-                
-                <ScrollView>
-      
-                        <GridLayout columns="*" rows="auto, auto">
-                            <FlexboxLayout width="auto" height="380" flexDirection="column" style="padding: 10 20;" col="0" row="0">
-                                <FlexboxLayout height="20%" flexDirection="column" alignItems="center" justifyContent="center">
-                                    <Label [text]="speaker.name" fontWeight="bold" fontSize="22" verticalAlignment="center"
-                                        textAlignment="center" textWrap="true" style="color: #ff1744;width: 80%;"></Label>
-                                </FlexboxLayout>
-                                <FlexboxLayout height="80%" flexDirection="column" justifyContent="space-around" alignItems="center">
-                                    <FlexboxLayout height="80%" flexDirection="column" alignItems="center" justifyContent="center">
-                                        <Image [src]="speaker.photo.getImageUrl()" horizontalAlignment="center" width="auto" height="90%"></Image>
-                                    </FlexboxLayout>
-                                    <FlexboxLayout height="auto" flexDirection="column" alignItems="center" justifyContent="center">
-                                        <Label [text]="speaker.role" textWrap="true" textAlignment="center" fontWeight="bold" fontSize="15" style="color: #000000;"></Label>
-                                    </FlexboxLayout>
-                
-                
-                
-                                </FlexboxLayout>
-                
-                            </FlexboxLayout>
-                
-                            <StackLayout style="padding: 10 20;" col="0" row="1">
-                                <Label [text]="speaker.bio" textWrap="true" textAlignment="left" fontSize="14" style="color: #000000;"></Label>
-                                   
-                            </StackLayout>
-                
-                        </GridLayout>
-                    </ScrollView>
+    <ScrollView>
+        <GridLayout columns="*" rows="auto, auto">
+            <FlexboxLayout width="auto" height="380" flexDirection="column" style="padding: 10 20;" col="0" row="0">
+                <FlexboxLayout height="20%" flexDirection="column" alignItems="center" justifyContent="center">
+                    <Label [text]="speaker.name" fontWeight="bold" fontSize="22" verticalAlignment="center"
+                        textAlignment="center" textWrap="true" style="color: #ff1744;width: 80%;"></Label>
+                </FlexboxLayout>
+                <FlexboxLayout height="80%" flexDirection="column" justifyContent="space-around" alignItems="center">
+                    <FlexboxLayout height="80%" flexDirection="column" alignItems="center" justifyContent="center">
+                        <Image [src]="speaker.photo.getImageUrl()" horizontalAlignment="center" width="auto"
+                            height="90%"></Image>
+                    </FlexboxLayout>
+                    <FlexboxLayout height="auto" flexDirection="column" alignItems="center" justifyContent="center">
+                        <Label [text]="speaker.role" textWrap="true" textAlignment="center" fontWeight="bold"
+                            fontSize="15" style="color: #000000;"></Label>
+                    </FlexboxLayout>
+                </FlexboxLayout>
+            </FlexboxLayout>
 
+            <StackLayout style="padding: 10 20;" col="0" row="1">
+                <Label [text]="speaker.bio" textWrap="true" textAlignment="left" fontSize="14"
+                    style="color: #000000;"></Label>
+            </StackLayout>
+        </GridLayout>
+    </ScrollView>
 
-                    <AbsoluteLayout>
-                            <Button text="&#xf060;" (tap)="close()" left="0" top="4" class="my-btn fa" style="font-size: 20; border-width: 0; width: 70;"></Button>
-                        </AbsoluteLayout>
-
-
-
+    <AbsoluteLayout>
+        <Button text="&#xf060;" (tap)="close()" left="0" top="4" class="my-btn fa"
+            style="font-size: 20; border-width: 0; width: 70;"></Button>
+    </AbsoluteLayout>
 </GridLayout>

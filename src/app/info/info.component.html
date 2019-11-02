@@ -18,7 +18,7 @@
 <GridLayout class="page page-content">
     <StackLayout style="padding: 10 5;">
 
-        <StackLayout *ngIf="infoItems$ | async as infoItems; else nocontent">
+        <StackLayout *ngIf="infoItemsSorted as infoItems; else nocontent">
                 <ListView class="list-group" [items]="infoItems" style="height: 100%;" separatorColor="#ff1744">
                         <ng-template let-item="item">
             

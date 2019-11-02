@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import { AppStateFacadeService } from "../services/app-state-facade.service";
 
 @Component({
   selector: "Speakers",
@@ -8,7 +9,7 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
   templateUrl: "./speakers.component.html"
 })
 export class SpeakersComponent implements OnInit {
-  constructor() {
+  constructor(private appStateFacade : AppStateFacadeService) {
     // Use the component constructor to inject providers.
   }
 
@@ -17,5 +18,9 @@ export class SpeakersComponent implements OnInit {
   onDrawerButtonTap(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
+  }
+
+  refreshData(arg: any) {
+    this.appStateFacade.initState();
   }
 }

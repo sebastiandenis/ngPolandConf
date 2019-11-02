@@ -1,30 +1,49 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import { Observable } from "rxjs";
-import { InfoItem } from "../models/info-item.model";
-import { ContentfulService } from "../services/contentful.service";
+import { Observable, Subject } from "rxjs";
+import { InfoItem, IInfoItemModel } from "../models/info-item.model";
+import { AppStateFacadeService } from "../services/app-state-facade.service";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
-  selector: "Info",
-  moduleId: module.id,
-  templateUrl: "./info.component.html",
-  styleUrls: ["./info.component.css"]
+    selector: "Info",
+    moduleId: module.id,
+    templateUrl: "./info.component.html",
+    styleUrls: ["./info.component.css"]
 })
-export class InfoComponent implements OnInit {
-  infoItems$: Observable<Array<InfoItem>>;
+export class InfoComponent implements OnInit, OnDestroy {
+    infoItems$: Observable<Array<IInfoItemModel>>;
+    infoItemsSorted: Array<IInfoItemModel>;
 
-  constructor(private contentful: ContentfulService) {
-    // Use the component constructor to inject providers.
-  }
+    private destroySubject$: Subject<void> = new Subject<void>();
 
-  ngOnInit(): void {
-    // Init your component properties here.
-    this.infoItems$ = this.contentful.getInfoItems(100);
-  }
+    constructor(private appStateFacade: AppStateFacadeService) {
+        // Use the component constructor to inject providers.
+    }
 
-  onDrawerButtonTap(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.showDrawer();
-  }
+    ngOnInit(): void {
+        this.infoItems$ = this.appStateFacade.getInfo(); 
+        this.infoItems$
+            .pipe(takeUntil(this.destroySubject$))
+            .subscribe((items: Array<IInfoItemModel>) => {
+                this.infoItemsSorted = items.sort(
+                    (itemA: IInfoItemModel, itemB: IInfoItemModel) => {
+                        const a = +itemA.order;
+                        const b = +itemB.order;
+
+                        return b > a ? -1 : a > b ? 1 : 0;
+                    }
+                );
+            });
+    }
+
+    onDrawerButtonTap(): void {
+        const sideDrawer = <RadSideDrawer>app.getRootView();
+        sideDrawer.showDrawer();
+    }
+
+    ngOnDestroy() {
+        this.destroySubject$.next();
+    }
 }

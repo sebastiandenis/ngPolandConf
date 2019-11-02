@@ -7,24 +7,9 @@ import { SpeakersListComponent } from "./containters/speakers-list/speakers-list
 import { SpeakersRoutingModule } from "./speakers-routing.module";
 import { SpeakersComponent } from "./speakers.component";
 
-
-
-
-
-
 @NgModule({
-    imports: [
-        NativeScriptCommonModule,
-        SpeakersRoutingModule,
-        SharedModule
-    ],
-    declarations: [
-        SpeakersComponent,
-        SpeakerComponent,
-        SpeakersListComponent
-    ],
-    schemas: [
-        NO_ERRORS_SCHEMA
-    ]
+    imports: [NativeScriptCommonModule, SpeakersRoutingModule, SharedModule],
+    declarations: [SpeakersComponent, SpeakerComponent, SpeakersListComponent],
+    schemas: [NO_ERRORS_SCHEMA]
 })
-export class SpeakersModule { }
+export class SpeakersModule {}

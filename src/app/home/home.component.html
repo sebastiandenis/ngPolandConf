@@ -3,44 +3,46 @@
     Use the NavigationButton as a side-drawer button in Android
     because ActionItems are shown on the right side of the ActionBar
     -->
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()" class="my-nav-btn"></NavigationButton>
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()" class="my-nav-btn">
+    </NavigationButton>
     <!-- 
     Use the ActionItem for IOS with position set to left. Using the
     NavigationButton as a side-drawer button in iOS is not possible,
     because its function is to always navigate back in the application.
     -->
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
     </ActionItem>
     <Label class="action-bar-title" text="ngPolandConf" fontSize="18"></Label>
 </ActionBar>
 <ScrollView style="background-color: #FFFFFF;">
     <GridLayout rows="auto, *" columns="*" style="height: 100%;" ios:style="padding-top: 60;">
-        <StackLayout *ngIf="!isLandscape" row="0" col="0" style="height: 120;width: 100%;"
-            verticalAlignment="middle" horizontalAlignment="center" ios:style="background-color: #FFFFFF;"
+        <StackLayout *ngIf="!isLandscape" row="0" col="0" style="height: 120;width: 100%;" verticalAlignment="middle"
+            horizontalAlignment="center" ios:style="background-color: #FFFFFF;"
             android:style="background-color: #3949ab;">
             <Label text="Welcome to ngPoland Conference." style="font-size: 16;padding-left: 10;padding-right: 10;"
                 textWrap="true" textAlignment="center" android:style="color: #ffffff;" ios:style="color: #3949ab;">
             </Label>
-            <Label text="The biggest Angular Conference in CEE." style="font-size: 16;margin-top: 5;padding-left: 10;padding-right: 10;"
-                textWrap="true" textAlignment="center" android:style="color: #ffffff;" ios:style="color: #3949ab;" >
+            <Label text="The biggest Angular Conference in CEE."
+                style="font-size: 16;margin-top: 5;padding-left: 10;padding-right: 10;" textWrap="true"
+                textAlignment="center" android:style="color: #ffffff;" ios:style="color: #3949ab;">
             </Label>
         </StackLayout>
 
-        <StackLayout *ngIf="isLandscape" row="0" col="0" style="height: 70;width: 100%;"
-            verticalAlignment="middle" horizontalAlignment="center" ios:style="background-color: #FFFFFF;"
+        <StackLayout *ngIf="isLandscape" row="0" col="0" style="height: 70;width: 100%;" verticalAlignment="middle"
+            horizontalAlignment="center" ios:style="background-color: #FFFFFF;"
             android:style="background-color: #3949ab;">
-            <Label text="Welcome to ngPoland Conference, the biggest Angular Conference in CEE." 
-            style="font-size: 16;padding-left: 10;padding-right: 10;"
-                textWrap="true" textAlignment="center" android:style="color: #ffffff;" ios:style="color: #3949ab;">
+            <Label text="Welcome to ngPoland Conference, the biggest Angular Conference in CEE."
+                style="font-size: 16;padding-left: 10;padding-right: 10;" textWrap="true" textAlignment="center"
+                android:style="color: #ffffff;" ios:style="color: #3949ab;">
             </Label>
-
         </StackLayout>
-
 
         <GridLayout *ngIf="!isLandscape" row="1" col="0" rows="*, *, *" columns="*, *" style="height: 100%;">
             <StackLayout row="0" col="0" style="width: 100%;height: 100%">
-                <StackLayout #sl1 (tap)="onNavItemTap('/schedule',sl1)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center">
+                <StackLayout #sl1 (tap)="onNavItemTap('/schedule', sl1)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center">
                     <Label text="&#xf017;" class="fa" style="color: #3949ab ;font-size: 50;margin-bottom: 10;"
                         textAlignment="center"></Label>
                     <Label text="Schedule" style="color: #ff1744;font-size: 14;" textAlignment="center"></Label>
@@ -48,8 +50,9 @@
             </StackLayout>
 
             <StackLayout row="0" col="1" style="width: 100%;height: 100%">
-                <StackLayout #sl2 (tap)="onNavItemTap('/workshops', sl2)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center">
+                <StackLayout #sl2 (tap)="onNavItemTap('/workshops', sl2)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center">
                     <Label text="&#xf11c;" class="fa" style="color: #3949ab ;font-size: 48;margin-bottom: 10;"
                         textAlignment="center"></Label>
                     <Label text="Workshops" style="color: #ff1744;font-size: 14;" textAlignment="center"></Label>
@@ -57,8 +60,9 @@
             </StackLayout>
 
             <StackLayout row="1" col="0" style="width: 100%;height: 100%">
-                <StackLayout #sl3 (tap)="onNavItemTap('/ng-girls',sl3)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center">
+                <StackLayout #sl3 (tap)="onNavItemTap('/ng-girls', sl3)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center">
                     <Label text="&#xf182;" class="fa" style="color: #3949ab ;font-size: 52;margin-bottom: 10;"
                         textAlignment="center"></Label>
                     <Label text="ngGirls" style="color: #ff1744;font-size: 14;" textAlignment="center"></Label>
@@ -66,8 +70,9 @@
             </StackLayout>
 
             <StackLayout row="1" col="1" style="width: 100%;height: 100%">
-                <StackLayout #sl4 (tap)="onNavItemTap('/speakers', sl4)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center">
+                <StackLayout #sl4 (tap)="onNavItemTap('/speakers', sl4)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center">
                     <Label text="&#xf0c0;" class="fa" style="color: #3949ab ;font-size: 48;margin-bottom: 10;"
                         textAlignment="center"></Label>
                     <Label text="Speakers" style="color: #ff1744;font-size: 14;" textAlignment="center"></Label>
@@ -75,8 +80,9 @@
             </StackLayout>
 
             <StackLayout row="2" col="0" style="width: 100%;height: 100%">
-                <StackLayout #sl5 (tap)="onNavItemTap('/info', sl5)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center">
+                <StackLayout #sl5 (tap)="onNavItemTap('/info', sl5)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center">
                     <Label text="&#xf05a;" class="fa" style="color: #3949ab ;font-size: 50;margin-bottom: 10;"
                         textAlignment="center"></Label>
                     <Label text="Info" style="color: #ff1744;font-size: 14;" textAlignment="center"></Label>
@@ -84,33 +90,32 @@
             </StackLayout>
 
             <StackLayout row="2" col="1" style="width: 100%;height: 100%">
-                <StackLayout #sl6 (tap)="onNavItemTap('/about', sl6)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center">
+                <StackLayout #sl6 (tap)="onNavItemTap('/about', sl6)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center">
                     <Label text="&#xf121;" class="fa" style="color: #3949ab ;font-size: 48;margin-bottom: 10;"
                         textAlignment="center"></Label>
                     <Label text="About" style="color: #ff1744;font-size: 14;" textAlignment="center"></Label>
                 </StackLayout>
             </StackLayout>
-
         </GridLayout>
-
-
 
         <GridLayout *ngIf="isLandscape" row="1" col="0" rows="*, *" columns="*, *, *" style="height: 100%;">
             <StackLayout row="0" col="0" style="width: 100%;height: 100%">
-                <StackLayout #sl1 (tap)="onNavItemTap('/schedule',sl1)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
+                <StackLayout #sl1 (tap)="onNavItemTap('/schedule', sl1)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf017;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
                     <Label text="Schedule" style="color: #ff1744;font-size: 13;" textAlignment="center"
                         verticalAlignment="middle"></Label>
                 </StackLayout>
-
             </StackLayout>
 
             <StackLayout row="0" col="1" style="width: 100%;height: 100%">
-                <StackLayout #sl2 (tap)="onNavItemTap('/workshops', sl2)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
+                <StackLayout #sl2 (tap)="onNavItemTap('/workshops', sl2)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf11c;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
                     <Label text="Workshops" style="color: #ff1744;font-size: 14;" textAlignment="center"
@@ -119,8 +124,9 @@
             </StackLayout>
 
             <StackLayout row="0" col="2" style="width: 100%;height: 100%">
-                <StackLayout #sl3 (tap)="onNavItemTap('/ng-girls',sl3)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
+                <StackLayout #sl3 (tap)="onNavItemTap('/ng-girls', sl3)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf182;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
                     <Label text="ngGirls" style="color: #ff1744;font-size: 14;" textAlignment="center"
@@ -129,8 +135,9 @@
             </StackLayout>
 
             <StackLayout row="1" col="0" style="width: 100%;height: 100%">
-                <StackLayout #sl4 (tap)="onNavItemTap('/speakers', sl4)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
+                <StackLayout #sl4 (tap)="onNavItemTap('/speakers', sl4)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf0c0;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
                     <Label text="Speakers" style="color: #ff1744;font-size: 14;" textAlignment="center"
@@ -139,25 +146,26 @@
             </StackLayout>
 
             <StackLayout row="1" col="1" style="width: 100%;height: 100%">
-                <StackLayout #sl5 (tap)="onNavItemTap('/info', sl5)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
+                <StackLayout #sl5 (tap)="onNavItemTap('/info', sl5)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf05a;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
-                    <Label text="Info" style="color: #ff1744;font-size: 14;" textAlignment="center" verticalAlignment="middle"></Label>
+                    <Label text="Info" style="color: #ff1744;font-size: 14;" textAlignment="center"
+                        verticalAlignment="middle"></Label>
                 </StackLayout>
             </StackLayout>
 
             <StackLayout row="1" col="2" style="width: 100%;height: 100%">
-                <StackLayout #sl6 (tap)="onNavItemTap('/about', sl6)" style="background-color: #FFFFFF;height: 100%;width: 100%;"
-                    verticalAlignment="middle" horizontalAlignment="center" orientation="horizontal">
+                <StackLayout #sl6 (tap)="onNavItemTap('/about', sl6)"
+                    style="background-color: #FFFFFF;height: 100%;width: 100%;" verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
                     <Label text="&#xf121;" class="fa" style="color: #3949ab ;font-size: 34;margin-right: 10;"
                         textAlignment="center" verticalAlignment="middle"></Label>
-                    <Label text="About" style="color: #ff1744;font-size: 14;" textAlignment="center" verticalAlignment="middle"></Label>
+                    <Label text="About" style="color: #ff1744;font-size: 14;" textAlignment="center"
+                        verticalAlignment="middle"></Label>
                 </StackLayout>
             </StackLayout>
-
         </GridLayout>
     </GridLayout>
-
-
 </ScrollView>

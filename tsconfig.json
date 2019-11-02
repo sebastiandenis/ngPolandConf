@@ -6,6 +6,8 @@
         "emitDecoratorMetadata": true,
         "noEmitHelpers": true,
         "noEmitOnError": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
         "lib": [
             "es2017",
             "dom",

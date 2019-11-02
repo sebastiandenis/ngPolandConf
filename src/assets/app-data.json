@@ -1,0 +1,220 @@
+{
+  "version": {
+    "version": "1.2.0"
+  },
+  "infoItems": [
+    {
+      "title": "Contact",
+      "order": "100",
+      "icon": "contact",
+      "description": "<div style='font-family: Roboto, -apple-system, sans-serif, Verdana, Arial;font-size: 12pt;color: #3C4043;'>\nFeel free to contact us:<br><br>\n\n<b>Julita Kalbarczyk</b><br>\nmobile: <a href='tel:+48504000085'>+48 504 000 085</a><br>\nemail: <a href='mailto:julita@ng-poland.pl'>julita@ng-poland.pl</a>\n\n<b>Dariusz Kalbarczyk</b><br>\nmobile: <a href='tel:+48664931800'>+48 664 931 800</a><br>\nemail: <a href='mailto:darek@ng-poland.pl'>darek@ng-poland.pl</a>\n\n</div>",
+      "confId": "2018"
+    },
+    {
+      "title": "Tickets",
+      "order": "20",
+      "icon": "tickets",
+      "description": "<div style='font-family: Roboto, -apple-system, sans-serif, Verdana, Arial;font-size: 12pt;color: #3C4043;'>\nThere are 3 types of tickets: <br>\n<ol style='font-weight: bold;'>\n  <li>NG-POLAND Conference ticket</li>\n  <li>Conferences - JS-POLAND & NG-POLAND</li>\n  <li>NG-POLAND VIP TICKET</li>\n</ol>\n\n<br>\n\n<b>NG-POLAND Conference ticket (ONE DAY TICKET):</b><br>\nYour ticket price includes access to insightful talks, Q&A session, free snacks and cold drinks, coffee breaks, unlimited networking, gadgets and a lot of little suprises. Find all details on our website www.ng-poland.pl\n<br><br>\n\n<b>NG POLAND VIP TICKET (ONE DAY TICKET):</b><br>\nYour ticket price includes access to insightful talks, Q&A session, free snacks and cold drinks, coffee breaks, unlimited networking, gadgets and a lot of little suprises. Find all details on our website www.ng-poland.pl<br>\n\nVIP ticket price include also:<br>\n<ul>\n  <li>access to VIP zone with whole day catering, speakers area</li>\n<li>invitation for afterparty (dinner and unlimited drinks)</li>\n<li>extra gadgets</li>\n<li>15% discount for workshops day</li>\n </ul>\n \n </div>",
+      "confId": "2018",
+      "urlLink": "https://ng-poland.pl/#tickets"
+    },
+    {
+      "title": "Workshops",
+      "order": "10",
+      "icon": "workshops",
+      "description": "<div style='font-family: Roboto, -apple-system, sans-serif, Verdana, Arial;font-size: 12pt;color: #3C4043;'>\nOur workshops take place the day before the conference.\n<br>Each is a full day – 9:00AM - 05:00PM.<br><br>\nPlease bring your own laptop, and note that workshop and conference tickets are sold separately.<br><br>\nWorkshops November 14, 2018 will take place in:<br><b>Golden Floor Tower, Chłodna 51, Warsaw</b>\n<br><br>\nWe are running a free ngGirls workshop - check ngGirls tab.\n</div>",
+      "confId": "2018",
+      "urlLink": "https://www.google.pl/maps/place/Centrum+konferencyjno+-+szkoleniowe+Golden+Floor+Tower/@52.2354629,20.9802134,17z/data=!3m1!4b1!4m5!3m4!1s0x471ecc83b16a9795:0x2520ec28c0dfd06!8m2!3d52.2355809!4d20.9822568"
+    },
+    {
+      "title": "Location",
+      "order": "5",
+      "icon": "location",
+      "description": "<div style='font-family: Roboto, -apple-system, sans-serif, Verdana, Arial;font-size: 12pt;color: #3C4043;'>\nConference 15/11/2018 will take place in:<br><br>\n<b>Multikino Złote Tarasy, Złota 59, Warsaw</b>\n</div>",
+      "confId": "2018",
+      "urlLink": "https://www.google.pl/maps/place/Multikino/@52.2301084,21.0004984,17z/data=!3m1!4b1!4m5!3m4!1s0x471ecc8da6377367:0x8a3dc962b096793f!8m2!3d52.2301084!4d21.0026871"
+    }
+  ],
+  "ngGirls": {
+    "myId": "ng-girls-workshops",
+    "title": "ngGirls workshops",
+    "text": "Are you a woman interested in learning how to build web applications with the latest technologies? We have good news for you: We are holding a one-day workshop for beginners! \n\nIt will take place on Saturday, November 17th, 2018 at 7N Warsaw Office, ul. Puławska 182, 12th floor, Warsaw.\n\nWe believe that the IT industry will greatly benefit from bringing more women into technology. We want to give you an opportunity to learn how to program and become a programmer.\n\nDuring the workshop you will build and deploy your very first Angular Web Application! Angular is an open-source platform for building web application, developed by Google and the community. It gives various tools to easily create a dynamic, interactive app that can run on desktop browses, mobile and even robots!\n\nTo participate in the workshop you'll need some basic knowledge in web development: HTML, CSS and basic JavaScript or any other programming language.",
+    "confId": "2018"
+  },
+  "speakers": [
+    {
+      "name": "Matias Niemelä",
+      "role": "Angular core team, Google",
+      "bio": "Matias is a fullstack web developer who has been programming & building websites for over 10 years, and a core team member of AngularJS for two years. \n\nIn the spring of 2015 Matias joined Angular full time at Google. \n\nIn his free time Matias loves to build complex things and is always up for public speaking, travelling and tweaking his current Vim setup.",
+      "photo": {
+        "imgUrl": "//images.ctfassets.net/87a5voy5in4s/47yD9O2EqQsCYMWuiIKK2u/44e2d5fbe8a74e927ee6809f094f7a21/matias_niemela.jpg",
+        "imgTitle": "Matias Niemela",
+        "imgDesc": ""
+      },
+      "urlLinkedIn": "https://www.linkedin.com/in/yearofmoo/",
+      "urlTwitter": "https://twitter.com/yearofmoo/",
+      "urlWww": "https://www.yearofmoo.com/",
+      "confIds": ["2018"]
+    },
+    {
+      "name": "Nir Kaufman",
+      "role": "Principal Frontend Consultant at 500Tech, a top front-end consultancy in NYC, Google Developer Expert",
+      "bio": "Google Developer Expert in web technologies and Angular, active worldwide conference speaker, workshop mentor and tech community activist. \n\nAuthor of 2 books about Angular, the founder of the \"Frontend Band\" - The first open-source rock n roll band! \n\nCo-organizer of the largest Angular community in the world - Angular NYC.",
+      "photo": {
+        "imgUrl": "//images.ctfassets.net/87a5voy5in4s/3DSncVdokMs0yOAa02C2e8/6ce29452427dc7462ee6ddbbfe04a591/nir_kaufman.jpg",
+        "imgTitle": "Nir Kaufman",
+        "imgDesc": ""
+      },
+      "urlGithub": "https://github.com/nirkaufman",
+      "urlTwitter": "https://twitter.com/nirkaufman",
+      "urlWww": "https://500tech.com/",
+      "confIds": ["2018"]
+    },
+    {
+      "name": "Dariusz Kalbarczyk",
+      "role": "Developer Advocate at 7N, author of AngularJS - First steps",
+      "bio": "NG Poland and JS Poland Conference organizer. \n\nCo-founder of the group Angular Warsaw and Angular Krakow. \n\nSkilled programmer with over 17 years of IT industry experience. \n\nEmerging technologies and social media enthusiast. \n\nHe’s also spent years working closely with some of the biggest companies on the financial and telecommunication markets. \n\nWhile working with AngularJS/Angular for the past 5 years, he participated in the creation of a cutting edge banking transaction system designed for mobile platforms, and a group insurance support system, among others. \n\nHis experience with and enthusiasm for Angular are thoroughly discussed in the aforementioned book AngularJS - First steps (Helion publishing), as well as videos such as AngularJS tworzenie aplikacji (Angular creating applications) and Angular Czysty kod (Angular clean code). \n\nIn his free time, he listens to music with a little kick to it, plays the bass, and cycles.",
+      "photo": {
+        "imgUrl": "//images.ctfassets.net/87a5voy5in4s/5OHdDsT7dS6YyKiMYciIa2/1519aa415cd13e7a61b35ae5d7f020a3/Dariusz_Kalbarczyk.jpg",
+        "imgTitle": "Dariusz Kalbarczyk",
+        "imgDesc": ""
+      },
+      "urlLinkedIn": "https://www.linkedin.com/in/ngkalbarczyk/?originalSubdomain=pl",
+      "urlTwitter": "https://twitter.com/ngKalbarczyk",
+      "urlWww": "https://js-poland.pl/",
+      "confIds": ["2018", "2019"]
+    }
+  ],
+  "workshops": [
+    {
+      "title": "Full-stack JS for Angular developers Master Class",
+      "description": "Full-stack JS for Angular developers Master Class\nDuring this workshop, we will implement a complete solution from scratch on top a full JavaScript stack using Angular as our frontend framework and NestJS as the backend. \n\nWe will learn how to design, structure and build a fully functional application using the latest tools and real-world practices. \n\nWe will focus on advanced patterns and techniques. \n\nThis workshop aimed for front-end Angular developers who want to expand their skills and knowledge and build a full-stack JavaScript web application.\n\n\nCourse overview:\n- Architecture patterns\n- Design and project structure\n- Dynamic content rendering patterns in Angular\n- Leverage TypeScript across the stack\n- Building reusable components with the Angular CDK\n- Clean code and modern patterns for both Angular and Nest\n- Implementing an Authentication flow across the stack\n- Real world practical tips and techniques\n\n\nPrerequisites:\n- Basic understanding of JavaScript & Angular",
+      "instructor": {
+        "name": "Matias Niemelä",
+        "role": "Angular core team, Google",
+        "bio": "Matias is a fullstack web developer who has been programming & building websites for over 10 years, and a core team member of AngularJS for two years. \n\nIn the spring of 2015 Matias joined Angular full time at Google. \n\nIn his free time Matias loves to build complex things and is always up for public speaking, travelling and tweaking his current Vim setup.",
+        "photo": {
+          "imgUrl": "//images.ctfassets.net/87a5voy5in4s/47yD9O2EqQsCYMWuiIKK2u/44e2d5fbe8a74e927ee6809f094f7a21/matias_niemela.jpg",
+          "imgTitle": "Matias Niemela",
+          "imgDesc": ""
+        },
+        "urlLinkedIn": "https://www.linkedin.com/in/yearofmoo/",
+        "urlTwitter": "https://twitter.com/yearofmoo/",
+        "urlWww": "https://www.yearofmoo.com/",
+        "confIds": ["2018"]
+      },
+      "startDate": "2018-11-14T09:00+01:00",
+      "endDate": "2018-11-14T17:00+01:00",
+      "location": {
+        "lon": 20.982402099999945,
+        "lat": 52.23546289999999
+      },
+      "locationDescription": "Golden Floor Tower, Chłodna 51, Warsaw",
+      "pricePln": 1107,
+      "confId": "2018"
+    },
+    {
+      "title": "Advanced RxJS Master Class",
+      "description": "This training will bring your RxJs skills to the next level! \n\nRxJs is more popular than ever. It is backed into the Angular core and also used in frameworks like React, Vue, and others! \nThis doesn't surprise as it leverages a powerful and elegant way to work with sync as well as async collections. \n\nIn this workshop, you will get a really deep and complete knowledge of this library. We will learn about the big and little things that make the difference in understanding! After a practical and detailed tour from creation to the destruction of observables we will work on some concepts like multicasting, custom pipes and higher order observables. \nAs the last exercise, we will solve a couple of real-life problems in a complete example from start to end. Sounds interesting? \n\nLooking forward to meeting you at the workshop. \n\nThis workshop is provided by angular-college.com\n\nCourse overview:\n- Conceptual (unknown) introduction to Rx\n- Execution context and observables\n- Subscription handling, explicit and implicit\n- Error handling and tricks to encapsulate errors\n- Memory leaks, how to find and avoid them\n- Most handy pipes in comparison\n- Custom configurable pipes\n- Multicasting with observables\n- Subjects and their differences\n- Higher order Observables comparison and best usage\n\nPrerequisites:\n- The workshop requires good understanding of JavaScript.",
+      "instructor": {
+        "name": "Nir Kaufman",
+        "role": "Principal Frontend Consultant at 500Tech, a top front-end consultancy in NYC, Google Developer Expert",
+        "bio": "Google Developer Expert in web technologies and Angular, active worldwide conference speaker, workshop mentor and tech community activist. \n\nAuthor of 2 books about Angular, the founder of the \"Frontend Band\" - The first open-source rock n roll band! \n\nCo-organizer of the largest Angular community in the world - Angular NYC.",
+        "photo": {
+          "imgUrl": "//images.ctfassets.net/87a5voy5in4s/3DSncVdokMs0yOAa02C2e8/6ce29452427dc7462ee6ddbbfe04a591/nir_kaufman.jpg",
+          "imgTitle": "Nir Kaufman",
+          "imgDesc": ""
+        },
+        "urlGithub": "https://github.com/nirkaufman",
+        "urlTwitter": "https://twitter.com/nirkaufman",
+        "urlWww": "https://500tech.com/",
+        "confIds": ["2018"]
+      },
+      "startDate": "2018-11-14T09:00+01:00",
+      "endDate": "2018-11-14T17:00+01:00",
+      "location": {
+        "lon": 20.982402099999945,
+        "lat": 52.23546289999999
+      },
+      "locationDescription": "Golden Floor Tower, Chłodna 51, Warsaw",
+      "pricePln": 1107,
+      "confId": "2018"
+    }
+  ],
+  "eventsNgPoland": [
+    {
+      "title": "Be lazy, but with strategy",
+      "type": "ngPoland",
+      "shortDescription": "Be lazy, but with strategy",
+      "description": "Be lazy, but with strategy",
+      "startDate": "2018-11-15T17:30+01:00",
+      "endDate": "2018-11-15T17:50+01:00",
+      "presenter": {
+        "name": "Nir Kaufman",
+        "role": "Principal Frontend Consultant at 500Tech, a top front-end consultancy in NYC, Google Developer Expert",
+        "bio": "Google Developer Expert in web technologies and Angular, active worldwide conference speaker, workshop mentor and tech community activist. \n\nAuthor of 2 books about Angular, the founder of the \"Frontend Band\" - The first open-source rock n roll band! \n\nCo-organizer of the largest Angular community in the world - Angular NYC.",
+        "photo": {
+          "imgUrl": "//images.ctfassets.net/87a5voy5in4s/3DSncVdokMs0yOAa02C2e8/6ce29452427dc7462ee6ddbbfe04a591/nir_kaufman.jpg",
+          "imgTitle": "Nir Kaufman",
+          "imgDesc": ""
+        },
+        "urlGithub": "https://github.com/nirkaufman",
+        "urlTwitter": "https://twitter.com/nirkaufman",
+        "urlWww": "https://500tech.com/",
+        "confIds": ["2018"]
+      },
+      "category": "presentation",
+      "confId": "2018"
+    },
+    {
+      "title": "Angular Schematics - the unknown hero",
+      "type": "ngPoland",
+      "shortDescription": "Angular Schematics - the unknown hero",
+      "description": "Angular Schematics - the unknown hero",
+      "startDate": "2018-11-15T13:30+01:00",
+      "endDate": "2018-11-15T13:50+01:00",
+      "presenter": {
+        "name": "Dariusz Kalbarczyk",
+        "role": "Developer Advocate at 7N, author of AngularJS - First steps",
+        "bio": "NG Poland and JS Poland Conference organizer. \n\nCo-founder of the group Angular Warsaw and Angular Krakow. \n\nSkilled programmer with over 17 years of IT industry experience. \n\nEmerging technologies and social media enthusiast. \n\nHe’s also spent years working closely with some of the biggest companies on the financial and telecommunication markets. \n\nWhile working with AngularJS/Angular for the past 5 years, he participated in the creation of a cutting edge banking transaction system designed for mobile platforms, and a group insurance support system, among others. \n\nHis experience with and enthusiasm for Angular are thoroughly discussed in the aforementioned book AngularJS - First steps (Helion publishing), as well as videos such as AngularJS tworzenie aplikacji (Angular creating applications) and Angular Czysty kod (Angular clean code). \n\nIn his free time, he listens to music with a little kick to it, plays the bass, and cycles.",
+        "photo": {
+          "imgUrl": "//images.ctfassets.net/87a5voy5in4s/5OHdDsT7dS6YyKiMYciIa2/1519aa415cd13e7a61b35ae5d7f020a3/Dariusz_Kalbarczyk.jpg",
+          "imgTitle": "Dariusz Kalbarczyk",
+          "imgDesc": ""
+        },
+        "urlLinkedIn": "https://www.linkedin.com/in/ngkalbarczyk/?originalSubdomain=pl",
+        "urlTwitter": "https://twitter.com/ngKalbarczyk",
+        "urlWww": "https://js-poland.pl/",
+        "confIds": ["2018", "2019"]
+      },
+      "category": "presentation",
+      "confId": "2018"
+    }
+  ],
+  "eventsJsPoland": [
+    {
+      "title": "Keynote Session 2 - The future of Node.js",
+      "type": "jsPoland",
+      "shortDescription": "Keynote Session 2 - The future of Node.js",
+      "description": "Keynote Session 2 - The future of Node.js",
+      "startDate": "2018-11-16T10:20+01:00",
+      "endDate": "2018-11-16T10:50+01:00",
+      "presenter": {
+        "name": "Matias Niemelä",
+        "role": "Angular core team, Google",
+        "bio": "Matias is a fullstack web developer who has been programming & building websites for over 10 years, and a core team member of AngularJS for two years. \n\nIn the spring of 2015 Matias joined Angular full time at Google. \n\nIn his free time Matias loves to build complex things and is always up for public speaking, travelling and tweaking his current Vim setup.",
+        "photo": {
+          "imgUrl": "//images.ctfassets.net/87a5voy5in4s/47yD9O2EqQsCYMWuiIKK2u/44e2d5fbe8a74e927ee6809f094f7a21/matias_niemela.jpg",
+          "imgTitle": "Matias Niemela",
+          "imgDesc": ""
+        },
+        "urlLinkedIn": "https://www.linkedin.com/in/yearofmoo/",
+        "urlTwitter": "https://twitter.com/yearofmoo/",
+        "urlWww": "https://www.yearofmoo.com/",
+        "confIds": ["2018"]
+      },
+      "category": "presentation",
+      "confId": "2018"
+    }
+  ]
+}

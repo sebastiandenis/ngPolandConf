@@ -8,7 +8,7 @@
   "projects": {
     "event-app": {
       "root": "",
-      "sourceRoot": ".",
+      "sourceRoot": "src",
       "projectType": "application",
       "prefix": "ns"
     }

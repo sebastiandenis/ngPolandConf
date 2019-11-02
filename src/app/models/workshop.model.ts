@@ -1,15 +1,17 @@
-import { Location } from "./location.model";
-import { Speaker } from "./speaker.model";
+import { Location, ILocation } from "./location.model";
+import { Speaker, ISpeaker } from "./speaker.model";
 
 export interface IWorkshop {
   title: string;
+  confId: string;
   description?: string;
-  instructor?: Speaker;
+  instructor?: ISpeaker;
   startDate?: string;
   endDate?: string;
-  location?: Location;
+  location?: ILocation;
   locationDescription?: string;
   pricePln?: number;
+
 }
 
 export class Workshop implements IWorkshop {
@@ -17,6 +19,7 @@ export class Workshop implements IWorkshop {
 
   constructor(
     public title: string,
+    public confId: string,
     public description: string,
     public instructor: Speaker,
     public startDate: string,

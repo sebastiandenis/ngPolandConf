@@ -1,14 +1,15 @@
-import { Speaker } from "./speaker.model";
+import { Speaker, ISpeaker } from "./speaker.model";
 
 export interface IEventItem {
   title: string;
+  confId: string;
   type: string;
   category: string;
   shortDescription?: string;
   description?: string;
   startDate?: string;
   endDate?: string;
-  presenter?: Speaker;
+  presenter?: ISpeaker;
 }
 
 export enum EventItemIcon {
@@ -27,13 +28,14 @@ export enum EventItemIcon {
 export class EventItem implements IEventItem {
   constructor(
     public title: string,
+    public confId: string,
     public type: string,
     public category: string,
     public shortDescription: string,
     public description: string,
     public startDate: string,
     public endDate: string,
-    public presenter: Speaker
+    public presenter: ISpeaker
   ) {}
 
   getEventDuration(): number {

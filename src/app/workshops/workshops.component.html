@@ -9,7 +9,8 @@
     NavigationButton as a side-drawer button in iOS is not possible,
     because its function is to always navigate back in the application.
     -->
-	<ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
+	<ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+		ios.position="left">
 	</ActionItem>
 	<Label class="action-bar-title" text="Workshops" style="font-size: 16;"></Label>
 </ActionBar>
@@ -17,19 +18,20 @@
 <GridLayout class="page page-content">
 	<StackLayout>
 
-			<StackLayout *ngIf="workshops$ | async as workshops; else nocontent">
-					<ListView class="list-group" [items]="workshops" style="height: 100%;" separatorColor="#ff1744">
-							<ng-template let-workshop="item">
-				
-								<Workshop [workshop]="workshop"></Workshop>
-				
-							</ng-template>
-						</ListView>
-			</StackLayout>
-			<ng-template #nocontent>
-					<ActivityIndicator row="1" #activityIndicator busy="true" width="100" height="100" class="activity-indicator"></ActivityIndicator>
-			</ng-template>
-		
+		<StackLayout *ngIf="workshops$ | async as workshops; else nocontent">
+			<ListView class="list-group" [items]="workshops" style="height: 100%;" separatorColor="#ff1744">
+				<ng-template let-workshop="item">
+
+					<Workshop [workshop]="workshop"></Workshop>
+
+				</ng-template>
+			</ListView>
+		</StackLayout>
+		<ng-template #nocontent>
+			<ActivityIndicator row="1" #activityIndicator busy="true" width="100" height="100"
+				class="activity-indicator"></ActivityIndicator>
+		</ng-template>
+
 	</StackLayout>
 
 </GridLayout>

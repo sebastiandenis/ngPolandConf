@@ -4,6 +4,7 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { Observable } from "rxjs";
 import { Workshop } from "~/app/models/workshop.model";
 import { ContentfulService } from "~/app/services/contentful.service";
+import { AppStateFacadeService } from "../services/app-state-facade.service";
 
 @Component({
   selector: "Workshops",
@@ -14,13 +15,12 @@ import { ContentfulService } from "~/app/services/contentful.service";
 export class WorkshopsComponent implements OnInit {
   workshops$: Observable<Array<Workshop>>;
 
-  constructor(private contentful: ContentfulService) {
-    // Use the component constructor to inject providers.
+  constructor(private appStateFacade: AppStateFacadeService) {
   }
 
   ngOnInit(): void {
     // Init your component properties here.
-    this.workshops$ = this.contentful.getWorkshops(100);
+    this.workshops$ = this.appStateFacade.getWorkshops();
   }
 
   onDrawerButtonTap(): void {
