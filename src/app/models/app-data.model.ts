@@ -2,8 +2,8 @@ import { IInfoItemModel } from "./info-item.model";
 import { ISimpleContentModel } from "./simple-content.model";
 import { ISpeaker } from "./speaker.model";
 import { IWorkshop } from "./workshop.model";
-import { IEventItem, EventItem } from "./event-item.model";
-import { IVersion, Version } from "./version.model";
+import { IEventItem } from "./event-item.model";
+import { IVersion } from "./version.model";
 
 export interface IAppData {
     version: IVersion;

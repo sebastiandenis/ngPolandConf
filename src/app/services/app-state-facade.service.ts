@@ -3,7 +3,7 @@ import { ContentfulService, EventItemType } from "./contentful.service";
 import { DeviceService } from "./device.service";
 import { EventItem, IEventItem } from "../models/event-item.model";
 import { AppStateService } from "./app-state.service";
-import { Observable, combineLatest } from "rxjs";
+import { Observable, combineLatest, from, of } from "rxjs";
 import { Workshop, IWorkshop } from "../models/workshop.model";
 import { Speaker, ISpeaker } from "../models/speaker.model";
 import { InfoItem, IInfoItemModel } from "../models/info-item.model";
@@ -13,6 +13,9 @@ import { AppData } from "../models/app-data.model";
 import { SecureStorage } from "nativescript-secure-storage";
 import { SECURE_STORAGE_KEY } from "./settings.service";
 import { HttpClient } from "@angular/common/http";
+import { switchMap, map } from "rxjs/operators";
+
+export const DATA_FILE_PATH = "/assets/app-data.json";
 
 @Injectable({
     providedIn: "root"
@@ -56,8 +59,16 @@ export class AppStateFacadeService {
         return this.appStateService.ngGirls$;
     }
 
-    getDataVersion(): Observable<Version> {
-        return this.appStateService.dataVersion$;
+    getDataVersionApp(): Observable<Version> {
+        return this.appStateService.dataVersionApp$;
+    }
+
+    getDataVersionLocalStorage(): Observable<Version> {
+        return this.appStateService.dataVersionLocalStorage$;
+    }
+
+    getDataVersionApi(): Observable<Version> {
+        return this.appStateService.dataVersionApi$;
     }
 
     initState() {
@@ -132,7 +143,7 @@ export class AppStateFacadeService {
                 Array<Speaker>,
                 SimpleContent
             ]) => {
-                this.appStateService.updateDataVersion(version);
+                this.appStateService.updateDataVersionApi(version);
                 this.appStateService.updateEventsNgPoland(ngPolandEvents);
                 this.appStateService.updateEventsJsPoland(jsPolandEvents);
                 this.appStateService.updateWorkshops(workshops);
@@ -154,32 +165,52 @@ export class AppStateFacadeService {
                         value: JSON.stringify(appData)
                     })
                     .then((success: boolean) => {
-                        console.log("Data successfuly written to secure storage: ", success);
+                        console.log(
+                            "Data successfuly written to secure storage: ",
+                            success
+                        );
                     });
             }
         );
     }
 
+    private getAppDataFromLocalStorage(): Observable<AppData> {
+        return from(this.secureStorage.get({ key: SECURE_STORAGE_KEY })).pipe(
+            switchMap((value: string) => {
+                return of(new AppData(JSON.parse(value)));
+            })
+        );
+    }
+
     private initStateFromLocalStorage() {
-        this.secureStorage.get({ key: SECURE_STORAGE_KEY }).then(value => {
-            
-            this.initFromAppData(JSON.parse(value));
+        this.getAppDataFromLocalStorage().subscribe((data: AppData) => {
+            this.initFromAppData(data, "local-storage");
         });
     }
 
-    private initFromApp() {
-        this.http
-            .get<AppData>("/assets/app-data.json")
-            .subscribe((jsonData: AppData) => {
-                this.initFromAppData(jsonData);
-            });
+    private getAppDataFromFile(): Observable<AppData> {
+        return this.http.get<AppData>(DATA_FILE_PATH);
     }
-    private initFromAppData(appData: AppData) {
-        const d = new AppData(appData);
+
+    private initFromApp() {
+        this.getAppDataFromFile().subscribe((jsonData: AppData) => {
+            this.initFromAppData(jsonData, "app");
+        });
+    }
+    private initFromAppData(
+        appData: AppData,
+        dataPlace: "app" | "local-storage"
+    ) {
         // version
-        this.appStateService.updateDataVersion(
-            new Version(appData.version.version)
-        );
+        if (dataPlace === "app") {
+            this.appStateService.updateDataVersionApp(
+                new Version(appData.version.version)
+            );
+        } else {
+            this.appStateService.updateDataVersionLocalStorage(
+                new Version(appData.version.version)
+            );
+        }
 
         // info
         const info = appData.infoItems.map((infoItem: IInfoItemModel) => {
@@ -209,21 +240,22 @@ export class AppStateFacadeService {
                     event.description,
                     event.startDate,
                     event.endDate,
-                    event.presenter ? 
-                    new Speaker(
-                        event.presenter.name,
-                        event.presenter.confIds,
-                        event.presenter.role,
-                        event.presenter.bio,
-                        event.presenter.photo.imgUrl,
-                        event.presenter.photo.imgTitle,
-                        event.presenter.photo.imgDesc,
-                        event.presenter.email,
-                        event.presenter.urlGithub,
-                        event.presenter.urlLinkedIn,
-                        event.presenter.urlTwitter,
-                        event.presenter.urlWww
-                    ) : null
+                    event.presenter
+                        ? new Speaker(
+                              event.presenter.name,
+                              event.presenter.confIds,
+                              event.presenter.role,
+                              event.presenter.bio,
+                              event.presenter.photo.imgUrl,
+                              event.presenter.photo.imgTitle,
+                              event.presenter.photo.imgDesc,
+                              event.presenter.email,
+                              event.presenter.urlGithub,
+                              event.presenter.urlLinkedIn,
+                              event.presenter.urlTwitter,
+                              event.presenter.urlWww
+                          )
+                        : null
                 );
             }
         );
@@ -241,21 +273,22 @@ export class AppStateFacadeService {
                     event.description,
                     event.startDate,
                     event.endDate,
-                    event.presenter ? 
-                    new Speaker(
-                        event.presenter.name,
-                        event.presenter.confIds,
-                        event.presenter.role,
-                        event.presenter.bio,
-                        event.presenter.photo.imgUrl,
-                        event.presenter.photo.imgTitle,
-                        event.presenter.photo.imgDesc,
-                        event.presenter.email,
-                        event.presenter.urlGithub,
-                        event.presenter.urlLinkedIn,
-                        event.presenter.urlTwitter,
-                        event.presenter.urlWww
-                    ) : null
+                    event.presenter
+                        ? new Speaker(
+                              event.presenter.name,
+                              event.presenter.confIds,
+                              event.presenter.role,
+                              event.presenter.bio,
+                              event.presenter.photo.imgUrl,
+                              event.presenter.photo.imgTitle,
+                              event.presenter.photo.imgDesc,
+                              event.presenter.email,
+                              event.presenter.urlGithub,
+                              event.presenter.urlLinkedIn,
+                              event.presenter.urlTwitter,
+                              event.presenter.urlWww
+                          )
+                        : null
                 );
             }
         );
@@ -267,20 +300,22 @@ export class AppStateFacadeService {
                 workshop.title,
                 workshop.confId,
                 workshop.description,
-                new Speaker(
-                    workshop.instructor.name,
-                    workshop.instructor.confIds,
-                    workshop.instructor.role,
-                    workshop.instructor.bio,
-                    workshop.instructor.photo.imgUrl,
-                    workshop.instructor.photo.imgTitle,
-                    workshop.instructor.photo.imgDesc,
-                    workshop.instructor.email,
-                    workshop.instructor.urlGithub,
-                    workshop.instructor.urlLinkedIn,
-                    workshop.instructor.urlTwitter,
-                    workshop.instructor.urlWww
-                ),
+                workshop.instructor
+                    ? new Speaker(
+                          workshop.instructor.name,
+                          workshop.instructor.confIds,
+                          workshop.instructor.role,
+                          workshop.instructor.bio,
+                          workshop.instructor.photo.imgUrl,
+                          workshop.instructor.photo.imgTitle,
+                          workshop.instructor.photo.imgDesc,
+                          workshop.instructor.email,
+                          workshop.instructor.urlGithub,
+                          workshop.instructor.urlLinkedIn,
+                          workshop.instructor.urlTwitter,
+                          workshop.instructor.urlWww
+                      )
+                    : null,
                 workshop.startDate,
                 workshop.endDate,
                 workshop.location.lon,
@@ -293,20 +328,20 @@ export class AppStateFacadeService {
 
         // speakers
         const speakers = appData.speakers.map((s: ISpeaker) => {
-            return new Speaker(
-                s.name,
-                s.confIds,
-                s.role,
-                s.bio,
-                s.photo.imgUrl,
-                s.photo.imgTitle,
-                s.photo.imgDesc,
-                s.email,
-                s.urlGithub,
-                s.urlLinkedIn,
-                s.urlTwitter,
-                s.urlWww
-            );
+            return  new Speaker(
+                      s.name,
+                      s.confIds,
+                      s.role,
+                      s.bio,
+                      s.photo.imgUrl,
+                      s.photo.imgTitle,
+                      s.photo.imgDesc,
+                      s.email,
+                      s.urlGithub,
+                      s.urlLinkedIn,
+                      s.urlTwitter,
+                      s.urlWww
+                  );
         });
         this.appStateService.updateSpeakers(speakers);
     }

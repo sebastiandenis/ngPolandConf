@@ -33,9 +33,17 @@ export class AppStateService {
         string
     >("2018");
 
-    private _dataVersion$: BehaviorSubject<Version> = new BehaviorSubject<
+    private _dataVersionApp$: BehaviorSubject<Version> = new BehaviorSubject<
         Version
-    >(new Version("2.0.0"));
+    >(new Version("0.0.0"));
+
+    private _dataVersionLocalStorage$: BehaviorSubject<
+        Version
+    > = new BehaviorSubject<Version>(new Version("0.0.0"));
+
+    private _dataVersionApi$: BehaviorSubject<Version> = new BehaviorSubject<
+        Version
+    >(new Version("0.0.0"));
 
     get eventsNgPoland$(): Observable<Array<EventItem>> {
         return this._eventsNgPoland$.asObservable();
@@ -65,12 +73,28 @@ export class AppStateService {
         return this._currentConfId$.asObservable();
     }
 
-    get dataVersion$(): Observable<Version> {
-        return this._dataVersion$.asObservable();
+    get dataVersionApp$(): Observable<Version> {
+        return this._dataVersionApp$.asObservable();
     }
 
-    updateDataVersion(version: Version) {
-        this._dataVersion$.next(version);
+    get dataVersionLocalStorage$(): Observable<Version> {
+        return this._dataVersionLocalStorage$.asObservable();
+    }
+
+    get dataVersionApi$(): Observable<Version> {
+        return this._dataVersionApi$.asObservable();
+    }
+
+    updateDataVersionApp(version: Version) {
+        this._dataVersionApp$.next(version);
+    }
+
+    updateDataVersionLocalStorage(version: Version) {
+        this._dataVersionLocalStorage$.next(version);
+    }
+
+    updateDataVersionApi(version: Version) {
+        this._dataVersionApi$.next(version);
     }
 
     updateCurrentConfId(confId: string) {

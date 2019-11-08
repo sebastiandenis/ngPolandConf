@@ -1,45 +1,43 @@
 import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { HomeComponent } from "./containers/home/home.component";
+import { ScheduleComponent } from "./containers/schedule/schedule.component";
+import { WorkshopsComponent } from "./containers/workshops/workshops.component";
+import { NgGirlsComponent } from "./containers/ng-girls/ng-girls.component";
+import { InfoComponent } from "./containers/info/info.component";
+import { AboutComponent } from "./containers/about/about.component";
+import { SpeakersComponent } from "./containers/speakers/speakers.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
     {
         path: "home",
-        loadChildren: () =>
-            import("~/app/home/home.module").then((m) => m.HomeModule)
+        component: HomeComponent
     },
     {
         path: "schedule",
-        loadChildren: () =>
-            import("~/app/schedule/schedule.module").then((m) => m.ScheduleModule)
+        component: ScheduleComponent
     },
     {
         path: "workshops",
-        loadChildren: () =>
-            import("~/app/workshops/workshops.module").then(
-                (m) => m.WorkshopsModule
-            )
+        component: WorkshopsComponent
     },
     {
         path: "ng-girls",
-        loadChildren: () =>
-            import("~/app/ng-girls/ng-girls.module").then((m) => m.NgGirlsModule)
+        component: NgGirlsComponent
     },
     {
         path: "speakers",
-        loadChildren: () =>
-            import("~/app/speakers/speakers.module").then((m) => m.SpeakersModule)
+        component: SpeakersComponent
     },
     {
         path: "info",
-        loadChildren: () =>
-            import("~/app/info/info.module").then((m) => m.InfoModule)
+        component: InfoComponent
     },
     {
         path: "about",
-        loadChildren: () =>
-            import("~/app/about/about.module").then((m) => m.AboutModule)
+        component: AboutComponent
     }
 ];
 

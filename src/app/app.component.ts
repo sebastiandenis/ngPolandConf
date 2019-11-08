@@ -12,6 +12,7 @@ import { AppStateFacadeService } from "./services/app-state-facade.service";
 import { SecureStorage } from "nativescript-secure-storage";
 import { SettingsService } from "./services/settings.service";
 
+
 @Component({
     selector: "ns-app",
     templateUrl: "app.component.html"
@@ -31,14 +32,19 @@ export class AppComponent implements OnInit {
         private settingService: SettingsService
     ) {
         this.secureStorage = new SecureStorage();
+        app.on(app.orientationChangedEvent, this.onOrientationChanged);
     }
+
+    onOrientationChanged = (evt) => {
+        console.log(evt.eventName); // orientationChanged
+        console.log(evt.newValue); // landscape or portrait
+  }
 
     ngOnInit(): void {
         this.secureStorage.clearAllOnFirstRun().then((success: boolean) => {
             console.log(
+                "[AppComponent] secureStorage.clearAllOnFirstRun(): ",
                 success
-                    ? "Successfully removed all data on the first run"
-                    : "Data not removed because this is not the first run"
             );
         });
         this.appStateFacade.initState();
@@ -47,10 +53,14 @@ export class AppComponent implements OnInit {
 
         this.router.events
             .pipe(filter((event: any) => event instanceof NavigationEnd))
-            .subscribe(
-                (event: NavigationEnd) =>
-                    (this._activatedUrl = event.urlAfterRedirects)
-            );
+            .subscribe((event: NavigationEnd) => {
+                console.log(
+                    "[AppComponent] urlAfterRedirects: ",
+                    event.urlAfterRedirects
+                );
+
+                return (this._activatedUrl = event.urlAfterRedirects);
+            });
     }
 
     isComponentSelected(url: string): boolean {
@@ -58,7 +68,9 @@ export class AppComponent implements OnInit {
     }
 
     onNavItemTap(navItemRoute: string): void {
-        this.routerExtensions.navigate([navItemRoute]);
+        this.routerExtensions.navigate([navItemRoute], {
+            clearHistory: navItemRoute === "/home" ? true : false
+        });
 
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();

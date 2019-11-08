@@ -21,7 +21,7 @@ import { SimpleContent } from "../models/simple-content.model";
 import { Speaker } from "../models/speaker.model";
 import { Workshop } from "../models/workshop.model";
 import { ErrorService } from "./error.service";
-import { Version } from "../models/version.model";
+import { Version, IVersion } from "../models/version.model";
 
 export enum EventContentTypes {
     SPEAKER = "speaker",
