@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { Speaker, ISpeaker } from "~/app/models/speaker.model";
-import { ContentfulService } from "~/app/services/contentful.service";
+import { Speaker } from "~/app/models/speaker.model";
 import { AppStateFacadeService } from "~/app/services/app-state-facade.service";
+import { delay } from 'rxjs/operators';
 
 @Component({
     selector: "SpeakersList",
@@ -19,7 +19,7 @@ export class SpeakersListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.speakers$ = this.appStateFacade.getSpeakers();
+        this.speakers$ = this.appStateFacade.getSpeakers().pipe(delay(400));
     }
     refreshData(arg: any) {
         this.appStateFacade.initState();

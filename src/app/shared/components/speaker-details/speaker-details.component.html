@@ -1,4 +1,27 @@
-<GridLayout class="page page-content" style="padding-top: 30;">
+<StackLayout>
+    <GridLayout columns="2*, 6*, 2*" rows="auto" style="margin-top: 30; margin-bottom: 15;">
+        <Button col="0" row="0" text="&#xf060;" (tap)="close()" class="my-btn fa"
+            style="font-size: 20; border-width: 0; width: 70;" textAlignment="center"
+            verticalAlignment="center"></Button>
+
+        <Label col="1" row="0" [text]="speaker.name" fontWeight="bold" fontSize="24" verticalAlignment="center"
+            textAlignment="center" textWrap="true" style="color: #ff1744;"></Label>
+    </GridLayout>
+
+    <ScrollView orientation="vertical">
+        <StackLayout class="page page-content" style="padding-top: 20;">
+            <GridLayout col="0" row="1" class="content-padding" columns="*" rows="auto, auto, auto">
+                <NSImg col="0" row="0" [src]="speaker.photo.getImageUrl()" placeholderImageUri="res://person"
+                    style="height: 200;margin-top: 10; margin-bottom: 10;" stretch="aspectFit"></NSImg>
+                <Label col="0" row="1" [text]="speaker.role" textWrap="true" textAlignment="center" fontWeight="bold"
+                    fontSize="15" style="color: #000000;margin-top: 10; margin-bottom: 10;"></Label>
+                <Label col="0" row="2" [text]="speaker.bio" textWrap="true" textAlignment="left" fontSize="14"
+                    style="color: #000000;margin-top: 10; margin-bottom: 10;"></Label>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</StackLayout>
+<!-- <GridLayout class="page page-content" columns="*" rows="auto, auto, auto, auto" style="padding-top: 30;">
     <ScrollView>
         <GridLayout columns="*" rows="auto, auto">
             <FlexboxLayout width="auto" height="380" flexDirection="column" style="padding: 10 20;" col="0" row="0">
@@ -28,4 +51,4 @@
         <Button text="&#xf060;" (tap)="close()" left="0" top="4" class="my-btn fa"
             style="font-size: 20; border-width: 0; width: 70;"></Button>
     </AbsoluteLayout>
-</GridLayout>
+</GridLayout> -->

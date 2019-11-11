@@ -11,6 +11,12 @@ ActionBar.action-bar {
 }
 // Common page class
 .page-content {
+
+    .content-padding {
+        padding: 0 20;
+    }
+    
+
     .page-placeholder {
         color: $page-icon-color;
         font-size: $page-content-placeholder-font-size;

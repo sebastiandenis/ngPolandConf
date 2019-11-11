@@ -67,7 +67,7 @@
           textAlignment="center"
         ></label>
         <label
-          *ngIf="eventItem.presenter"
+          [visibility]="eventItem.presenter ? 'visible' : 'collapsed'"
           col="2"
           row="1"
           class="fa"
@@ -78,7 +78,7 @@
           style="color: #80868B; font-size: 16;margin-right: 10;"
         ></label>
         <label
-          *ngIf="eventItem.presenter"
+        [visibility]="eventItem.presenter ? 'visible' : 'collapsed'"
           col="3"
           row="1"
           [text]="eventItem.presenter?.name"

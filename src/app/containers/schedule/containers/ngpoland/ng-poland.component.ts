@@ -1,33 +1,30 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { EventItem } from "~/app/models/event-item.model";
-import { ContentfulService, EventItemType } from "~/app/services/contentful.service";
-import { AppStateFacadeService } from "~/app/services/app-state-facade.service";
+import { EventItem } from "../../../../models/event-item.model";
+import { AppStateFacadeService } from "../../../../services/app-state-facade.service";
+import { delay } from "rxjs/operators";
 
 @Component({
-  selector: "NgPoland",
-  moduleId: module.id,
-  templateUrl: "./ng-poland.component.html",
-  styleUrls: ["./ng-poland.component.css"]
+    selector: "NgPoland",
+    moduleId: module.id,
+    templateUrl: "./ng-poland.component.html",
+    styleUrls: ["./ng-poland.component.css"]
 })
 export class NgPolandComponent implements OnInit {
+    events$: Observable<Array<EventItem>>;
+    isLoading$: Observable<boolean>;
 
-  events$: Observable<Array<EventItem>>;
-  isLoading$: Observable<boolean>;
+    constructor(private appStateFacade: AppStateFacadeService) {
+        // Use the component constructor to inject providers.
+        this.isLoading$ = this.appStateFacade.getIsLoading();
+    }
 
-  constructor(private appStateFacade: AppStateFacadeService) {
-    // Use the component constructor to inject providers.
-    this.isLoading$ = this.appStateFacade.getIsLoading();
-  }
+    ngOnInit(): void {
+        // Init your component properties here.
+        this.events$ = this.appStateFacade.getEventsNgPoland().pipe(delay(400));
+    }
 
-  ngOnInit(): void {
-    // Init your component properties here.
-    this.events$ = this.appStateFacade.getEventsNgPoland();
-    
-  }
-
-  refreshData(arg: any) {
-    this.appStateFacade.initState();
-}
-
+    refreshData(arg: any) {
+        this.appStateFacade.initState();
+    }
 }

@@ -6,6 +6,7 @@ import {
     EventItemType
 } from "~/app/services/contentful.service";
 import { AppStateFacadeService } from "~/app/services/app-state-facade.service";
+import { delay } from 'rxjs/operators';
 
 @Component({
     selector: "JsPoland",
@@ -24,7 +25,7 @@ export class JsPolandComponent implements OnInit {
 
     ngOnInit(): void {
         // Init your component properties here.
-        this.events$ = this.appStateFacade.getEventsJsPoland();
+        this.events$ = this.appStateFacade.getEventsJsPoland().pipe(delay(600));
     }
 
     refreshData(arg: any) {
