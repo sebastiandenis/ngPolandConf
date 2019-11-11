@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Asset, Entry, EntryCollection } from "contentful";
 import * as marked from "marked";
-import { Observable, timer } from "rxjs";
+import { Observable, timer, of } from "rxjs";
 import {
     delayWhen,
     map,
@@ -10,7 +10,8 @@ import {
     shareReplay,
     take,
     tap,
-    timeout
+    timeout,
+    catchError
 } from "rxjs/operators";
 import { environment } from "../settings/settings";
 import { SettingsService } from "./settings.service";
@@ -71,7 +72,6 @@ export class ContentfulService {
             order: "fields.order",
             limit: howMany
         };
-        this.errorService.resetCounter();
 
         return this.http
             .get(
@@ -82,16 +82,6 @@ export class ContentfulService {
             )
             .pipe(
                 shareReplay(),
-                timeout(this.timeoutTime),
-                retryWhen((errors: any) => {
-                    return errors.pipe(
-                        delayWhen(() => timer(this.delayWhenTime)),
-                        take(5),
-                        tap(() => {
-                            this.errorService.showNoConnectionDlg();
-                        })
-                    );
-                }),
                 map((entries: EntryCollection<InfoItem>) => {
                     return entries.items.map((item: Entry<any>) => {
                         return new InfoItem(
@@ -120,7 +110,6 @@ export class ContentfulService {
             order: "fields.startDate",
             limit: howMany
         };
-        this.errorService.resetCounter();
 
         return this.http
             .get(
@@ -131,16 +120,6 @@ export class ContentfulService {
             )
             .pipe(
                 shareReplay(),
-                timeout(this.timeoutTime),
-                retryWhen((errors: any) => {
-                    return errors.pipe(
-                        delayWhen(() => timer(this.delayWhenTime)),
-                        take(5),
-                        tap(() => {
-                            this.errorService.showNoConnectionDlg();
-                        })
-                    );
-                }),
                 map((entries: EntryCollection<EventItem>) => {
                     let assets: Array<Asset> = null;
                     let links: Array<Entry<any>> = null;
@@ -209,7 +188,6 @@ export class ContentfulService {
             content_type: EventContentTypes.VERSION,
             limit: 1
         };
-        this.errorService.resetCounter();
 
         return this.http
             .get(
@@ -220,16 +198,6 @@ export class ContentfulService {
             )
             .pipe(
                 shareReplay(),
-                timeout(this.timeoutTime),
-                retryWhen((errors: any) => {
-                    return errors.pipe(
-                        delayWhen(() => timer(this.delayWhenTime)),
-                        take(5),
-                        tap(() => {
-                            this.errorService.showNoConnectionDlg();
-                        })
-                    );
-                }),
                 map((entries: EntryCollection<Version>) => {
                     return new Version(entries.items[0].fields.version);
                 })
@@ -247,7 +215,6 @@ export class ContentfulService {
             "fields.confId": confId,
             limit: 1
         };
-        this.errorService.resetCounter();
 
         return this.http
             .get(
@@ -258,16 +225,6 @@ export class ContentfulService {
             )
             .pipe(
                 shareReplay(),
-                timeout(this.timeoutTime),
-                retryWhen((errors: any) => {
-                    return errors.pipe(
-                        delayWhen(() => timer(this.delayWhenTime)),
-                        take(5),
-                        tap(() => {
-                            this.errorService.showNoConnectionDlg();
-                        })
-                    );
-                }),
                 map((entries: EntryCollection<SimpleContent>) => {
                     if (entries && entries.items && entries.items[0]) {
                         return new SimpleContent(
@@ -296,7 +253,6 @@ export class ContentfulService {
             order: "sys.createdAt",
             limit: howMany
         };
-        this.errorService.resetCounter();
 
         return this.http
             .get(
@@ -307,16 +263,6 @@ export class ContentfulService {
             )
             .pipe(
                 shareReplay(),
-                timeout(this.timeoutTime),
-                retryWhen((errors: any) => {
-                    return errors.pipe(
-                        delayWhen(() => timer(this.delayWhenTime)),
-                        take(5),
-                        tap(() => {
-                            this.errorService.showNoConnectionDlg();
-                        })
-                    );
-                }),
                 map((entries: EntryCollection<any>) => {
                     const assets: Array<Asset> = entries.includes.Asset;
                     const links: Array<Entry<any>> = entries.includes.Entry;
@@ -376,7 +322,6 @@ export class ContentfulService {
             order: "fields.name",
             limit: howMany
         };
-        this.errorService.resetCounter();
 
         return this.http
             .get(
@@ -387,16 +332,6 @@ export class ContentfulService {
             )
             .pipe(
                 shareReplay(),
-                timeout(this.timeoutTime),
-                retryWhen((errors: any) => {
-                    return errors.pipe(
-                        delayWhen(() => timer(this.delayWhenTime)),
-                        take(5),
-                        tap(() => {
-                            this.errorService.showNoConnectionDlg();
-                        })
-                    );
-                }),
                 map((entries: EntryCollection<any>) => {
                     const assets: Array<Asset> = entries.includes.Asset;
 

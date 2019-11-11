@@ -21,6 +21,7 @@ import { MdToHtmlPipe } from "./pipes/md-to-html.pipe";
 import { JsPolandComponent } from "./containers/schedule/containers/jspoland/js-poland.component";
 import { NgPolandComponent } from "./containers/schedule/containers/ngpoland/ng-poland.component";
 import { EventItemComponent } from "./containers/schedule/components/event-item/event-item.component";
+import { SwitchYearComponent } from "./shared/components/switch-year/switch-year.component";
 
 registerElement(
     "PullToRefresh",
@@ -52,9 +53,10 @@ registerElement(
         SpeakerDetailsComponent,
         WorkshopsComponent,
         WorkshopComponent,
-        MdToHtmlPipe
+        MdToHtmlPipe,
+        SwitchYearComponent
     ],
-    entryComponents: [SpeakerDetailsComponent],
+    entryComponents: [SpeakerDetailsComponent, SwitchYearComponent],
     schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule {}

@@ -16,10 +16,10 @@
 
     <Label class="action-bar-title" text="Speakers" style="font-size: 16;"></Label>
 </ActionBar>
-<PullToRefresh [refreshing]="isRefreshing" (refresh)="refreshData($event)">
-    <GridLayout class="page page-content">
-        <StackLayout style="padding: 10 5;">
-            <SpeakersList></SpeakersList>
-        </StackLayout>
-    </GridLayout>
-</PullToRefresh>
+
+<GridLayout class="page page-content">
+    <StackLayout style="padding: 10 5;">
+        <SpeakersList></SpeakersList>
+    </StackLayout>
+</GridLayout>
+

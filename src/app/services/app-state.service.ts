@@ -11,6 +11,9 @@ import { Version } from "../models/version.model";
     providedIn: "root"
 })
 export class AppStateService {
+    private _themeApplied$ = new BehaviorSubject<boolean>(false);
+    private _isLoading$ = new BehaviorSubject<boolean>(false);
+
     private _eventsNgPoland$: BehaviorSubject<
         Array<EventItem>
     > = new BehaviorSubject<Array<EventItem>>([]);
@@ -44,6 +47,22 @@ export class AppStateService {
     private _dataVersionApi$: BehaviorSubject<Version> = new BehaviorSubject<
         Version
     >(new Version("0.0.0"));
+
+    get isLoading$(): Observable<boolean> {
+        return this._isLoading$.asObservable();
+    }
+
+    updateIsLoading(state: boolean) {
+        this._isLoading$.next(state);
+    }
+
+    get themeApplied$(): Observable<boolean> {
+        return this._themeApplied$.asObservable();
+    }
+
+    updateThemeApplied(state: boolean) {
+        this._themeApplied$.next(state);
+    }
 
     get eventsNgPoland$(): Observable<Array<EventItem>> {
         return this._eventsNgPoland$.asObservable();

@@ -3,7 +3,7 @@ import { ContentfulService, EventItemType } from "./contentful.service";
 import { DeviceService } from "./device.service";
 import { EventItem, IEventItem } from "../models/event-item.model";
 import { AppStateService } from "./app-state.service";
-import { Observable, combineLatest, from, of } from "rxjs";
+import { Observable, combineLatest, from, of, BehaviorSubject } from "rxjs";
 import { Workshop, IWorkshop } from "../models/workshop.model";
 import { Speaker, ISpeaker } from "../models/speaker.model";
 import { InfoItem, IInfoItemModel } from "../models/info-item.model";
@@ -13,7 +13,17 @@ import { AppData } from "../models/app-data.model";
 import { SecureStorage } from "nativescript-secure-storage";
 import { SECURE_STORAGE_KEY } from "./settings.service";
 import { HttpClient } from "@angular/common/http";
-import { switchMap, map } from "rxjs/operators";
+import {
+    switchMap,
+    map,
+    timeout,
+    retryWhen,
+    tap,
+    catchError,
+    takeUntil,
+    distinctUntilChanged
+} from "rxjs/operators";
+import { ErrorService } from "./error.service";
 
 export const DATA_FILE_PATH = "/assets/app-data.json";
 
@@ -21,8 +31,9 @@ export const DATA_FILE_PATH = "/assets/app-data.json";
     providedIn: "root"
 })
 export class AppStateFacadeService {
-    private currentConfId = "2019";
+    private currentConfId: string;
     private secureStorage: SecureStorage;
+
     constructor(
         private appStateService: AppStateService,
         private contentful: ContentfulService,
@@ -30,9 +41,30 @@ export class AppStateFacadeService {
         private http: HttpClient
     ) {
         this.secureStorage = new SecureStorage();
-        this.appStateService.currentConfId$.subscribe((confId: string) => {
+        this.appStateService.currentConfId$.pipe(distinctUntilChanged()).subscribe((confId: string) => {
+            console.log("[AppStateFacade] currentConfId changed: ", confId);
             this.currentConfId = confId;
+            this.initStateFromTheInternet();
         });
+    }
+
+    getThemeApplied(): Observable<boolean> {
+        return this.appStateService.themeApplied$;
+    }
+
+    updateThemeApplied(state: boolean) {
+        this.appStateService.updateThemeApplied(state);
+    }
+
+    getConfId(): Observable<string> {
+        return this.appStateService.currentConfId$;
+    }
+    updateConfId(confId: string) {
+        this.appStateService.updateCurrentConfId(confId);
+    }
+
+    getIsLoading(): Observable<boolean> {
+        return this.appStateService.isLoading$;
     }
 
     getEventsNgPoland(): Observable<Array<EventItem>> {
@@ -71,15 +103,13 @@ export class AppStateFacadeService {
         return this.appStateService.dataVersionApi$;
     }
 
-    initState() {
+    initState(confId?: string) {
         // TODO: poradzić sobie z asynchronicznością
         this.initFromApp();
         this.initStateFromLocalStorage();
         if (this.device.isInternetConnectionAvailable()) {
-            console.log("jest połączenie!!!");
             this.initStateFromTheInternet();
         } else {
-            console.log("brak połączenia!!!!");
             this.initStateFromLocalStorage();
         }
     }
@@ -116,6 +146,7 @@ export class AppStateFacadeService {
     }
 
     private initStateFromTheInternet() {
+        this.appStateService.updateIsLoading(true);
         const obsArray = [
             this.loadDataVersion(),
             this.loadEvents(EventItemType.NGPOLAND, this.currentConfId),
@@ -159,6 +190,7 @@ export class AppStateFacadeService {
                     eventsNgPoland: ngPolandEvents,
                     eventsJsPoland: jsPolandEvents
                 });
+                this.appStateService.updateIsLoading(false);
                 this.secureStorage
                     .set({
                         key: SECURE_STORAGE_KEY,
@@ -328,20 +360,20 @@ export class AppStateFacadeService {
 
         // speakers
         const speakers = appData.speakers.map((s: ISpeaker) => {
-            return  new Speaker(
-                      s.name,
-                      s.confIds,
-                      s.role,
-                      s.bio,
-                      s.photo.imgUrl,
-                      s.photo.imgTitle,
-                      s.photo.imgDesc,
-                      s.email,
-                      s.urlGithub,
-                      s.urlLinkedIn,
-                      s.urlTwitter,
-                      s.urlWww
-                  );
+            return new Speaker(
+                s.name,
+                s.confIds,
+                s.role,
+                s.bio,
+                s.photo.imgUrl,
+                s.photo.imgTitle,
+                s.photo.imgDesc,
+                s.email,
+                s.urlGithub,
+                s.urlLinkedIn,
+                s.urlTwitter,
+                s.urlWww
+            );
         });
         this.appStateService.updateSpeakers(speakers);
     }

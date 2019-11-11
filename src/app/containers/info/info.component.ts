@@ -15,11 +15,13 @@ import { takeUntil } from "rxjs/operators";
 export class InfoComponent implements OnInit, OnDestroy {
     infoItems$: Observable<Array<IInfoItemModel>>;
     infoItemsSorted: Array<IInfoItemModel>;
+    isLoading$: Observable<boolean>;
 
     private destroySubject$: Subject<void> = new Subject<void>();
 
     constructor(private appStateFacade: AppStateFacadeService) {
         // Use the component constructor to inject providers.
+        this.isLoading$ = this.appStateFacade.getIsLoading();
     }
 
     ngOnInit(): void {
@@ -45,5 +47,9 @@ export class InfoComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.destroySubject$.next();
+    }
+
+    refreshData(arg: any) {
+        this.appStateFacade.initState();
     }
 }

@@ -1,12 +1,11 @@
-import {
-    Component,
-    OnDestroy,
-    OnInit,
-    ChangeDetectorRef
-} from "@angular/core";
+import { Component, OnDestroy, OnInit, ChangeDetectorRef } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
+import { DeviceService } from "~/app/services/device.service";
+import { Subject, Observable } from "rxjs";
+import { takeUntil } from "rxjs/operators";
+import { AppStateFacadeService } from "~/app/services/app-state-facade.service";
 
 @Component({
     selector: "Home",
@@ -15,33 +14,25 @@ import * as app from "tns-core-modules/application";
     styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit, OnDestroy {
-    orientationApplier: any;
     isLandscape = false;
+    destroySubject$ = new Subject<void>();
+    confId$: Observable<string>;
 
     constructor(
-        private routerExtensions: RouterExtensions
-    ) {
-
-    }
+        private routerExtensions: RouterExtensions,
+        private deviceService: DeviceService,
+        private changeDetectorRef: ChangeDetectorRef,
+        private appStateFacade: AppStateFacadeService
+    ) {}
 
     ngOnInit(): void {
-        // if (orientation.getOrientation() === "landscape") {
-        //     this.isLandscape = true;
-        // } else {
-        //     this.isLandscape = false;
-        // }
-        // this.changeDetectorRef.detectChanges();
-        // this.orientationApplier = orientation.addOrientationApplier(
-        //     (o: any) => {
-        //         console.log("Orientation: ", o);
-        //         if (orientation.getOrientation() === "landscape") {
-        //             this.isLandscape = true;
-        //         } else {
-        //             this.isLandscape = false;
-        //         }
-        //         this.changeDetectorRef.detectChanges();
-        //     }
-        // );
+        this.deviceService.isLandscape$
+            .pipe(takeUntil(this.destroySubject$))
+            .subscribe((isLandscape: boolean) => {
+                this.isLandscape = isLandscape;
+                this.changeDetectorRef.detectChanges();
+            });
+        this.confId$ = this.appStateFacade.getConfId();
     }
 
     onDrawerButtonTap(): void {
@@ -61,6 +52,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        // orientation.removeOrientationApplier(this.orientationApplier);
+        this.destroySubject$.next();
     }
 }

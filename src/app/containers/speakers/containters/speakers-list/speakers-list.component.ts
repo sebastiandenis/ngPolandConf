@@ -12,10 +12,16 @@ import { AppStateFacadeService } from "~/app/services/app-state-facade.service";
 })
 export class SpeakersListComponent implements OnInit {
     speakers$: Observable<Array<Speaker>>;
+    isLoading$: Observable<boolean>;
 
-    constructor(private appStateFacade: AppStateFacadeService) {}
+    constructor(private appStateFacade: AppStateFacadeService) {
+        this.isLoading$ = this.appStateFacade.getIsLoading();
+    }
 
     ngOnInit(): void {
         this.speakers$ = this.appStateFacade.getSpeakers();
+    }
+    refreshData(arg: any) {
+        this.appStateFacade.initState();
     }
 }

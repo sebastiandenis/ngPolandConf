@@ -13,7 +13,7 @@
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
         ios.position="left">
     </ActionItem>
-    <Label class="action-bar-title" text="ngPolandConf" fontSize="18"></Label>
+    <Label class="action-bar-title" [text]="'ngPolandConf ' + (confId$ | async)" fontSize="18"></Label>
 </ActionBar>
 <ScrollView style="background-color: #FFFFFF;">
     <GridLayout rows="auto, *" columns="*" style="height: 100%;" ios:style="padding-top: 60;">

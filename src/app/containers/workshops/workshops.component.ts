@@ -14,8 +14,10 @@ import { AppStateFacadeService } from "../../services/app-state-facade.service";
 })
 export class WorkshopsComponent implements OnInit {
   workshops$: Observable<Array<Workshop>>;
+  isLoading$: Observable<boolean>;
 
   constructor(private appStateFacade: AppStateFacadeService) {
+    this.isLoading$ = this.appStateFacade.getIsLoading();
   }
 
   ngOnInit(): void {
@@ -27,4 +29,8 @@ export class WorkshopsComponent implements OnInit {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
+
+  refreshData(arg: any) {
+    this.appStateFacade.initState();
+}
 }

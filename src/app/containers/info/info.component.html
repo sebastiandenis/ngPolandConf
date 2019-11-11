@@ -17,17 +17,18 @@
 
 <GridLayout class="page page-content">
     <StackLayout style="padding: 10 5;">
-
         <StackLayout *ngIf="infoItemsSorted as infoItems; else nocontent">
+            <PullToRefresh [refreshing]="isLoading$ | async" (refresh)="refreshData($event)">
                 <ListView class="list-group" [items]="infoItems" style="height: 100%;" separatorColor="#ff1744">
-                        <ng-template let-item="item">
-                            <InfoItem [item]="item"></InfoItem>
-                        </ng-template>
-                    </ListView>
+                    <ng-template let-item="item">
+                        <InfoItem [item]="item"></InfoItem>
+                    </ng-template>
+                </ListView>
+            </PullToRefresh>
         </StackLayout>
         <ng-template #nocontent>
-                <ActivityIndicator row="1" #activityIndicator busy="true" width="100" height="100" class="activity-indicator"></ActivityIndicator>
+            <ActivityIndicator row="1" #activityIndicator busy="true" width="100" height="100"
+                class="activity-indicator"></ActivityIndicator>
         </ng-template>
-    
-</StackLayout>
+    </StackLayout>
 </GridLayout>

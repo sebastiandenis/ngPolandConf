@@ -17,21 +17,18 @@
 
 <GridLayout class="page page-content">
 	<StackLayout>
-
 		<StackLayout *ngIf="workshops$ | async as workshops; else nocontent">
-			<ListView class="list-group" [items]="workshops" style="height: 100%;" separatorColor="#ff1744">
-				<ng-template let-workshop="item">
-
-					<Workshop [workshop]="workshop"></Workshop>
-
-				</ng-template>
-			</ListView>
+			<PullToRefresh [refreshing]="isLoading$ | async" (refresh)="refreshData($event)">
+				<ListView class="list-group" [items]="workshops" style="height: 100%;" separatorColor="#ff1744">
+					<ng-template let-workshop="item">
+						<Workshop [workshop]="workshop"></Workshop>
+					</ng-template>
+				</ListView>
+			</PullToRefresh>
 		</StackLayout>
 		<ng-template #nocontent>
 			<ActivityIndicator row="1" #activityIndicator busy="true" width="100" height="100"
 				class="activity-indicator"></ActivityIndicator>
 		</ng-template>
-
 	</StackLayout>
-
 </GridLayout>

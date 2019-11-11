@@ -13,9 +13,11 @@ import { AppStateFacadeService } from "~/app/services/app-state-facade.service";
 export class NgPolandComponent implements OnInit {
 
   events$: Observable<Array<EventItem>>;
+  isLoading$: Observable<boolean>;
 
   constructor(private appStateFacade: AppStateFacadeService) {
     // Use the component constructor to inject providers.
+    this.isLoading$ = this.appStateFacade.getIsLoading();
   }
 
   ngOnInit(): void {
@@ -23,5 +25,9 @@ export class NgPolandComponent implements OnInit {
     this.events$ = this.appStateFacade.getEventsNgPoland();
     
   }
+
+  refreshData(arg: any) {
+    this.appStateFacade.initState();
+}
 
 }

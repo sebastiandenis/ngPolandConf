@@ -1,0 +1,6 @@
+
+    <GridLayout columns="*" rows="auto, auto, auto" class="dialog-padding">
+            <ListPicker col="0" row="1" [items]="years" [selectedIndex]="selectedYearIndex" (selectedIndexChange)="onSelectedIndexChanged($event)"></ListPicker>
+            <Button col="0" row="2" text="Accept" (tap)="onYearAccept()" class="btn btn-primary"></Button>
+    </GridLayout>
+    
