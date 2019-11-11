@@ -22,11 +22,21 @@ import { JsPolandComponent } from "./containers/schedule/containers/jspoland/js-
 import { NgPolandComponent } from "./containers/schedule/containers/ngpoland/ng-poland.component";
 import { EventItemComponent } from "./containers/schedule/components/event-item/event-item.component";
 import { SwitchYearComponent } from "./shared/components/switch-year/switch-year.component";
+import { TNSImageModule } from "nativescript-image/angular";
+import * as imageModule from "nativescript-image";
+import * as applicationModule from "tns-core-modules/application";
 
 registerElement(
     "PullToRefresh",
     () => require("@nstudio/nativescript-pulltorefresh").PullToRefresh
 );
+
+if (applicationModule.android) {
+    applicationModule.on(applicationModule.launchEvent, () => {
+        console.log("initialize pipeline");
+        imageModule.initialize();
+    });
+}
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -34,7 +44,8 @@ registerElement(
         AppRoutingModule,
         NativeScriptModule,
         NativeScriptUISideDrawerModule,
-        NativeScriptHttpClientModule
+        NativeScriptHttpClientModule,
+        TNSImageModule
     ],
     declarations: [
         AppComponent,

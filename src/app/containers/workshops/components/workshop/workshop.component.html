@@ -33,23 +33,24 @@
         (tap)="showModal()"
       ></label>
 
-      <WebImage
-        borderRadius="500"
+      <NSImg
         row="0"
         col="0"
         rowSpan="2"
-        stretch="aspectFill"
+        roundAsCircle="true"
+        width="50"
+        height="auto"
+        stretch="aspectFit"
         horizontalAlignment="center"
         verticalAlignment="center"
         style="margin-right: 15;"
         [src]="workshop.instructor.photo.getImageUrl()"
+        placeholderImageUri="res://person"
         (tap)="showModal()"
-        height="98%"
-        width="auto"
-        android:visibility="collapsed"
       >
-      </WebImage>
-      <image
+      </NSImg>
+
+      <!-- <image
         borderRadius="500"
         row="0"
         col="0"
@@ -64,7 +65,7 @@
         width="auto"
         ios:visibility="collapsed"
       >
-      </image>
+      </image> -->
 
       <label
         [text]="workshop.description"

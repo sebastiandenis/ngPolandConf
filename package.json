@@ -30,6 +30,7 @@
     "nativescript-angular": "~8.2.0",
     "nativescript-audio": "^5.0.5",
     "nativescript-dna-deviceinfo": "^2.4.2",
+    "nativescript-image": "^2.2.5",
     "nativescript-secure-storage": "^2.6.0",
     "nativescript-theme-core": "~1.0.6",
     "nativescript-ui-sidedrawer": "~7.0.0",

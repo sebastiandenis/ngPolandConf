@@ -7,9 +7,8 @@
                         textAlignment="center" textWrap="true" style="color: #ff1744;width: 80%;"></Label>
                 </FlexboxLayout>
                 <FlexboxLayout height="80%" flexDirection="column" justifyContent="space-around" alignItems="center">
-                    <FlexboxLayout height="80%" flexDirection="column" alignItems="center" justifyContent="center">
-                        <Image [src]="speaker.photo.getImageUrl()" horizontalAlignment="center" width="auto"
-                            height="90%"></Image>
+                    <FlexboxLayout height="80%" width="100%" flexDirection="column" alignItems="center" justifyContent="center">
+                        <NSImg [src]="speaker.photo.getImageUrl()" placeholderImageUri="res://person" style="width: 90%;height: 90%;" stretch="aspectFit"></NSImg>
                     </FlexboxLayout>
                     <FlexboxLayout height="auto" flexDirection="column" alignItems="center" justifyContent="center">
                         <Label [text]="speaker.role" textWrap="true" textAlignment="center" fontWeight="bold"

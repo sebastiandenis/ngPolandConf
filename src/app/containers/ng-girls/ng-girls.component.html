@@ -18,7 +18,7 @@
     
     
     <StackLayout style="padding: 15 20;" *ngIf="content$ | async as content; else nocontent">
-            <Image src="res://nggirls" style="width: 70%;margin-bottom: 20;margin-top: 20;"></Image>
+            <NSImg src="res://nggirls" style="height: 100;margin-bottom: 20;margin-top: 20;" stretch="fitCenter"></NSImg>
         <Label [text]="content.text" textWrap="true" style="color: #3C4043;"></Label>
     </StackLayout>
     <ng-template #nocontent>
