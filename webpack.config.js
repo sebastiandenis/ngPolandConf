@@ -197,6 +197,17 @@ module.exports = env => {
         },
         module: {
             rules: [
+                platform !== "android" ? {} : {
+                    test: /tns-core-modules\/ui\/styling\/background\.js$/,
+                    use: [{
+                      loader: 'string-replace-loader',
+                      options: {
+                        search: 'defaultDrawable = cachedDrawable.newDrawable(nativeView.getResources());',
+                        replace: 'defaultDrawable = null;',
+                        strict: true,
+                      }
+                    }]
+                  },
                 {
                     include: join(appFullPath, entryPath),
                     use: [

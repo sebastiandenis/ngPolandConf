@@ -6,7 +6,7 @@ import { DeviceService } from "~/app/services/device.service";
 import { Subject, Observable } from "rxjs";
 import { takeUntil, take } from "rxjs/operators";
 import { AppStateFacadeService } from "~/app/services/app-state-facade.service";
-import { IConference } from "~/app/models/conference.model";
+import { IConference } from "../../models/conference.model";
 
 @Component({
     selector: "Home",
@@ -55,10 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     onNavItemTap(navItemRoute: string, sl: any): void {
         this.routerExtensions.navigate([navItemRoute], {
-            clearHistory: navItemRoute === "/home" ? true : false,
-            transition: {
-                name: "fade"
-            }
+            clearHistory: navItemRoute === "/home" ? true : false
         });
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();

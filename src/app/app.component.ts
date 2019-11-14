@@ -1,62 +1,61 @@
-import { Component, OnInit, OnDestroy, ViewContainerRef } from "@angular/core";
+import {
+    Component,
+    OnInit,
+    OnDestroy,
+    ViewContainerRef,
+    ViewChild,
+    AfterViewInit
+} from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
-import {
-    DrawerTransitionBase,
-    RadSideDrawer,
-    SlideInOnTopTransition
-} from "nativescript-ui-sidedrawer";
 import { filter, takeUntil } from "rxjs/operators";
 import { AppStateFacadeService } from "./services/app-state-facade.service";
 import { SecureStorage } from "nativescript-secure-storage";
-import { SettingsService } from "./services/settings.service";
+
 import { Observable, Subject } from "rxjs";
-import { DeviceService } from "./services/device.service";
-import * as app from "tns-core-modules/application";
+
 import { EventData } from "tns-core-modules/ui/page/page";
 import { Switch } from "tns-core-modules/ui/switch";
-import * as dialogs from "tns-core-modules/ui/dialogs";
 import {
     ModalDialogOptions,
     ModalDialogService
 } from "nativescript-angular/modal-dialog";
 import { SwitchYearComponent } from "./shared/components/switch-year/switch-year.component";
 import { IConference } from "./models/conference.model";
+import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular/side-drawer-directives";
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as app from "tns-core-modules/application";
 
 @Component({
     selector: "ns-app",
     templateUrl: "app.component.html"
 })
 export class AppComponent implements OnInit, OnDestroy {
+    @ViewChild(RadSideDrawerComponent, { static: false })
+    sideDrawerComponent: RadSideDrawerComponent;
     themeApplied$: Observable<boolean>;
     confId$: Observable<string>;
     conference: IConference;
     themeApplied = false;
 
-    get sideDrawerTransition(): DrawerTransitionBase {
-        return this._sideDrawerTransition;
-    }
     private secureStorage: SecureStorage;
     private _activatedUrl: string;
-    private _sideDrawerTransition: DrawerTransitionBase;
     private destroySubject$ = new Subject<void>();
 
     constructor(
         private router: Router,
         private routerExtensions: RouterExtensions,
         private appStateFacade: AppStateFacadeService,
-        private settingService: SettingsService,
-        private deviceService: DeviceService,
         private modalService: ModalDialogService,
         private viewContainerRef: ViewContainerRef
     ) {
         this.secureStorage = new SecureStorage();
     }
+
     ngOnInit(): void {
         this.secureStorage.clearAllOnFirstRun().then((success: boolean) => {});
         this.appStateFacade.initState();
         this._activatedUrl = "/home";
-        this._sideDrawerTransition = new SlideInOnTopTransition();
         this.themeApplied$ = this.appStateFacade.getThemeApplied();
         this.confId$ = this.appStateFacade.getConfId();
 
@@ -91,7 +90,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.routerExtensions.navigate([navItemRoute], {
             clearHistory: navItemRoute === "/home" ? true : false
         });
-
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();
     }

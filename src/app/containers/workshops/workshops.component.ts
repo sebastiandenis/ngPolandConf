@@ -32,14 +32,12 @@ export class WorkshopsComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.destroySubject$))
             .subscribe((conf: IConference) => {
                 this.conference = conf;
-                console.log("[AppComponent] conference: ", conf);
             });
         this.appStateFacade
             .getThemeApplied()
             .pipe(takeUntil(this.destroySubject$))
             .subscribe((isThemeApplied: boolean) => {
                 this.themeApplied = isThemeApplied;
-                console.log("[AppComponent] themeApplied: ", isThemeApplied);
             });
     }
 
