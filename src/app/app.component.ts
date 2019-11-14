@@ -20,7 +20,8 @@ import {
     ModalDialogOptions,
     ModalDialogService
 } from "nativescript-angular/modal-dialog";
-import { SwitchYearComponent } from './shared/components/switch-year/switch-year.component';
+import { SwitchYearComponent } from "./shared/components/switch-year/switch-year.component";
+import { IConference } from "./models/conference.model";
 
 @Component({
     selector: "ns-app",
@@ -29,6 +30,9 @@ import { SwitchYearComponent } from './shared/components/switch-year/switch-year
 export class AppComponent implements OnInit, OnDestroy {
     themeApplied$: Observable<boolean>;
     confId$: Observable<string>;
+    conference: IConference;
+    themeApplied = false;
+
     get sideDrawerTransition(): DrawerTransitionBase {
         return this._sideDrawerTransition;
     }
@@ -56,7 +60,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.themeApplied$ = this.appStateFacade.getThemeApplied();
         this.confId$ = this.appStateFacade.getConfId();
 
-
         this.router.events
             .pipe(
                 takeUntil(this.destroySubject$),
@@ -64,6 +67,19 @@ export class AppComponent implements OnInit, OnDestroy {
             )
             .subscribe((event: NavigationEnd) => {
                 return (this._activatedUrl = event.urlAfterRedirects);
+            });
+
+        this.appStateFacade
+            .getCurrentConference()
+            .pipe(takeUntil(this.destroySubject$))
+            .subscribe((conf: IConference) => {
+                this.conference = conf;
+            });
+        this.appStateFacade
+            .getThemeApplied()
+            .pipe(takeUntil(this.destroySubject$))
+            .subscribe((isThemeApplied: boolean) => {
+                this.themeApplied = isThemeApplied;
             });
     }
 
@@ -88,8 +104,6 @@ export class AppComponent implements OnInit, OnDestroy {
     onChangeYear() {
         this.openSwitchYearModal();
     }
-
-    
 
     ngOnDestroy() {
         this.destroySubject$.next();

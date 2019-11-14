@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
+import { conferences } from "../settings/settings";
+import { IConference } from "../models/conference.model";
 
 export enum Locales {
     PL = "pl",
@@ -141,6 +143,12 @@ export class SettingsService {
 
     getCurrentLang(): Observable<ILang> {
         return this.lang$.asObservable();
+    }
+
+    getConferenceByConfId(confId: string): IConference {
+        return conferences.filter(
+            (conference: IConference) => conference.confId === confId
+        )[0];
     }
 
     private searchLangsMap(l: string): string {

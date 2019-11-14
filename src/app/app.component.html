@@ -3,14 +3,14 @@ RadSideDrawer is a UI component part of the Progress NativeScript UI set of comp
 Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
 http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
 -->
-<RadSideDrawer [drawerTransition]="sideDrawerTransition">
-    <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
+<RadSideDrawer [drawerTransition]="sideDrawerTransition" >
+    <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left"  [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']">
         <StackLayout row="0" class="sidedrawer-header" style="background-color: white;margin-top: 20;">
             <Image src="res://logong"></Image>
         </StackLayout>
 
         <ScrollView row="1">
-            <StackLayout class="sidedrawer-content">
+            <StackLayout class="sidedrawer-content" >
                 <GridLayout columns="auto, *" class="sidedrawer-list-item"
                     [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
                     <Label col="0" text="&#xf58e;" class="fa" style="margin-left: 10;text-align: center;"></Label>

@@ -1,44 +1,224 @@
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
 // Font icon class
+$basic-font-family: "Roboto";
+
 ActionBar.action-bar {
-    background-color:  #3949ab;
-    color: white;
+  background-color: #3949ab;
+  color: white;
 }
 
 .fa {
-    font-family: "FontAwesome";
+  font-family: "FontAwesome";
+}
+
+.freedie-m {
+}
+
+.action-bar-title {
+  font-size: 18;
+}
+
+.sidedrawer {
+  .sidedrawer-header {
+    background-color: #ffffff;
+  }
+  .sidedrawer-content {
+    background-color: #ffffff;
+  }
+}
+
+.homeDescContainer {
+  background-color: #3949ab;
+  .homeDesc {
+    font-size: 16;
+    padding-left: 10;
+    padding-right: 10;
+  }
+}
+
+.homeItemContainer {
+  background-color: #ffffff;
+  height: 100%;
+  width: 100%;
+
+  .fa {
+    color: #3949ab;
+    font-size: 50;
+    margin-bottom: 10;
+  }
+
+  .homeItemLabel {
+    color: #ff1744;
+    font-size: 14;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.7;
+  }
+  25% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+.workshopCardStyle {
+  color: #3c4043;
+  .workshopTitle {
+    font-weight: bold; 
+    font-size: 16;
+  }
+  .workshopInstructorName {
+    color: #3949ab;
+  }
+  .workshopDescLabel {
+    color: #3c4043;
+    padding-top: 15;
+    font-size: 14;
+  }
+}
+
+$terminator-font-family: "Terminator";
+$terminator-red-color: #ff1744;
+$terminator-primary-font-color: #e0dae8;
+$terminator-background-color: #0c102f;
+$terminator-lighter-background-color: #242743;
+
+.terminator {
+  font-family: $terminator-font-family;
+  color: $terminator-primary-font-color;
+  text-transform: uppercase;
+  letter-spacing: 0.1;
+
+  &.sidedrawer {
+    .sidedrawer-header {
+      background-color: $terminator-background-color;
+    }
+    .sidedrawer-content {
+      background-color: $terminator-background-color;
+      .sidedrawer-list-item {
+        label {
+          color: $terminator-primary-font-color;
+          text-transform: uppercase;
+          font-family: "Terminator";
+          font-size: 11;
+          letter-spacing: 0.15;
+
+          &.fa {
+            font-family: "FontAwesome";
+            font-size: 13;
+            color: $terminator-red-color;
+            opacity: 0.7;
+          }
+        }
+      }
+
+      .sidedrawer-list-item.selected {
+        background-color: $terminator-lighter-background-color;
+        label {
+          color: $terminator-primary-font-color;
+          &.fa {
+            color: $terminator-red-color;
+            opacity: 0.7;
+          }
+        }
+      }
+      .hr-light {
+        background-color: $terminator-lighter-background-color;
+      }
+    }
+  }
+  &.action-bar-title {
+    font-size: 14;
+  }
+  &.homeDescContainer {
+    background-color: $terminator-background-color;
+    .homeDesc {
+      font-size: 13;
+      padding-left: 10;
+      padding-right: 10;
+      margin-bottom: 5;
+      text-transform: uppercase;
+      letter-spacing: 0.1;
+    }
+  }
+
+  &.homeItemContainer {
+    background-color: $terminator-background-color;
+    height: 100%;
+    width: 100%;
+    .fa {
+      color: $terminator-red-color;
+      opacity: 0.7;
+      font-size: 50;
+      animation: fade 5s;
+    }
+
+    .homeItemLabel {
+      color: $terminator-primary-font-color;
+      font-size: 10;
+      text-transform: uppercase;
+      letter-spacing: 0.1;
+    }
+  }
+
+  &.workshopsList {
+    background-color: $terminator-background-color;
+  }
+  .workshopCardStyle {
+    color: $terminator-primary-font-color;
+    .workshopTitle {
+        font-size: 13;
+        text-transform: uppercase;
+        letter-spacing: 0.15;
+        opacity: 0.7;
+      }
+      .workshopInstructorName {
+        color: $terminator-primary-font-color;
+        font-family: $basic-font-family;
+        
+      }
+    .workshopDescLabel {
+        font-family: $basic-font-family;
+        color: $terminator-primary-font-color;
+        padding-top: 15;
+        font-size: 14;
+        opacity: 0.8
+      }
+  }
 }
 // Common page class
 .page-content {
+  .content-padding {
+    padding: 0 20;
+  }
 
-    .content-padding {
-        padding: 0 20;
-    }
-    
+  .page-placeholder {
+    color: $page-icon-color;
+    font-size: $page-content-placeholder-font-size;
+    vertical-align: center;
+    horizontal-align: center;
+  }
 
-    .page-placeholder {
-        color: $page-icon-color;
-        font-size: $page-content-placeholder-font-size;
-        vertical-align: center;
-        horizontal-align: center;
-    }
-
-    .page-icon {
-        font-size: 72;
-        vertical-align: top;
-        horizontal-align: center;
-        color: $page-icon-color;
-        margin-top: 20%;
-    }
+  .page-icon {
+    font-size: 72;
+    vertical-align: top;
+    horizontal-align: center;
+    color: $page-icon-color;
+    margin-top: 20%;
+  }
 }
 
 //Action bar
 ActionBar .action-bar-title {
-    horizontal-align: center;
+  horizontal-align: center;
 }
 
- // Drawer navigation custom styles
+// Drawer navigation custom styles
 $sidedrawer-header-image-size: 60;
 $sidedrawer-header-image-offset-top: 20;
 $sidedrawer-header-image-offset-bottom: 5;
@@ -47,55 +227,55 @@ $sidedrawer-list-icon-offset: 10;
 $sidedrawer-list-icon-size: 20;
 
 .sidedrawer {
-    &.sidedrawer-left {
-        background-color: $ab-background;
+  &.sidedrawer-left {
+    background-color: $ab-background;
 
-        .sidedrawer-header-image {
-            color: $background-dark;
-            height: $sidedrawer-header-image-size;
-            width: $sidedrawer-header-image-size;
-            font-size: $sidedrawer-header-image-size;
-            padding: 0;
-            margin-bottom: $sidedrawer-header-image-offset-bottom;
-            margin-top: $sidedrawer-header-image-offset-top;
-        }
-
-        .footnote {
-            color: rgba($ab-color, 0.5);
-        }
+    .sidedrawer-header-image {
+      color: $background-dark;
+      height: $sidedrawer-header-image-size;
+      width: $sidedrawer-header-image-size;
+      font-size: $sidedrawer-header-image-size;
+      padding: 0;
+      margin-bottom: $sidedrawer-header-image-offset-bottom;
+      margin-top: $sidedrawer-header-image-offset-top;
     }
 
-    .sidedrawer-header {
-        background-color: $ab-background;
-
-        .sidedrawer-header-brand {
-            color: $ab-color;
-        }
+    .footnote {
+      color: rgba($ab-color, 0.5);
     }
+  }
 
-    .sidedrawer-content {
-        background-color: $side-drawer-background;
+  .sidedrawer-header {
+    background-color: $ab-background;
 
-        $sidedrawer-list-item-offset-left: 15;
-        $sidedrawer-list-icon-offset: 10;
-        $sidedrawer-list-icon-size: 20;
-
-        .sidedrawer-list-item {
-            padding-left: $sidedrawer-list-item-offset-left;
-            Label {
-                vertical-align: center;
-                color: $blue-dark;
-            }
-            .fa {
-                width: $sidedrawer-list-icon-size;
-                margin-right: $sidedrawer-list-icon-offset;
-            }
-            &.selected {
-                background-color: $item-active-background;
-                Label {
-                    color: $item-active-color;
-                }
-            }
-        }
+    .sidedrawer-header-brand {
+      color: $ab-color;
     }
+  }
+
+  .sidedrawer-content {
+    background-color: $side-drawer-background;
+
+    $sidedrawer-list-item-offset-left: 15;
+    $sidedrawer-list-icon-offset: 10;
+    $sidedrawer-list-icon-size: 20;
+
+    .sidedrawer-list-item {
+      padding-left: $sidedrawer-list-item-offset-left;
+      label {
+        vertical-align: center;
+        color: $blue-dark;
+      }
+      .fa {
+        width: $sidedrawer-list-icon-size;
+        margin-right: $sidedrawer-list-icon-offset;
+      }
+      &.selected {
+        background-color: $item-active-background;
+        label {
+          color: $item-active-color;
+        }
+      }
+    }
+  }
 }

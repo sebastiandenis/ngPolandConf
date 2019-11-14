@@ -8,6 +8,9 @@
       "version": "6.1.2"
     }
   },
+  "android": {
+    "markingMode": "none"
+  },
   "description": "NativeScript Application",
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",

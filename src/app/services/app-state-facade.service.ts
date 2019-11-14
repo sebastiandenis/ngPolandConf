@@ -11,19 +11,10 @@ import { SimpleContent } from "../models/simple-content.model";
 import { Version } from "../models/version.model";
 import { AppData } from "../models/app-data.model";
 import { SecureStorage } from "nativescript-secure-storage";
-import { SECURE_STORAGE_KEY } from "./settings.service";
+import { SECURE_STORAGE_KEY, SettingsService } from "./settings.service";
 import { HttpClient } from "@angular/common/http";
-import {
-    switchMap,
-    map,
-    timeout,
-    retryWhen,
-    tap,
-    catchError,
-    takeUntil,
-    distinctUntilChanged
-} from "rxjs/operators";
-import { ErrorService } from "./error.service";
+import { switchMap, distinctUntilChanged, map } from "rxjs/operators";
+import { IConference } from "../models/conference.model";
 
 export const DATA_FILE_PATH = "/assets/app-data.json";
 
@@ -37,19 +28,30 @@ export class AppStateFacadeService {
     constructor(
         private appStateService: AppStateService,
         private contentful: ContentfulService,
+        private settings: SettingsService,
         private device: DeviceService,
         private http: HttpClient
     ) {
         this.secureStorage = new SecureStorage();
-        this.appStateService.currentConfId$.pipe(distinctUntilChanged()).subscribe((confId: string) => {
-            console.log("[AppStateFacade] currentConfId changed: ", confId);
-            this.currentConfId = confId;
-            this.initStateFromTheInternet();
-        });
+        this.appStateService.currentConfId$
+            .pipe(distinctUntilChanged())
+            .subscribe((confId: string) => {
+                console.log("[AppStateFacade] currentConfId changed: ", confId);
+                this.currentConfId = confId;
+                this.initStateFromTheInternet();
+            });
     }
 
     getThemeApplied(): Observable<boolean> {
         return this.appStateService.themeApplied$;
+    }
+
+    getCurrentConference(): Observable<IConference> {
+        return this.getConfId().pipe(
+            map((confId: string) => {
+                return this.settings.getConferenceByConfId(confId);
+            })
+        );
     }
 
     updateThemeApplied(state: boolean) {
@@ -235,6 +237,10 @@ export class AppStateFacadeService {
     ) {
         // version
         if (dataPlace === "app") {
+            console.log(
+                "[AppStateFacade.initFromAppData] version: ",
+                appData.version
+            );
             this.appStateService.updateDataVersionApp(
                 new Version(appData.version.version)
             );
