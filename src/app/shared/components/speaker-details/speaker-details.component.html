@@ -1,6 +1,6 @@
-<StackLayout>
-    <GridLayout columns="2*, 6*, 2*" rows="auto" style="margin-top: 30; margin-bottom: 15;">
-        <Button col="0" row="0" text="&#xf060;" (tap)="close()" class="my-btn fa"
+<GridLayout columns="*" rows="auto, *">
+    <GridLayout col="0" row="0" columns="2*, 6*, 2*" rows="auto" style="margin-top: 30; margin-bottom: 15;">
+        <Button col="0" row="0" text="&#xf060;" ripple (tap)="close()" class="my-btn fa"
             style="font-size: 20; border-width: 0; width: 70;" textAlignment="center"
             verticalAlignment="center"></Button>
 
@@ -8,7 +8,7 @@
             textAlignment="center" textWrap="true" style="color: #ff1744;"></Label>
     </GridLayout>
 
-    <ScrollView orientation="vertical">
+    <ScrollView col="0" row="1" orientation="vertical">
         <StackLayout class="page page-content" style="padding-top: 20;">
             <GridLayout col="0" row="1" class="content-padding" columns="*" rows="auto, auto, auto">
                 <NSImg col="0" row="0" [src]="speaker.photo.getImageUrl()" placeholderImageUri="res://person"
@@ -20,7 +20,7 @@
             </GridLayout>
         </StackLayout>
     </ScrollView>
-</StackLayout>
+</GridLayout>
 <!-- <GridLayout class="page page-content" columns="*" rows="auto, auto, auto, auto" style="padding-top: 30;">
     <ScrollView>
         <GridLayout columns="*" rows="auto, auto">

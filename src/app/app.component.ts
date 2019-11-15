@@ -25,6 +25,7 @@ import { IConference } from "./models/conference.model";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular/side-drawer-directives";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
+import { ThemeSplashScreenComponent } from "./shared/components/theme-splash-screen/theme-splash-screen.component";
 
 @Component({
     selector: "ns-app",
@@ -96,7 +97,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
     onCheckedChange(event: EventData) {
         const sw = event.object as Switch;
-        this.appStateFacade.updateThemeApplied(sw.checked);
+        if (sw.checked) {
+            this.openThemeSplashScreenModal();
+            setTimeout(() => {
+                this.appStateFacade.updateThemeApplied(sw.checked);
+            }, 300);
+        } else {
+            this.appStateFacade.updateThemeApplied(sw.checked);
+        }
     }
 
     onChangeYear() {
@@ -114,5 +122,14 @@ export class AppComponent implements OnInit, OnDestroy {
             animated: true
         };
         this.modalService.showModal(SwitchYearComponent, options);
+    }
+
+    private openThemeSplashScreenModal() {
+        const options: ModalDialogOptions = {
+            viewContainerRef: this.viewContainerRef,
+            fullscreen: true,
+            animated: false
+        };
+        this.modalService.showModal(ThemeSplashScreenComponent, options);
     }
 }

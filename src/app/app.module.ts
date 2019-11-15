@@ -25,6 +25,8 @@ import { SwitchYearComponent } from "./shared/components/switch-year/switch-year
 import { TNSImageModule } from "nativescript-image/angular";
 import * as imageModule from "nativescript-image";
 import * as applicationModule from "tns-core-modules/application";
+import { ThemeSplashScreenComponent } from "./shared/components/theme-splash-screen/theme-splash-screen.component";
+import { NgRippleModule } from "nativescript-ng-ripple";
 
 registerElement(
     "PullToRefresh",
@@ -33,7 +35,6 @@ registerElement(
 
 if (applicationModule.android) {
     applicationModule.on(applicationModule.launchEvent, () => {
-        console.log("initialize pipeline");
         imageModule.initialize();
     });
 }
@@ -45,7 +46,8 @@ if (applicationModule.android) {
         NativeScriptModule,
         NativeScriptUISideDrawerModule,
         NativeScriptHttpClientModule,
-        TNSImageModule
+        TNSImageModule,
+        NgRippleModule
     ],
     declarations: [
         AppComponent,
@@ -65,9 +67,14 @@ if (applicationModule.android) {
         WorkshopsComponent,
         WorkshopComponent,
         MdToHtmlPipe,
-        SwitchYearComponent
+        SwitchYearComponent,
+        ThemeSplashScreenComponent
     ],
-    entryComponents: [SpeakerDetailsComponent, SwitchYearComponent],
+    entryComponents: [
+        SpeakerDetailsComponent,
+        SwitchYearComponent,
+        ThemeSplashScreenComponent
+    ],
     schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule {}
