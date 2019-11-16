@@ -1,7 +1,8 @@
-<StackLayout style="padding: 10 5;" #sl ripple (tap)="showModal(sl)">
-  <StackLayout class="cardStyle2" style="margin: 5;">
+<StackLayout style="padding: 10 5;" #sl ripple (tap)="showModal(sl)" 
+ class="speaker">
+  <StackLayout class="speakerCardStyle" style="margin: 5;" >
     <GridLayout rows="auto, *" columns="100, *" style="padding: 5 5;">
-      <StackLayout row="0" col="0" rowSpan="2">
+      <StackLayout row="0" col="0" rowSpan="2"  verticalAlignment="center">
         <!-- <WebImage
           stretch="aspectFit"
           borderRadius="500"
@@ -21,18 +22,18 @@
         ios:visibility="collapsed">
 
         </Image> -->
-        <NSImg  src="{{speaker?.photo.getImageUrl()}}" placeholderImageUri="res://person" verticalAlignment="center" roundAsCircle="true" stretch="aspectFit" style="margin-right: 15;"></NSImg>
+        <NSImg  src="{{speaker?.photo.getImageUrl()}}" placeholderImageUri="res://person" 
+        roundAsCircle="true" height="100"  stretch="aspectFit" style="margin-right: 15;"></NSImg>
       </StackLayout>
 
       <label
         row="0"
         col="1"
+        textWrap="true"
         [text]="speaker.name"
-        fontWeight="bold"
-        fontSize="14"
         verticalAlignment="center"
         textAlignment="left"
-        style="color: #3C4043;"
+        class="speakerName"
       ></label>
       <label
         row="1"
@@ -40,8 +41,7 @@
         [text]="speaker.role"
         textWrap="true"
         textAlignment="left"
-        fontSize="12"
-        style="color: #3C4043;"
+        class="speakerRole"
       ></label>
     </GridLayout>
   </StackLayout>

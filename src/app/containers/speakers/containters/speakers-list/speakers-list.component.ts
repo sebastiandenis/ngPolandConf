@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
+import { Component, OnInit, Input } from "@angular/core";
+import { Observable, Subject } from "rxjs";
 import { Speaker } from "~/app/models/speaker.model";
 import { AppStateFacadeService } from "~/app/services/app-state-facade.service";
-import { delay } from 'rxjs/operators';
+import { delay } from "rxjs/operators";
+import { IConference } from "../../../../models/conference.model";
 
 @Component({
     selector: "SpeakersList",
@@ -13,6 +14,7 @@ import { delay } from 'rxjs/operators';
 export class SpeakersListComponent implements OnInit {
     speakers$: Observable<Array<Speaker>>;
     isLoading$: Observable<boolean>;
+
 
     constructor(private appStateFacade: AppStateFacadeService) {
         this.isLoading$ = this.appStateFacade.getIsLoading();

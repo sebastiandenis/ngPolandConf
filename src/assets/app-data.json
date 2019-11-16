@@ -2,6 +2,8 @@
   "version": {
     "version": "1.2.0"
   },
+  "currentConfId": "2018",
+  "themeApplied": false,
   "infoItems": [
     {
       "title": "Contact",

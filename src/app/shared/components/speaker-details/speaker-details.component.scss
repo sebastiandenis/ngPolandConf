@@ -1,0 +1,30 @@
+.my-btn {
+  border-color: transparent;
+  border-width: 1;
+  z-index: 0;
+  background-color: transparent;
+  color: #3949ab;
+}
+
+.speakerDetail {
+  .speakerDetailActionBar {
+    margin-top: 30;
+    margin-bottom: 15;
+
+   
+  }
+
+  .speakerDetailContent {
+    padding-top: 20;
+
+    .speakerDetailTitle {
+        margin-top: 10;
+        margin-bottom: 10;
+    }
+
+    .speakerDetailDescription {
+        margin-top: 10;
+        margin-bottom: 10;
+    }
+  }
+}

@@ -3,11 +3,13 @@ RadSideDrawer is a UI component part of the Progress NativeScript UI set of comp
 Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
 http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
 -->
-<RadSideDrawer [drawerTransition]="sideDrawerTransition" >
-    <GridLayout tkDrawerContent rows="190, *" class="sidedrawer sidedrawer-left" 
-        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']" >
+<RadSideDrawer [drawerTransition]="sideDrawerTransition">
+    <GridLayout tkDrawerContent rows="190, *" class="sidedrawer sidedrawer-left"
+        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']">
         <StackLayout row="0" class="sidedrawer-header" style="margin-top: 10;">
-            <NSImg [src]="themeApplied ? 'res://terminator_sidebar_header' : 'res://logong'" height="180" autoPlayAnimations="true" stretch="aspectFit"></NSImg>
+            <NSImg [src]="
+          themeApplied ? 'res://terminator_sidebar_header' : 'res://logong'
+        " height="180" autoPlayAnimations="true" stretch="aspectFit"></NSImg>
         </StackLayout>
 
         <ScrollView row="1">
@@ -56,13 +58,15 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
                     <Label col="1" text="About" class="p-r-10"></Label>
                 </GridLayout>
                 <StackLayout class="hr-light"></StackLayout>
-                <GridLayout rows="auto, *" columns="*" class="sidedrawer-list-item" style="margin-top: 10">
+                <GridLayout rows="auto, *" columns="*"  style="margin-top: 10;">
                     <Switch #switch color="#3949ab" col="0" row="0" [checked]="themeApplied$ | async"
-                        (checkedChange)="onCheckedChange($event)" horizontalAlignment="center" style="margin-right: 10;"></Switch>
+                        (tap)="onThemeSwitchTap(switch)" (checkedChange)="onCheckedChange($event)"
+                        horizontalAlignment="center" style="margin-right: 10;"></Switch>
 
                     <Label col="0" row="1" [text]="
               switch.checked ? 'Hasta la vista, baby...' : 'Don\'t even try...'
-            " horizontalAlignment="center" style="margin-right: 10;margin-top: 10;height: 100%;"></Label>
+            " horizontalAlignment="center"
+                        style="margin-right: 10;margin-top: 10;" class="switchContainer"></Label>
                 </GridLayout>
                 <!-- <GridLayout  columns="*" rows="*, *" textAlignment="center" style="padding-top: 20;">
                         <Button col="0" row="1" [text]="confId$ | async" (tap)="onChangeYear()" class="btn btn-primary" style="font-size: 18;"></Button>

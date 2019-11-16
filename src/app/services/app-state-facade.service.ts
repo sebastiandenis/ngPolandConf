@@ -36,7 +36,6 @@ export class AppStateFacadeService {
         this.appStateService.currentConfId$
             .pipe(distinctUntilChanged())
             .subscribe((confId: string) => {
-                console.log("[AppStateFacade] currentConfId changed: ", confId);
                 this.currentConfId = confId;
                 this.initStateFromTheInternet();
             });
@@ -44,6 +43,10 @@ export class AppStateFacadeService {
 
     getThemeApplied(): Observable<boolean> {
         return this.appStateService.themeApplied$;
+    }
+
+    getThemeAppliedSync(): boolean {
+        return this.appStateService.themeAppliedSync;
     }
 
     getCurrentConference(): Observable<IConference> {
@@ -107,7 +110,7 @@ export class AppStateFacadeService {
 
     initState(confId?: string) {
         // TODO: poradzić sobie z asynchronicznością
-        this.initFromApp();
+        // this.initFromApp();
         this.initStateFromLocalStorage();
         if (this.device.isInternetConnectionAvailable()) {
             this.initStateFromTheInternet();
@@ -145,6 +148,24 @@ export class AppStateFacadeService {
 
     loadDataVersion(): Observable<Version> {
         return this.contentful.getVersion();
+    }
+
+    saveAppState(appData?: AppData): Observable<boolean> {
+        this.secureStorage
+            .set({
+                key: SECURE_STORAGE_KEY,
+                value: JSON.stringify(appData ? appData : this.appStateService.appData)
+            })
+            .then((success: boolean) => {
+                console.log(
+                    "Data successfuly written to secure storage: ",
+                    success
+                );
+
+                return of(true);
+            });
+
+        return of(false);
     }
 
     private initStateFromTheInternet() {
@@ -185,6 +206,8 @@ export class AppStateFacadeService {
                 this.appStateService.updateNgGirls(ngGirls);
                 const appData = new AppData({
                     version,
+                    themeApplied: this.getThemeAppliedSync(),
+                    currentConfId: this.currentConfId,
                     speakers,
                     ngGirls,
                     infoItems: info,
@@ -193,17 +216,7 @@ export class AppStateFacadeService {
                     eventsJsPoland: jsPolandEvents
                 });
                 this.appStateService.updateIsLoading(false);
-                this.secureStorage
-                    .set({
-                        key: SECURE_STORAGE_KEY,
-                        value: JSON.stringify(appData)
-                    })
-                    .then((success: boolean) => {
-                        console.log(
-                            "Data successfuly written to secure storage: ",
-                            success
-                        );
-                    });
+                this.saveAppState(appData);
             }
         );
     }
@@ -218,6 +231,7 @@ export class AppStateFacadeService {
 
     private initStateFromLocalStorage() {
         this.getAppDataFromLocalStorage().subscribe((data: AppData) => {
+            console.log("[initStateFromLocalStorage()] themeApplied : ", data.themeApplied);
             this.initFromAppData(data, "local-storage");
         });
     }
@@ -237,10 +251,6 @@ export class AppStateFacadeService {
     ) {
         // version
         if (dataPlace === "app") {
-            console.log(
-                "[AppStateFacade.initFromAppData] version: ",
-                appData.version
-            );
             this.appStateService.updateDataVersionApp(
                 new Version(appData.version.version)
             );
@@ -249,6 +259,14 @@ export class AppStateFacadeService {
                 new Version(appData.version.version)
             );
         }
+
+        // themeApplied
+        const themeApplied = appData.themeApplied;
+        this.appStateService.updateThemeApplied(themeApplied);
+
+        // currentConfId
+        const currentConfId = appData.currentConfId;
+        this.appStateService.updateCurrentConfId(currentConfId);
 
         // info
         const info = appData.infoItems.map((infoItem: IInfoItemModel) => {

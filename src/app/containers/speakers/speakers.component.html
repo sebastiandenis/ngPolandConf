@@ -17,9 +17,10 @@
     <Label class="action-bar-title" text="Speakers" style="font-size: 16;"></Label>
 </ActionBar>
 
-<GridLayout class="page page-content">
+<GridLayout class="page page-content" class="speakers"
+[ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']" >
     <StackLayout style="padding: 10 5;">
-        <SpeakersList></SpeakersList>
+        <SpeakersList [themeApplied]="themeApplied" [conference]="conference"></SpeakersList>
     </StackLayout>
 </GridLayout>
 

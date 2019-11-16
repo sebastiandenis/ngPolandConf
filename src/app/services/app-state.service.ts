@@ -1,16 +1,21 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { EventItem } from "../models/event-item.model";
-import { InfoItem } from "../models/info-item.model";
-import { Speaker } from "../models/speaker.model";
-import { Workshop } from "../models/workshop.model";
-import { SimpleContent } from "../models/simple-content.model";
-import { Version } from "../models/version.model";
+import { EventItem, IEventItem } from "../models/event-item.model";
+import { InfoItem, IInfoItemModel } from "../models/info-item.model";
+import { Speaker, ISpeaker } from "../models/speaker.model";
+import { Workshop, IWorkshop } from "../models/workshop.model";
+import {
+    SimpleContent,
+    ISimpleContentModel
+} from "../models/simple-content.model";
+import { Version, IVersion } from "../models/version.model";
+import { AppData } from "../models/app-data.model";
 
 @Injectable({
     providedIn: "root"
 })
 export class AppStateService {
+    private _appData: AppData = new AppData();
     private _themeApplied$ = new BehaviorSubject<boolean>(false);
     private _isLoading$ = new BehaviorSubject<boolean>(false);
 
@@ -48,6 +53,43 @@ export class AppStateService {
         Version
     >(new Version("0.0.0"));
 
+    constructor() {
+        this.currentConfId$.subscribe((confId: string) => {
+            this._appData.currentConfId = confId;
+        });
+        this.eventsJsPoland$.subscribe((jsEvents: Array<IEventItem>) => {
+            this._appData.eventsJsPoland = jsEvents;
+        });
+
+        this.eventsNgPoland$.subscribe((ngEvents: Array<IEventItem>) => {
+            this._appData.eventsNgPoland = ngEvents;
+        });
+
+        this.info$.subscribe((info: Array<IInfoItemModel>) => {
+            this._appData.infoItems = info;
+        });
+
+        this.ngGirls$.subscribe((ngGirls: ISimpleContentModel) => {
+            this._appData.ngGirls = ngGirls;
+        });
+
+        this.speakers$.subscribe((speakers: Array<ISpeaker>) => {
+            this._appData.speakers = speakers;
+        });
+
+        this.themeApplied$.subscribe((themeApplied: boolean) => {
+            this._appData.themeApplied = themeApplied;
+        });
+
+        this.workshops$.subscribe((workshops: Array<IWorkshop>) => {
+            this._appData.workshops = workshops;
+        });
+    }
+
+    get appData(): AppData {
+        return this._appData;
+    }
+
     get isLoading$(): Observable<boolean> {
         return this._isLoading$.asObservable();
     }
@@ -60,7 +102,12 @@ export class AppStateService {
         return this._themeApplied$.asObservable();
     }
 
+    get themeAppliedSync(): boolean {
+        return this._themeApplied$.getValue();
+    }
+
     updateThemeApplied(state: boolean) {
+        console.log("[AppStateService] updateThemeApplied(): ", state);
         this._themeApplied$.next(state);
     }
 

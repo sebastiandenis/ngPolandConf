@@ -3,6 +3,9 @@
 // Font icon class
 
 // Common page class
+
+$default-font-family: "Roboto";
+
 .page-content {
   .content-padding {
     padding: 0 20;
@@ -25,9 +28,12 @@
 }
 
 //Action bar
-ActionBar .action-bar-title {
-  horizontal-align: center;
-}
+.action-bar {
+  .action-bar-title {
+    horizontal-align: center;
+    font-size: 16;
+  }
+} 
 
 // Drawer navigation custom styles
 $sidedrawer-header-image-size: 60;
@@ -91,9 +97,6 @@ $sidedrawer-list-icon-size: 20;
   }
 }
 
-
-$basic-font-family: "Roboto";
-
 ActionBar.action-bar {
   background-color: #3949ab;
   color: white;
@@ -107,9 +110,8 @@ ActionBar.action-bar {
 }
 
 .action-bar-title {
-  font-size: 16;
+  font-size: 14;
 }
-
 
 .sidedrawer {
   &.sidedrawer-left {
@@ -119,13 +121,24 @@ ActionBar.action-bar {
     }
     .sidedrawer-content {
       background-color: #ffffff;
+
+      .sidedrawer-list-item {
+        label {
+          text-transform: none;
+        }
+      }
+    }
+
+    .switchContainer {
+      font-size: 13;
+      text-transform: none;
     }
   }
- 
 }
 
 .homeDescContainer {
   background-color: #3949ab;
+  text-transform: none;
   .homeDesc {
     font-size: 16;
     padding-left: 10;
@@ -134,6 +147,7 @@ ActionBar.action-bar {
 }
 
 .homeItemContainer {
+  text-transform: none;
   background-color: #ffffff;
   height: 100%;
   width: 100%;
@@ -151,6 +165,7 @@ ActionBar.action-bar {
 }
 
 .workshopCardStyle {
+  text-transform: none;
   color: #3c4043;
   .workshopTitle {
     font-weight: bold;
@@ -166,16 +181,81 @@ ActionBar.action-bar {
   }
 }
 
+.speakerDetail {
+  color: #3c4043;
+  .speakerDetailActionBar {
+    .title {
+      color: #ff1744;
+    }
+  }
+
+  .speakerDetailContent {
+    .speakerDetailTitle {
+      font-weight: bold;
+      font-size: 15;
+      text-transform: none;
+      opacity: 1;
+    }
+
+    .speakerDetailDescription {
+      opacity: 1;
+    }
+  }
+}
+
+.speakers {
+  background-color: #ffffff;
+  .speaker {
+    background-color: #ffffff;
+  }
+    .speakerCardStyle {
+      background-color: #ffffff;
+      color: #3C4043;;
+    }
+      .speakerName {
+        font-weight: bold;
+        font-size: 15;
+        color: #3C4043;;
+      }
+      .speakerRole {
+        font-size: 12;
+        color: #3C4043;
+      }
+  
+}
+
+.ngGirls {
+  background-color: #ffffff;
+  font-family: $default-font-family;
+  
+  .ngGirlsLogoImg {
+    opacity: 1;
+  }
+
+  .ngGirlsDesc {
+    color: #3C4043;
+    opacity: 1;
+  }
+}
+
+
+
+// ------------------------------------------------------------------
+// ----------------------- TERMINATOR THEME -------------------------
+// ------------------------------------------------------------------
+
 $terminator-font-family: "Terminator";
 $terminator-red-color: #ff1744;
 $terminator-primary-font-color: #e0dae8;
 $terminator-background-color: #0c102f;
 $terminator-lighter-background-color: #242743;
+$terminator-title-opacity: 0.7;
+$terminator-description-opacity: 0.8;
 
 .terminator {
   font-family: $terminator-font-family;
   color: $terminator-primary-font-color;
-  text-transform: uppercase;
+
   letter-spacing: 0.1;
 
   &.theme-splash-screen-background {
@@ -183,8 +263,7 @@ $terminator-lighter-background-color: #242743;
   }
 
   &.sidedrawer {
-
-      background-color: $terminator-background-color;
+    background-color: $terminator-background-color;
 
     .sidedrawer-header {
       background-color: $terminator-background-color;
@@ -221,13 +300,17 @@ $terminator-lighter-background-color: #242743;
       .hr-light {
         background-color: $terminator-lighter-background-color;
       }
+
+      .switchContainer {
+        font-size: 10;
+        text-transform: uppercase;
+      }
     }
   }
   &.action-bar-title {
-    font-family: "Roboto";
-text-transform: none;
-letter-spacing: 0;
-font-size: 16;
+    font-family: $default-font-family;
+    text-transform: none;
+    letter-spacing: 0;
   }
   &.homeDescContainer {
     background-color: $terminator-background-color;
@@ -238,6 +321,7 @@ font-size: 16;
       margin-bottom: 5;
       text-transform: uppercase;
       letter-spacing: 0.1;
+      line-height: 5;
     }
   }
 
@@ -272,14 +356,87 @@ font-size: 16;
     }
     .workshopInstructorName {
       color: $terminator-primary-font-color;
-      font-family: $basic-font-family;
+      font-family: $default-font-family;
     }
     .workshopDescLabel {
-      font-family: $basic-font-family;
+      font-family: $default-font-family;
       color: $terminator-primary-font-color;
       padding-top: 15;
       font-size: 14;
       opacity: 0.8;
     }
   }
+
+  &.speakerDetail {
+    background-color: $terminator-background-color;
+    .speakerDetailActionBar {
+      background-color: $terminator-background-color;
+      font-family: $default-font-family;
+      .title {
+        color: $terminator-primary-font-color;
+      }
+    }
+
+    .speakerDetailContent {
+      background-color: $terminator-background-color;
+      font-family: $default-font-family;
+      color: $terminator-primary-font-color;
+
+      .speakerDetailTitle {
+        font-family: $terminator-font-family;
+        color: $terminator-red-color;
+        opacity: $terminator-title-opacity;
+        text-transform: uppercase;
+        letter-spacing: 0.1;
+        font-size: 13;
+        line-height: 5;
+      }
+
+      .speakerDetailDescription {
+        color: $terminator-primary-font-color;
+        opacity: $terminator-description-opacity;
+      }
+    }
+  }
+
+  &.speakers {
+    background-color: $terminator-background-color;
+    .speaker {
+      background-color: $terminator-background-color;
+      color: $terminator-primary-font-color;
+    }
+      .speakerCardStyle {
+        background-color: $terminator-background-color;
+        color: $terminator-primary-font-color;
+      }
+        .speakerName {
+          font-family: $default-font-family;
+          color: $terminator-red-color;
+          opacity: $terminator-title-opacity;
+        }
+
+        .speakerRole {
+          font-family: $default-font-family;
+          color: $terminator-primary-font-color;
+          opacity: $terminator-description-opacity;
+        }
+      
+    
+  }
+
+  &.ngGirls {
+    background-color: $terminator-background-color;
+    font-family: $default-font-family;
+    
+    .ngGirlsLogoImg {
+      opacity: 0.7;
+    }
+  
+    .ngGirlsDesc {
+      color: $terminator-primary-font-color;
+      opacity: $terminator-description-opacity;
+    }
+  }
+
+  
 }

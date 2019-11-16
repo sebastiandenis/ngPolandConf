@@ -4,7 +4,8 @@ import {
     OnDestroy,
     ViewContainerRef,
     ViewChild,
-    AfterViewInit
+    AfterViewInit,
+    ChangeDetectorRef
 } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -48,7 +49,8 @@ export class AppComponent implements OnInit, OnDestroy {
         private routerExtensions: RouterExtensions,
         private appStateFacade: AppStateFacadeService,
         private modalService: ModalDialogService,
-        private viewContainerRef: ViewContainerRef
+        private viewContainerRef: ViewContainerRef,
+        private changeDetectionRef: ChangeDetectorRef
     ) {
         this.secureStorage = new SecureStorage();
     }
@@ -80,6 +82,7 @@ export class AppComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.destroySubject$))
             .subscribe((isThemeApplied: boolean) => {
                 this.themeApplied = isThemeApplied;
+                this.appStateFacade.saveAppState();
             });
     }
 
@@ -97,13 +100,19 @@ export class AppComponent implements OnInit, OnDestroy {
 
     onCheckedChange(event: EventData) {
         const sw = event.object as Switch;
-        if (sw.checked) {
+        if (!sw.checked) {
+            this.appStateFacade.updateThemeApplied(sw.checked);
+            this.changeDetectionRef.markForCheck();
+        }
+    }
+
+    onThemeSwitchTap(sw: Switch) {
+        // switch with before change state
+        if (!sw.checked) {
             this.openThemeSplashScreenModal();
             setTimeout(() => {
                 this.appStateFacade.updateThemeApplied(sw.checked);
             }, 300);
-        } else {
-            this.appStateFacade.updateThemeApplied(sw.checked);
         }
     }
 
