@@ -3,7 +3,15 @@ import { ContentfulService, EventItemType } from "./contentful.service";
 import { DeviceService } from "./device.service";
 import { EventItem, IEventItem } from "../models/event-item.model";
 import { AppStateService } from "./app-state.service";
-import { Observable, combineLatest, from, of, BehaviorSubject } from "rxjs";
+import {
+    Observable,
+    combineLatest,
+    from,
+    of,
+    BehaviorSubject,
+    throwError,
+    pipe
+} from "rxjs";
 import { Workshop, IWorkshop } from "../models/workshop.model";
 import { Speaker, ISpeaker } from "../models/speaker.model";
 import { InfoItem, IInfoItemModel } from "../models/info-item.model";
@@ -13,7 +21,13 @@ import { AppData } from "../models/app-data.model";
 import { SecureStorage } from "nativescript-secure-storage";
 import { SECURE_STORAGE_KEY, SettingsService } from "./settings.service";
 import { HttpClient } from "@angular/common/http";
-import { switchMap, distinctUntilChanged, map } from "rxjs/operators";
+import {
+    switchMap,
+    distinctUntilChanged,
+    map,
+    catchError,
+    take
+} from "rxjs/operators";
 import { IConference } from "../models/conference.model";
 
 export const DATA_FILE_PATH = "/assets/app-data.json";
@@ -111,14 +125,13 @@ export class AppStateFacadeService {
 
     initState(confId?: string) {
         // TODO: poradzić sobie z asynchronicznością
-       // this.initFromApp();
+        // this.initFromApp();
         this.initStateFromLocalStorage();
         if (this.device.isInternetConnectionAvailable()) {
             this.initStateFromTheInternet();
         } else {
             this.initStateFromLocalStorage();
         }
-
     }
 
     loadEvents(
@@ -183,7 +196,7 @@ export class AppStateFacadeService {
             this.loadSpeakers(this.currentConfId),
             this.loadNgGirls(this.currentConfId)
         ];
-        combineLatest(obsArray).subscribe(
+        combineLatest(obsArray).pipe(take(1)).subscribe(
             ([
                 version,
                 ngPolandEvents,
@@ -234,13 +247,11 @@ export class AppStateFacadeService {
     }
 
     private initStateFromLocalStorage() {
-        this.getAppDataFromLocalStorage().subscribe((data: AppData) => {
-            console.log(
-                "[initStateFromLocalStorage()] themeApplied : ",
-                data.themeApplied
-            );
-            this.initFromAppData(data, "local-storage");
-        });
+        this.getAppDataFromLocalStorage().pipe(take(1)).subscribe(
+            (data: AppData) => {
+                this.initFromAppData(data, "local-storage");
+            }
+        );
     }
 
     private getAppDataFromFile(): Observable<AppData> {
@@ -248,7 +259,7 @@ export class AppStateFacadeService {
     }
 
     private initFromApp() {
-        this.getAppDataFromFile().subscribe((jsonData: AppData) => {
+        this.getAppDataFromFile().pipe(take(1)).subscribe((jsonData: AppData) => {
             this.initFromAppData(jsonData, "app");
         });
     }
