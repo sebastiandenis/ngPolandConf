@@ -5,6 +5,7 @@ import { Observable, Subject } from "rxjs";
 import { IInfoItemModel } from "../../models/info-item.model";
 import { AppStateFacadeService } from "../../services/app-state-facade.service";
 import { takeUntil } from "rxjs/operators";
+import { IConference } from "../../models/conference.model";
 
 @Component({
     selector: "Info",
@@ -16,6 +17,8 @@ export class InfoComponent implements OnInit, OnDestroy {
     infoItems$: Observable<Array<IInfoItemModel>>;
     infoItemsSorted: Array<IInfoItemModel>;
     isLoading$: Observable<boolean>;
+    conference: IConference;
+    themeApplied = false;
 
     private destroySubject$: Subject<void> = new Subject<void>();
 
@@ -25,7 +28,7 @@ export class InfoComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.infoItems$ = this.appStateFacade.getInfo(); 
+        this.infoItems$ = this.appStateFacade.getInfo();
         this.infoItems$
             .pipe(takeUntil(this.destroySubject$))
             .subscribe((items: Array<IInfoItemModel>) => {
@@ -37,6 +40,19 @@ export class InfoComponent implements OnInit, OnDestroy {
                         return b > a ? -1 : a > b ? 1 : 0;
                     }
                 );
+            });
+
+        this.appStateFacade
+            .getCurrentConference()
+            .pipe(takeUntil(this.destroySubject$))
+            .subscribe((conf: IConference) => {
+                this.conference = conf;
+            });
+        this.appStateFacade
+            .getThemeApplied()
+            .pipe(takeUntil(this.destroySubject$))
+            .subscribe((isThemeApplied: boolean) => {
+                this.themeApplied = isThemeApplied;
             });
     }
 

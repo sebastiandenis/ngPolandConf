@@ -15,13 +15,13 @@
     <Label class="action-bar-title" text="Info"></Label>
 </ActionBar>
 
-<GridLayout class="page page-content">
+<GridLayout class="page page-content" [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']" class="infoPage">
     <StackLayout style="padding: 10 5;">
         <StackLayout *ngIf="infoItemsSorted as infoItems; else nocontent">
             <PullToRefresh [refreshing]="isLoading$ | async" (refresh)="refreshData($event)">
                 <ListView class="list-group" [items]="infoItems" style="height: 100%;" separatorColor="#ff1744">
                     <ng-template let-item="item">
-                        <InfoItem [item]="item"></InfoItem>
+                        <InfoItem [item]="item" ></InfoItem>
                     </ng-template>
                 </ListView>
             </PullToRefresh>

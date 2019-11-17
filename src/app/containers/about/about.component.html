@@ -9,42 +9,39 @@
     NavigationButton as a side-drawer button in iOS is not possible,
     because its function is to always navigate back in the application.
     -->
-    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
     </ActionItem>
     <Label class="action-bar-title" text="About"></Label>
 </ActionBar>
 <GridLayout class="page page-content">
-<ScrollView>
+    <ScrollView>
+        <StackLayout style="padding: 15 20;" class="aboutPage"
+            [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']">
+            <NSImg [src]="themeApplied ? 'res://terminator_about_logo' : 'res://logong'" autoPlayAnimations="true" style="width: 70%;height: 150;margin-bottom: 20;" android:style="margin-top: 20;" ios:style="margin-top: 90;"></NSImg>
+            <Label text="This app is built with NativeScript + Angular!" textWrap="true" class="aboutPageDesc"
+                verticalAlignment="center"></Label>
+            <StackLayout class="hr-light m-10" style="background-color: #ff1744; opacity: 0.6;"></StackLayout>
+            <GridLayout rows="30, 80, 80" columns="70, *" style="margin-top: 15;margin-bottom: 15;">
+                <Label row="0" col="0" colSpan="2" text="Authors:" textWrap="true" class="aboutPageAuthors"></Label>
+                <NSImg row="1" col="0" src="res://sd" horizontalAlignment="center" width="60" height="60"
+                    roundAsCircle="true" stretch="aspectFit" ripple (tap)="showSebekDetails()"></NSImg>
+                <Label row="1" col="1" text="Sebastian Denis" class="aboutPageAuthorsDesc" verticalAlignment="center"
+                    textAlignment="left" ripple (tap)="showSebekDetails()"></Label>
+                <NSImg row="2" col="0" src="res://dk" horizontalAlignment="center" width="60" height="60"
+                    roundAsCircle="true" stretch="aspectFit" (tap)="showDarekDetails()" ripple></NSImg>
+                <Label row="2" col="1" text="Dariusz Kalbarczyk" class="aboutPageAuthorsDesc" verticalAlignment="center"
+                    textAlignment="left" ripple (tap)="showDarekDetails()"></Label>
+            </GridLayout>
 
-
-    <StackLayout style="padding: 15 20;">
-        <NSImg src="res://logong" style="width: 70%;height: 150;margin-bottom: 20;" android:style="margin-top: 20;" ios:style="margin-top: 90;"></NSImg>
-        <Label text="This app is built with NativeScript + Angular!" textWrap="true" style="color: #3949ab;font-size: 14; text-align: center;margin-bottom: 15;"
-        verticalAlignment="center"></Label>
-        <StackLayout class="hr-light m-10"></StackLayout>
-        <GridLayout rows="30, 80, 80" columns="70, *" style="margin-top: 15;margin-bottom: 15;">
-            <Label row="0" col="0" colSpan="2"  text="Authors:" textWrap="true" style="color: #ff1744;font-size: 14;" ></Label>
-            <NSImg row="1" col="0" src="res://sd" horizontalAlignment="center" width="60" height="60" roundAsCircle="true" stretch="aspectFit"
-            (tap)="showSebekDetails()"></NSImg>
-            <Label row="1" col="1" text="Sebastian Denis"  fontSize="14" verticalAlignment="center" textAlignment="left"
-            style="color: #3C4043;margin-left: 15;"  (tap)="showSebekDetails()" ></Label>
-            <NSImg row="2" col="0" src="res://dk" horizontalAlignment="center" width="60" height="60" roundAsCircle="true" stretch="aspectFit"
-            (tap)="showDarekDetails()" 
-            ></NSImg>
-            <Label row="2" col="1" text="Dariusz Kalbarczyk" fontSize="14" verticalAlignment="center" 
-            textAlignment="left"
-            style="color: #3C4043;margin-left: 15;" (tap)="showDarekDetails()" ></Label>
-        </GridLayout>
-
-        <StackLayout class="hr-light m-10"></StackLayout>
-        <GridLayout rows="auto" columns="70, *" style="margin-top: 15;">
-            <NSImg row="0" col="0" src="res://github" verticalAlignment="center" textAlignment="center"  width="40" height="40"  stretch="aspectFit" ></NSImg>
-            <Label row="0" col="1" text="https://github.com/sebastiandenis/ngPolandConf" textWrap="true"  verticalAlignment="center" textAlignment="left"
-            style="color: #3C4043;font-size: 12;margin-left: 15;color: #3949ab;text-decoration: underline;" (tap)="onGitHubLinkTap()"></Label>
-        </GridLayout>
-
-    </StackLayout>
-
-</ScrollView>
-
+            <StackLayout class="hr-light m-10" style="background-color: #ff1744; opacity: 0.6;"></StackLayout>
+            <GridLayout rows="auto" columns="70, *" style="margin-top: 15;">
+                <NSImg row="0" col="0" src="res://github" verticalAlignment="center" textAlignment="center" width="40"
+                    height="40" stretch="aspectFit"></NSImg>
+                <Label row="0" col="1" text="https://github.com/sebastiandenis/ngPolandConf" textWrap="true"
+                    verticalAlignment="center" textAlignment="left" class="aboutPageGithubLink"
+                    (tap)="onGitHubLinkTap()"></Label>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
 </GridLayout>

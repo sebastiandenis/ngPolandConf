@@ -110,13 +110,14 @@ export class AppStateFacadeService {
 
     initState(confId?: string) {
         // TODO: poradzić sobie z asynchronicznością
-        // this.initFromApp();
-        this.initStateFromLocalStorage();
+       // this.initFromApp();
+       // this.initStateFromLocalStorage();
         if (this.device.isInternetConnectionAvailable()) {
             this.initStateFromTheInternet();
         } else {
             this.initStateFromLocalStorage();
         }
+        
     }
 
     loadEvents(
@@ -154,7 +155,9 @@ export class AppStateFacadeService {
         this.secureStorage
             .set({
                 key: SECURE_STORAGE_KEY,
-                value: JSON.stringify(appData ? appData : this.appStateService.appData)
+                value: JSON.stringify(
+                    appData ? appData : this.appStateService.appData
+                )
             })
             .then((success: boolean) => {
                 console.log(
@@ -231,7 +234,10 @@ export class AppStateFacadeService {
 
     private initStateFromLocalStorage() {
         this.getAppDataFromLocalStorage().subscribe((data: AppData) => {
-            console.log("[initStateFromLocalStorage()] themeApplied : ", data.themeApplied);
+            console.log(
+                "[initStateFromLocalStorage()] themeApplied : ",
+                data.themeApplied
+            );
             this.initFromAppData(data, "local-storage");
         });
     }

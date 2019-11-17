@@ -33,7 +33,7 @@ $default-font-family: "Roboto";
     horizontal-align: center;
     font-size: 16;
   }
-} 
+}
 
 // Drawer navigation custom styles
 $sidedrawer-header-image-size: 60;
@@ -130,7 +130,7 @@ ActionBar.action-bar {
     }
 
     .switchContainer {
-      font-size: 13;
+      font-size: 14;
       text-transform: none;
     }
   }
@@ -208,36 +208,108 @@ ActionBar.action-bar {
   .speaker {
     background-color: #ffffff;
   }
-    .speakerCardStyle {
-      background-color: #ffffff;
-      color: #3C4043;;
-    }
-      .speakerName {
-        font-weight: bold;
-        font-size: 15;
-        color: #3C4043;;
-      }
-      .speakerRole {
-        font-size: 12;
-        color: #3C4043;
-      }
-  
+  .speakerCardStyle {
+    background-color: #ffffff;
+    color: #3c4043;
+  }
+  .speakerName {
+    font-weight: bold;
+    font-size: 15;
+    color: #3c4043;
+  }
+  .speakerRole {
+    font-size: 12;
+    color: #3c4043;
+  }
 }
 
 .ngGirls {
   background-color: #ffffff;
   font-family: $default-font-family;
-  
+
   .ngGirlsLogoImg {
     opacity: 1;
   }
 
   .ngGirlsDesc {
-    color: #3C4043;
+    color: #3c4043;
     opacity: 1;
   }
 }
 
+.infoPage {
+  background-color: #ffffff;
+  font-family: $default-font-family;
+
+  .cardStyle {
+    background-color: #ffffff;
+    color: #3c4043;
+
+    .fa {
+      color: #3c4043;
+      opacity: 1;
+    }
+  }
+
+  .infoTitle {
+    color: #ff1744;
+    font-weight: bold;
+    font-family: $default-font-family;
+    text-transform: none;
+    font-size: 18;
+    letter-spacing: 0;
+  }
+
+  .infoDesc {
+    color: #3c4043;
+    opacity: 1;
+  }
+
+  .moreInfoLabel {
+    color: #3c4043;
+    opacity: 1;
+  }
+
+}
+
+
+.aboutPage {
+  background-color: #ffffff;
+
+  .aboutPageDesc {
+    color: #3949ab;
+    font-size: 14; 
+    font-family: $default-font-family;
+    text-transform: none;
+    opacity: 1;
+    line-height: unset;
+  }
+
+  .aboutPageAuthors {
+    color: #ff1744;
+    font-size: 14;
+    font-family: $default-font-family;
+    text-transform: none;
+    opacity: 1;
+    letter-spacing: 0;
+  }
+
+  .aboutPageAuthorsDesc {
+    color: #3C4043;
+    font-size: 14;
+    font-family: $default-font-family;
+    text-transform: none;
+    opacity: 1;
+    letter-spacing: 0;
+  }
+
+  .aboutPageGithubLink {
+    color: #3949ab;
+    font-family: $default-font-family;
+    text-decoration: underline;
+    opacity: 1;
+  }
+}
 
 
 // ------------------------------------------------------------------
@@ -405,38 +477,106 @@ $terminator-description-opacity: 0.8;
       background-color: $terminator-background-color;
       color: $terminator-primary-font-color;
     }
-      .speakerCardStyle {
-        background-color: $terminator-background-color;
-        color: $terminator-primary-font-color;
-      }
-        .speakerName {
-          font-family: $default-font-family;
-          color: $terminator-red-color;
-          opacity: $terminator-title-opacity;
-        }
+    .speakerCardStyle {
+      background-color: $terminator-background-color;
+      color: $terminator-primary-font-color;
+    }
+    .speakerName {
+      font-family: $default-font-family;
+      color: $terminator-red-color;
+      opacity: $terminator-title-opacity;
+    }
 
-        .speakerRole {
-          font-family: $default-font-family;
-          color: $terminator-primary-font-color;
-          opacity: $terminator-description-opacity;
-        }
-      
-    
+    .speakerRole {
+      font-family: $default-font-family;
+      color: $terminator-primary-font-color;
+      opacity: $terminator-description-opacity;
+    }
   }
 
   &.ngGirls {
     background-color: $terminator-background-color;
     font-family: $default-font-family;
-    
+
     .ngGirlsLogoImg {
       opacity: 0.7;
     }
-  
+
     .ngGirlsDesc {
       color: $terminator-primary-font-color;
       opacity: $terminator-description-opacity;
     }
   }
 
-  
+  &.infoPage {
+    background-color: $terminator-background-color;
+    font-family: $default-font-family;
+
+    .cardStyle {
+      background-color: $terminator-background-color;
+      color: $terminator-primary-font-color;
+
+      .fa {
+        color: $terminator-primary-font-color;
+        opacity: 0.4;
+      }
+    }
+
+    .infoTitle {
+      color: $terminator-red-color;
+      font-family: $terminator-font-family;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: 14;
+      letter-spacing: 0.1;
+    }
+
+    .infoDesc {
+      color: $terminator-primary-font-color;
+      opacity: $terminator-description-opacity;
+    }
+
+    .moreInfoLabel {
+      color: $terminator-primary-font-color;
+      opacity: $terminator-description-opacity;
+    }
+  }
+
+  &.aboutPage {
+    background-color: $terminator-background-color;
+
+    .aboutPageDesc {
+      font-size: 12; 
+      color: $terminator-primary-font-color;
+      font-family: $terminator-font-family;
+      text-transform: uppercase;
+      opacity: $terminator-title-opacity;
+      line-height: 5;
+    }
+
+    .aboutPageAuthors {
+      color: $terminator-red-color;
+      font-size: 12;
+      font-family: $terminator-font-family;
+      text-transform: uppercase;
+      opacity: $terminator-title-opacity;
+      letter-spacing: 0.1;
+    }
+
+    .aboutPageAuthorsDesc {
+      color: $terminator-primary-font-color;
+      font-size: 10;
+      font-family: $terminator-font-family;
+      text-transform: uppercase;
+      opacity: $terminator-description-opacity;
+      letter-spacing: 0.1;
+    }
+
+    .aboutPageGithubLink {
+      color: $terminator-primary-font-color;
+      font-family: $default-font-family;
+      text-decoration: underline;
+      opacity: $terminator-title-opacity;
+    }
+  }
 }

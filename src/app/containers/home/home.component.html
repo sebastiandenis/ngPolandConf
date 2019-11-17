@@ -17,7 +17,7 @@
         [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"></Label>
 </ActionBar>
 <ScrollView >
-    <GridLayout rows="auto, *" columns="*" style="height: 100%;" ios:style="padding-top: 60;" >
+    <GridLayout rows="auto, *" columns="*" style="height: 100%;" ios:style="padding-top: 60;"  >
         <StackLayout *ngIf="!isLandscape" row="0" col="0" style="height: 120;width: 100%;" verticalAlignment="middle"
             horizontalAlignment="center" 
             class="homeDescContainer" [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']">
