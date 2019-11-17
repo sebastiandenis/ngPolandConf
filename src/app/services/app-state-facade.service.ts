@@ -37,7 +37,8 @@ export class AppStateFacadeService {
             .pipe(distinctUntilChanged())
             .subscribe((confId: string) => {
                 this.currentConfId = confId;
-                this.initStateFromTheInternet();
+                this.initState(this.currentConfId);
+                // this.initStateFromTheInternet();
             });
     }
 
@@ -111,13 +112,13 @@ export class AppStateFacadeService {
     initState(confId?: string) {
         // TODO: poradzić sobie z asynchronicznością
        // this.initFromApp();
-       // this.initStateFromLocalStorage();
+        this.initStateFromLocalStorage();
         if (this.device.isInternetConnectionAvailable()) {
             this.initStateFromTheInternet();
         } else {
             this.initStateFromLocalStorage();
         }
-        
+
     }
 
     loadEvents(

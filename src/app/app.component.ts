@@ -56,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.secureStorage.clearAllOnFirstRun().then((success: boolean) => {});
+        //this.secureStorage.clearAllOnFirstRun().then((success: boolean) => {});
         this.appStateFacade.initState();
         this._activatedUrl = "/home";
         this.themeApplied$ = this.appStateFacade.getThemeApplied();
