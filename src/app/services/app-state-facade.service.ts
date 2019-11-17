@@ -129,9 +129,10 @@ export class AppStateFacadeService {
         this.initStateFromLocalStorage();
         if (this.device.isInternetConnectionAvailable()) {
             this.initStateFromTheInternet();
-        } else {
-            this.initStateFromLocalStorage();
-        }
+        } 
+        // else {
+        //     this.initStateFromLocalStorage();
+        // }
     }
 
     loadEvents(
@@ -185,7 +186,7 @@ export class AppStateFacadeService {
         return of(false);
     }
 
-    private initStateFromTheInternet() {
+    initStateFromTheInternet() {
         this.appStateService.updateIsLoading(true);
         const obsArray = [
             this.loadDataVersion(),
@@ -234,6 +235,12 @@ export class AppStateFacadeService {
                 });
                 this.appStateService.updateIsLoading(false);
                 this.saveAppState(appData);
+            },
+            (error: any)=>{
+                this.appStateService.updateIsLoading(false);
+            },
+            ()=>{
+                this.appStateService.updateIsLoading(false);
             }
         );
     }
@@ -246,7 +253,7 @@ export class AppStateFacadeService {
         );
     }
 
-    private initStateFromLocalStorage() {
+    initStateFromLocalStorage() {
         this.getAppDataFromLocalStorage().pipe(take(1)).subscribe(
             (data: AppData) => {
                 this.initFromAppData(data, "local-storage");

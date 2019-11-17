@@ -66,6 +66,6 @@ export class InfoComponent implements OnInit, OnDestroy {
     }
 
     refreshData(arg: any) {
-        this.appStateFacade.initState();
+        this.appStateFacade.initStateFromTheInternet();
     }
 }

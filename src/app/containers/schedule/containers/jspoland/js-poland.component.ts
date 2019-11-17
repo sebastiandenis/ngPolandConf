@@ -29,6 +29,6 @@ export class JsPolandComponent implements OnInit {
     }
 
     refreshData(arg: any) {
-        this.appStateFacade.initState();
+        this.appStateFacade.initStateFromTheInternet();
     }
 }
