@@ -269,16 +269,14 @@ ActionBar.action-bar {
     color: #3c4043;
     opacity: 1;
   }
-
 }
-
 
 .aboutPage {
   background-color: #ffffff;
 
   .aboutPageDesc {
     color: #3949ab;
-    font-size: 14; 
+    font-size: 14;
     font-family: $default-font-family;
     text-transform: none;
     opacity: 1;
@@ -295,7 +293,7 @@ ActionBar.action-bar {
   }
 
   .aboutPageAuthorsDesc {
-    color: #3C4043;
+    color: #3c4043;
     font-size: 14;
     font-family: $default-font-family;
     text-transform: none;
@@ -311,6 +309,63 @@ ActionBar.action-bar {
   }
 }
 
+
+.schedulePage {
+  background-color: #ffffff;
+
+  .scheduleItem {
+    background-color: #f1f3f4;
+    font-family: $default-font-family;
+
+    &.now {
+      border-color: #fbbc04;
+      border-style: solid;
+      border-width: 2;
+    }
+
+    .scheduleItemHour {
+      font-size: 18;
+      color: #3949ab;
+
+      font-family: $default-font-family;
+      opacity: 1;
+    }
+
+    .scheduleItemContent{
+      
+      .scheduleItemDuration {
+        color: #5F6368;
+
+        font-family: $default-font-family;
+        opacity: 1;
+      }
+
+      .scheduleItemName {
+        color: #5F6368;
+
+        font-family: $default-font-family;
+        opacity: 1;
+      }
+
+  
+    }
+
+    .scheduleTitle {
+      color: #3C4043;
+      font-family: $default-font-family;
+      opacity: 1;
+    }
+
+    .scheduleItemIcon {
+      color: #ff8099;
+      opacity: 1;
+    }
+
+    
+
+ 
+  }
+}
 
 // ------------------------------------------------------------------
 // ----------------------- TERMINATOR THEME -------------------------
@@ -546,7 +601,7 @@ $terminator-description-opacity: 0.8;
     background-color: $terminator-background-color;
 
     .aboutPageDesc {
-      font-size: 12; 
+      font-size: 12;
       color: $terminator-primary-font-color;
       font-family: $terminator-font-family;
       text-transform: uppercase;
@@ -577,6 +632,65 @@ $terminator-description-opacity: 0.8;
       font-family: $default-font-family;
       text-decoration: underline;
       opacity: $terminator-title-opacity;
+    }
+  }
+
+  &.schedulePage {
+    background-color: $terminator-background-color;
+
+    .scheduleItem {
+      background-color: #f1f3f4;
+      background-color: $terminator-background-color;
+      font-family: $terminator-font-family;
+
+      &.now {
+        border-color: #fbbc04;
+        border-style: solid;
+        border-width: 2;
+      }
+
+      .scheduleItemHour {
+        font-size: 18;
+        color: #3949ab;
+
+        font-family: $default-font-family;
+        font-size: 18;
+        color: $terminator-red-color;
+        opacity: $terminator-title-opacity;
+      }
+
+      .scheduleItemContent{
+        
+        .scheduleItemDuration {
+          font-family: $default-font-family;
+          color: $terminator-primary-font-color;
+          opacity: $terminator-title-opacity;
+        }
+  
+        .scheduleItemName {
+          font-family: $default-font-family;
+          color: $terminator-primary-font-color;
+          opacity: $terminator-description-opacity;
+        }
+  
+    
+      }
+
+      .scheduleTitle {
+        font-family: $default-font-family;
+        color: $terminator-primary-font-color;
+        opacity: $terminator-title-opacity;
+      }
+
+      .scheduleItemIcon {
+        color: $terminator-red-color;
+        opacity: 0.5;
+      }
+  
+
+      
+
+   
     }
   }
 }

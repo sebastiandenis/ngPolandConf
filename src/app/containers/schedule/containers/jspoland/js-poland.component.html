@@ -1,4 +1,5 @@
-<StackLayout *ngIf="events$ | async as events; else nocontent">
+<StackLayout *ngIf="events$ | async as events; else nocontent"
+	[ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']" class="schedulePage">
 	<PullToRefresh [refreshing]="isLoading$ | async" (refresh)="refreshData($event)">
 		<ListView class="list-group" [items]="events" style="height:100%;padding-top: 3;" separatorColor="#ffffff">
 			<ng-template let-event="item">

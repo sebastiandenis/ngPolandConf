@@ -1,4 +1,4 @@
-<StackLayout width="100%" style="padding: 3 8;">
+<StackLayout width="100%" style="padding: 3 8;" >
   <GridLayout
     columns="75, *, 75"
     rows="5, auto, 45, 10"
@@ -9,17 +9,18 @@
     verticalAlignment="top"
     style="padding: 10 5;"
     [ngClass]="{'now': isNow()}"
+    class="scheduleItem"
   >
     <GridLayout columns="*" rows="auto, *" col="0" row="1" rowSpan="3" verticalAlignment="top">
       <label
         [text]="eventItem.startDate | date: 'HH:mm'"
         col="0"
         row="0"
-        style="color: #3949ab;"
         textWrap="true"
         verticalAlignment="top"
         textAlignment="center"
-        fontSize="18"
+   
+        class="scheduleItemHour"
       ></label>
       <StackLayout col="0" row="1" verticalAlignment="center">
         <label
@@ -43,11 +44,11 @@
       textWrap="true"
       col="1"
       row="1"
-      style="color: #3C4043;"
+      class="scheduleTitle"
     ></label>
 
-    <StackLayout col="1" row="2">
-      <GridLayout columns="auto, auto, auto, *">
+    <StackLayout col="1" row="2" >
+      <GridLayout columns="auto, auto, auto, *" class="scheduleItemContent">
         <label
           col="0"
           row="1"
@@ -62,7 +63,8 @@
           row="1"
           [text]="eventItem.getEventDuration() + ' min'"
           textWrap="true"
-          style="color: #5F6368;font-size: 13;margin-right: 30;"
+          style="font-size: 13;margin-right: 30;"
+          class="scheduleItemDuration"
           verticalAlignment="center"
           textAlignment="center"
         ></label>
@@ -83,7 +85,8 @@
           row="1"
           [text]="eventItem.presenter?.name"
           textWrap="true"
-          style="color: #5F6368;font-size: 12;"
+          style="font-size: 12;"
+          class="scheduleItemName"
           verticalAlignment="center"
           textAlignment="left"
           ripple (tap)="showModal()"
@@ -93,7 +96,7 @@
 
     <label
       [text]="eventItem.getEventItemIcon()"
-      class="fa"
+      class="fa scheduleItemIcon"
       fontWeight="normal"
       fontSize="18"
       verticalAlignment="center"
@@ -103,7 +106,7 @@
       col="2"
       row="1"
       rowSpan="2"
-      style="color: #ff8099;"
+      
     ></label>
   </GridLayout>
 </StackLayout>
