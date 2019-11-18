@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ChangeDetectorRef } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import * as app from "tns-core-modules/application";
+import * as app from "@nativescript/core/application";
 import { DeviceService } from "~/app/services/device.service";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";

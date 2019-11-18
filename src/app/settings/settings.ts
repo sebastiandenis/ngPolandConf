@@ -11,7 +11,7 @@ export const conferenceYears = ["2018", "2019"];
 export const conferenceThemes = ["freddie-m", "terminator"];
 
 const theme2018: ITheme = {
-  cssClassName: conferenceThemes[1],
+  cssClassName: conferenceThemes[0],
   cssPrimaryTextColor: "#e0dae8" // TODO: zmienić jak będą dane na 2019
 };
 const theme2019: ITheme = {

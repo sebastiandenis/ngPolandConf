@@ -24,7 +24,7 @@ import { EventItemComponent } from "./containers/schedule/components/event-item/
 import { SwitchYearComponent } from "./shared/components/switch-year/switch-year.component";
 import { TNSImageModule } from "nativescript-image/angular";
 import * as imageModule from "nativescript-image";
-import * as applicationModule from "tns-core-modules/application";
+import * as applicationModule from "@nativescript/core/application";
 import { ThemeSplashScreenComponent } from "./shared/components/theme-splash-screen/theme-splash-screen.component";
 import { NgRippleModule } from "nativescript-ng-ripple";
 

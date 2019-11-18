@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-import * as dialogs from "tns-core-modules/ui/dialogs";
+import * as dialogs from "@nativescript/core/ui/dialogs";
 
 @Injectable({
   providedIn: "root"

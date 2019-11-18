@@ -40,7 +40,7 @@ export class AppStateService {
     >(null);
     private _currentConfId$: BehaviorSubject<string> = new BehaviorSubject<
         string
-    >("2018");
+    >("2019");
 
     private _dataVersionApp$: BehaviorSubject<Version> = new BehaviorSubject<
         Version

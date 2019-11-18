@@ -11,12 +11,11 @@ import { NavigationEnd, Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { filter, takeUntil, distinctUntilChanged } from "rxjs/operators";
 import { AppStateFacadeService } from "./services/app-state-facade.service";
-import { SecureStorage } from "nativescript-secure-storage";
 
 import { Observable, Subject } from "rxjs";
 
-import { EventData } from "tns-core-modules/ui/page/page";
-import { Switch } from "tns-core-modules/ui/switch";
+import { EventData } from "@nativescript/core/ui/page/page";
+import { Switch } from "@nativescript/core/ui/switch";
 import {
     ModalDialogOptions,
     ModalDialogService
@@ -25,7 +24,7 @@ import { SwitchYearComponent } from "./shared/components/switch-year/switch-year
 import { IConference } from "./models/conference.model";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular/side-drawer-directives";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import * as app from "tns-core-modules/application";
+import * as app from "@nativescript/core/application";
 import { ThemeSplashScreenComponent } from "./shared/components/theme-splash-screen/theme-splash-screen.component";
 
 @Component({

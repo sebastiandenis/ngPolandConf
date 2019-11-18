@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewContainerRef, OnDestroy } from "@angular/core";
 import { ModalDialogParams } from "nativescript-angular/modal-dialog";
-import { ListPicker } from "tns-core-modules/ui/list-picker";
-import { EventData } from "tns-core-modules/data/observable/observable";
+import { ListPicker } from "@nativescript/core/ui/list-picker";
+import { EventData } from "@nativescript/core/data/observable/observable";
 import { AppStateFacadeService } from "../../../services/app-state-facade.service";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";

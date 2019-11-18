@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import * as app from "tns-core-modules/application";
+import * as app from "@nativescript/core/application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import * as utils from "tns-core-modules/utils/utils";
+import * as utils from "@nativescript/core/utils/utils";
 import { Subject } from "rxjs";
 import { IConference } from "../../models/conference.model";
 import { AppStateFacadeService } from "../../services/app-state-facade.service";

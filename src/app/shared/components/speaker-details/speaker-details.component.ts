@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 import { Speaker } from "../../../models/speaker.model";
-import * as utils from "tns-core-modules/utils/utils";
+import * as utils from "@nativescript/core/utils/utils";
 import { AppStateFacadeService } from "../../../services/app-state-facade.service";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";

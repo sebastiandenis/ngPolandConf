@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import * as utils from "tns-core-modules/utils/utils";
+import * as utils from "@nativescript/core/utils/utils";
 import { IInfoItemModel } from "../../../../models/info-item.model";
 
 @Component({

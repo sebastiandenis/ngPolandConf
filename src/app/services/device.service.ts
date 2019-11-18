@@ -4,9 +4,9 @@ import {
     getConnectionType,
     startMonitoring,
     stopMonitoring
-} from "tns-core-modules/connectivity";
+} from "@nativescript/core/connectivity";
 import { BehaviorSubject, Observable } from "rxjs";
-import * as app from "tns-core-modules/application";
+import * as app from "@nativescript/core/application";
 
 @Injectable({
     providedIn: "root"
