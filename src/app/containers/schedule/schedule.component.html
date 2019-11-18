@@ -15,9 +15,9 @@
 </ActionBar>
 
 <TabView  selectedIndex="0" sdkExampleTitle sdkToggleNavButton androidTabsPosition="bottom" 
-iosIconRenderingMode="alwaysOriginal"
+iosIconRenderingMode="alwaysOriginal" [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
     textTransform="none" (selectedIndexChanged)="onSelectedIndexChanged($event)"
-    ios:visibility="collapsed" >
+    ios:visibility="collapsed" class="tab-view" >
 
     <StackLayout *tabItem="{title: 'NG Poland', iconSource: 'res://ngpolandlogo'}" 
    >
@@ -33,8 +33,9 @@ iosIconRenderingMode="alwaysOriginal"
 
 <TabView  selectedIndex="0" sdkExampleTitle sdkToggleNavButton androidTabsPosition="bottom" 
 iosIconRenderingMode="alwaysOriginal"
+[ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
     textTransform="none" (selectedIndexChanged)="onSelectedIndexChanged($event)"
-    android:visibility="collapsed" class="ios-tab">
+    android:visibility="collapsed" class="tab-view ios-tab">
 
     <StackLayout *tabItem="{title: 'NG Poland'}" 
    >

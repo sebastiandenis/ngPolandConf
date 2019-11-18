@@ -1,36 +1,60 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
 import { Label } from "ui/label";
 import { Page } from "ui/page";
+import { IConference } from "~/app/models/conference.model";
+import { Subject } from "rxjs";
+import { AppStateFacadeService } from "~/app/services/app-state-facade.service";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
-  selector: "Schedule",
-  moduleId: module.id,
-  templateUrl: "./schedule.component.html",
-  styleUrls: ["./schedule.component.scss"]
+    selector: "Schedule",
+    moduleId: module.id,
+    templateUrl: "./schedule.component.html",
+    styleUrls: ["./schedule.component.scss"]
 })
-export class ScheduleComponent implements OnInit {
+export class ScheduleComponent implements OnInit, OnDestroy {
+    conference: IConference;
+    themeApplied = false;
+    private destroySubject$ = new Subject<void>();
 
-  constructor(private page: Page) {
-    // Use the component constructor to inject providers.
-  }
+    constructor(
+        private page: Page,
+        private appStateFacade: AppStateFacadeService
+    ) {
+        // Use the component constructor to inject providers.
+    }
 
-  ngOnInit(): void {
-    // Init your component properties here.
-  }
+    ngOnInit(): void {
+        this.appStateFacade
+            .getCurrentConference()
+            .pipe(takeUntil(this.destroySubject$))
+            .subscribe((conf: IConference) => {
+                this.conference = conf;
+            });
+        this.appStateFacade
+            .getThemeApplied()
+            .pipe(takeUntil(this.destroySubject$))
+            .subscribe((isThemeApplied: boolean) => {
+                this.themeApplied = isThemeApplied;
+            });
+    }
 
-  onDrawerButtonTap(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.showDrawer();
-  }
+    onDrawerButtonTap(): void {
+        const sideDrawer = <RadSideDrawer>app.getRootView();
+        sideDrawer.showDrawer();
+    }
 
-  onSelectedIndexChanged($event): void {
-    const actionBarText = <Label>this.page.getViewById("abScheduleText");
-    $event.newIndex === 0
-      ? (actionBarText.text = "Schedule - NG Poland")
-      : (actionBarText.text = "Schedule - JS Poland");
-  }
+    onSelectedIndexChanged($event): void {
+        const actionBarText = <Label>this.page.getViewById("abScheduleText");
+        $event.newIndex === 0
+            ? (actionBarText.text = "Schedule - NG Poland")
+            : (actionBarText.text = "Schedule - JS Poland");
+    }
 
+    ngOnDestroy() {
+        this.destroySubject$.next();
+    }
 }

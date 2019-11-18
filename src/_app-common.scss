@@ -367,6 +367,14 @@ ActionBar.action-bar {
   }
 }
 
+.tab-view {
+  font-family: $default-font-family;
+  tab-text-color: #3949ab;
+  selected-tab-text-color: #ff1744;
+  tab-background-color: #ffffff;
+  android-selected-tab-highlight-color: #ff1744;
+}
+
 // ------------------------------------------------------------------
 // ----------------------- TERMINATOR THEME -------------------------
 // ------------------------------------------------------------------
@@ -692,5 +700,13 @@ $terminator-description-opacity: 0.8;
 
    
     }
+  }
+
+  &.tab-view {
+    font-family: $default-font-family;
+    tab-text-color: $terminator-primary-font-color;
+    selected-tab-text-color: $terminator-red-color;
+    tab-background-color: $terminator-lighter-background-color;
+    android-selected-tab-highlight-color: $terminator-red-color;
   }
 }
