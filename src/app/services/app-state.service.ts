@@ -79,7 +79,6 @@ export class AppStateService {
         });
 
         this.themeApplied$.pipe(distinctUntilChanged()).subscribe((themeApplied: boolean) => {
-            console.log("[AppState] themeAppliedSubscription: ", themeApplied);
             this._appData.themeApplied = themeApplied;
         });
 
@@ -101,7 +100,6 @@ export class AppStateService {
     }
 
     get themeApplied$(): Observable<boolean> {
-        console.log("[AppState] themeApplied: ", this._themeApplied$.getValue());
         return this._themeApplied$.asObservable();
     }
 
@@ -110,7 +108,6 @@ export class AppStateService {
     }
 
     updateThemeApplied(state: boolean) {
-        console.log("[AppStateService] updateThemeApplied(): ", state);
         this._themeApplied$.next(state);
     }
 

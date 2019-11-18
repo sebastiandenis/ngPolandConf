@@ -26,7 +26,6 @@ export class SwitchYearComponent implements OnInit, OnDestroy {
 
     onSelectedIndexChanged(args: EventData) {
       const picker = <ListPicker>args.object;
-      console.log(`index: ${picker.selectedIndex}; item" ${this.years[picker.selectedIndex]}`);
       this.selectedIdx = picker.selectedIndex;
   }
 

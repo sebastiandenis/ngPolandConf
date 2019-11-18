@@ -175,11 +175,6 @@ export class AppStateFacadeService {
                 )
             })
             .then((success: boolean) => {
-                console.log(
-                    "Data successfuly written to secure storage: ",
-                    success
-                );
-
                 return of(true);
             });
 

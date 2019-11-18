@@ -199,7 +199,6 @@ export class ContentfulService {
             .pipe(
                 shareReplay(),
                 map((entries: EntryCollection<Version>) => {
-                    console.log("[ContentfulService] version: ", entries.items[0].fields);
                     return new Version(entries.items[0].fields.version);
                 })
             );
