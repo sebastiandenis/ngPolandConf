@@ -16,5 +16,6 @@
     },
     "peacock.color": "#eb5424",
     "javascript.preferences.quoteStyle": "single",
-    "typescript.preferences.quoteStyle": "single"
+    "typescript.preferences.quoteStyle": "single",
+    "git.ignoreLimitWarning": true
 }

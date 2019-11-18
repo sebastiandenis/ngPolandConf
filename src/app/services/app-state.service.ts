@@ -10,6 +10,7 @@ import {
 } from "../models/simple-content.model";
 import { Version, IVersion } from "../models/version.model";
 import { AppData } from "../models/app-data.model";
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable({
     providedIn: "root"
@@ -77,7 +78,8 @@ export class AppStateService {
             this._appData.speakers = speakers;
         });
 
-        this.themeApplied$.subscribe((themeApplied: boolean) => {
+        this.themeApplied$.pipe(distinctUntilChanged()).subscribe((themeApplied: boolean) => {
+            console.log("[AppState] themeAppliedSubscription: ", themeApplied);
             this._appData.themeApplied = themeApplied;
         });
 
@@ -99,6 +101,7 @@ export class AppStateService {
     }
 
     get themeApplied$(): Observable<boolean> {
+        console.log("[AppState] themeApplied: ", this._themeApplied$.getValue());
         return this._themeApplied$.asObservable();
     }
 

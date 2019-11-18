@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
-import { filter, takeUntil } from "rxjs/operators";
+import { filter, takeUntil, distinctUntilChanged } from "rxjs/operators";
 import { AppStateFacadeService } from "./services/app-state-facade.service";
 import { SecureStorage } from "nativescript-secure-storage";
 
@@ -35,12 +35,12 @@ import { ThemeSplashScreenComponent } from "./shared/components/theme-splash-scr
 export class AppComponent implements OnInit, OnDestroy {
     @ViewChild(RadSideDrawerComponent, { static: false })
     sideDrawerComponent: RadSideDrawerComponent;
-    themeApplied$: Observable<boolean>;
     confId$: Observable<string>;
     conference: IConference;
-    themeApplied = false;
+    themeApplied$ : Observable<boolean>;
+    themeApplied: boolean;
 
-    private secureStorage: SecureStorage;
+   // private secureStorage: SecureStorage;
     private _activatedUrl: string;
     private destroySubject$ = new Subject<void>();
 
@@ -52,14 +52,16 @@ export class AppComponent implements OnInit, OnDestroy {
         private viewContainerRef: ViewContainerRef,
         private changeDetectionRef: ChangeDetectorRef
     ) {
-        this.secureStorage = new SecureStorage();
+        // this.secureStorage = new SecureStorage();
     }
 
     ngOnInit(): void {
         //this.secureStorage.clearAllOnFirstRun().then((success: boolean) => {});
         this.appStateFacade.initState();
         this._activatedUrl = "/home";
-        this.themeApplied$ = this.appStateFacade.getThemeApplied();
+        this.themeApplied$ = this.appStateFacade
+            .getThemeApplied();
+
         this.confId$ = this.appStateFacade.getConfId();
 
         this.router.events
@@ -79,7 +81,7 @@ export class AppComponent implements OnInit, OnDestroy {
             });
         this.appStateFacade
             .getThemeApplied()
-            .pipe(takeUntil(this.destroySubject$))
+            .pipe(takeUntil(this.destroySubject$), distinctUntilChanged())
             .subscribe((isThemeApplied: boolean) => {
                 this.themeApplied = isThemeApplied;
                 this.appStateFacade.saveAppState();
@@ -112,7 +114,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.openThemeSplashScreenModal();
             setTimeout(() => {
                 this.appStateFacade.updateThemeApplied(sw.checked);
-            }, 300);
+            }, 1000);
         }
     }
 
