@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import * as app from "application";
+import * as app from "tns-core-modules/application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { Observable, Subject } from "rxjs";
 import { SimpleContent } from "../../models/simple-content.model";
