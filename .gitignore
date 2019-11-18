@@ -2,6 +2,7 @@
 hooks/
 node_modules/
 platforms/
+.update_backup/
 
 # NativeScript Template
 *.js.map
