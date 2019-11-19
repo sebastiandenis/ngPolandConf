@@ -1,0 +1,17 @@
+<GridLayout columns="*" rows="auto, *" class="eventItemDetails" [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']">
+        <AbsoluteLayout row="0">
+                <Button col="0" row="0" left="10" top="40" text="&#xf060;" ripple (tap)="close()" class="my-btn fa"
+                style="font-size: 20; border-width: 0; width: 70;" textAlignment="center"
+                verticalAlignment="center"></Button>
+             </AbsoluteLayout>
+
+
+    <ScrollView col="0" row="1" orientation="vertical" >
+        <StackLayout class="page page-content content-padding">
+                    <Label  [text]="eventItem.title" textWrap="true" textAlignment="center" class="eventItemTitle"></Label>
+                    <Speaker  *ngIf="eventItem.presenter" [speaker]="eventItem.presenter"></Speaker>
+                    <Label  *ngIf="eventItem.description.length>0" [text]="eventItem.description" textWrap="true" textAlignment="left" class="eventItemDesc"></Label>
+                    <Label  *ngIf="eventItem.description.length===0" class="eventItemIcon fa" [text]="eventItem.getEventItemIcon()" textWrap="true" textAlignment="center"></Label>
+        </StackLayout>
+    </ScrollView>
+</GridLayout>

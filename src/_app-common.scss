@@ -16,6 +16,10 @@ $default-font-family: "Roboto";
     padding: 0 20;
   }
 
+  &.content-padding {
+    padding: 0 20;
+  }
+
   .page-placeholder {
     color: $page-icon-color;
     font-size: $page-content-placeholder-font-size;
@@ -149,6 +153,10 @@ ActionBar.action-bar {
     font-size: 16;
     padding-left: 10;
     padding-right: 10;
+    color: #ffffff;
+    opacity: 1;
+    text-transform: none;
+    letter-spacing: 0;
   }
 }
 
@@ -167,6 +175,9 @@ ActionBar.action-bar {
   .homeItemLabel {
     color: #ff1744;
     font-size: 14;
+    opacity: 1;
+    letter-spacing: 0;
+    text-transform: none;
   }
 }
 
@@ -382,6 +393,52 @@ ActionBar.action-bar {
   android-selected-tab-highlight-color: #ff1744;
 }
 
+.eventItemDetails {
+  background-color: #ffffff;
+
+  
+  
+  .eventItemTitle {
+    font-family: $default-font-family;
+    opacity: 1;
+    text-transform: none;
+    color: #3C4043;
+    font-weight: bold;
+    font-size: 18;
+
+  }
+
+  .speakerCardStyle {
+    font-family: $default-font-family;
+    color: #3C4043;
+
+    .speakerName {
+      font-family: $default-font-family;
+      color: #ff1744;
+      opacity: 1;
+    }
+
+    .speakerRole {
+      font-family: $default-font-family;
+      color: #3949ab;
+      opacity: 1;
+    }
+  }
+  
+  .eventItemDesc {
+    color: #3C4043;
+      font-family: $default-font-family;
+      opacity: 1;
+  }
+
+  .eventItemIcon {
+    &.fa {
+      color: #3C4043;
+      opacity: 0.2;
+    }
+  }
+}
+
 // ------------------------------------------------------------------
 // ----------------------- TERMINATOR THEME -------------------------
 // ------------------------------------------------------------------
@@ -474,6 +531,8 @@ $terminator-description-opacity: 0.8;
       text-transform: uppercase;
       letter-spacing: 0.1;
       line-height: 5;
+      color: $terminator-primary-font-color;
+      opacity: $terminator-title-opacity;
     }
   }
 
@@ -492,6 +551,7 @@ $terminator-description-opacity: 0.8;
       font-size: 10;
       text-transform: uppercase;
       letter-spacing: 0.1;
+      opacity: $terminator-description-opacity;
     }
   }
 
@@ -726,5 +786,51 @@ $terminator-description-opacity: 0.8;
     selected-tab-text-color: $terminator-red-color;
     tab-background-color: $terminator-lighter-background-color;
     android-selected-tab-highlight-color: $terminator-red-color;
+  }
+
+  &.eventItemDetails {
+    background-color: $terminator-background-color;
+
+    .eventItemTitle {
+      font-family: $terminator-font-family;
+      color: $terminator-red-color;
+      opacity: $terminator-title-opacity;
+      text-transform: uppercase;
+      line-height: 5;
+      letter-spacing: 0.1;
+      font-size: 16;
+
+    }
+
+    .speakerCardStyle {
+      background-color: $terminator-background-color;
+      font-family: $default-font-family;
+      color: $terminator-primary-font-color;
+
+      .speakerName {
+        font-family: $default-font-family;
+        color: $terminator-red-color;
+        opacity: $terminator-title-opacity;
+      }
+  
+      .speakerRole {
+        font-family: $default-font-family;
+        color: $terminator-primary-font-color;
+        opacity: $terminator-description-opacity;
+      }
+    }
+    
+    .eventItemDesc {
+      font-family: $default-font-family;
+      color: $terminator-primary-font-color;
+      opacity: $terminator-description-opacity;
+    }
+
+    .eventItemIcon {
+      &.fa {
+        color: $terminator-lighter-background-color;
+        opacity: 1;
+      }
+    }
   }
 }
