@@ -319,9 +319,14 @@ export class ContentfulService {
         const query = {
             content_type: EventContentTypes.SPEAKER,
             locale: this.settings.getLocale(),
+            "fields.confIds[in]": confId,
             order: "fields.name",
             limit: howMany
         };
+        console.log(`${
+            this.CONTENTFUL_URL_ENTRIES
+        }&${this.getContentfulUrlParameters(query)}`);
+
 
         return this.http
             .get(
