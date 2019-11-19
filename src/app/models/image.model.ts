@@ -2,6 +2,8 @@ export interface IImage {
   imgUrl: string;
   imgTitle: string;
   imgDesc?: string;
+
+  getImageUrl(): string;
 }
 
 export class Image implements IImage {

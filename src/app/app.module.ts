@@ -49,7 +49,7 @@ if (applicationModule.android) {
         NativeScriptUISideDrawerModule,
         NativeScriptHttpClientModule,
         TNSImageModule,
-        NgRippleModule
+        NgRippleModule,
     ],
     declarations: [
         AppComponent,
@@ -70,7 +70,8 @@ if (applicationModule.android) {
         WorkshopComponent,
         MdToHtmlPipe,
         SwitchYearComponent,
-        ThemeSplashScreenComponent
+        ThemeSplashScreenComponent,
+        SpeakerDetailsComponent
     ],
     entryComponents: [
         SpeakerDetailsComponent,

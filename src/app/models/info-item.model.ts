@@ -5,6 +5,8 @@ export interface IInfoItemModel {
   description: string;
   confId: string;
   urlLink?: string;
+
+  resolveIcon(icon: string): string;
 }
 
 export enum InfoItemIcon {

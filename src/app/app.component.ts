@@ -23,7 +23,7 @@ import {
 import { SwitchYearComponent } from "./shared/components/switch-year/switch-year.component";
 import { IConference } from "./models/conference.model";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular/side-drawer-directives";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import { RadSideDrawer, DrawerTransitionBase, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import * as app from "@nativescript/core/application";
 import { ThemeSplashScreenComponent } from "./shared/components/theme-splash-screen/theme-splash-screen.component";
 
@@ -38,10 +38,15 @@ export class AppComponent implements OnInit, OnDestroy {
     conference: IConference;
     themeApplied$ : Observable<boolean>;
     themeApplied: boolean;
+    private _sideDrawerTransition: DrawerTransitionBase;
 
    // private secureStorage: SecureStorage;
     private _activatedUrl: string;
     private destroySubject$ = new Subject<void>();
+
+    get sideDrawerTransition(): DrawerTransitionBase {
+        return this._sideDrawerTransition;
+    }
 
     constructor(
         private router: Router,
@@ -57,6 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         //this.secureStorage.clearAllOnFirstRun().then((success: boolean) => {});
         this.appStateFacade.initState();
+        this._sideDrawerTransition = new SlideInOnTopTransition();
         this._activatedUrl = "/home";
         this.themeApplied$ = this.appStateFacade
             .getThemeApplied();
@@ -93,6 +99,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     onNavItemTap(navItemRoute: string): void {
         this.routerExtensions.navigate([navItemRoute], {
+
             clearHistory: navItemRoute === "/home" ? true : false
         });
         const sideDrawer = <RadSideDrawer>app.getRootView();
