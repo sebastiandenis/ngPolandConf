@@ -323,10 +323,6 @@ export class ContentfulService {
             order: "fields.name",
             limit: howMany
         };
-        console.log(`${
-            this.CONTENTFUL_URL_ENTRIES
-        }&${this.getContentfulUrlParameters(query)}`);
-
 
         return this.http
             .get(
