@@ -75,6 +75,6 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
             </StackLayout>
         </ScrollView>
     </GridLayout>
-    <page-router-outlet tkMainContent class="page page-content"></page-router-outlet>
+    <page-router-outlet tkMainContent class="page page-content" [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"></page-router-outlet>
     <!-- <router-outlet></router-outlet> -->
 </RadSideDrawer>

@@ -30,6 +30,7 @@ $default-font-family: "Roboto";
 //Action bar
 .action-bar {
   .action-bar-title {
+    font-family: $default-font-family;
     horizontal-align: center;
     font-size: 16;
   }
@@ -368,6 +369,7 @@ ActionBar.action-bar {
 }
 
 .tab-view {
+  background-color: #ffffff;
   font-family: $default-font-family;
   tab-text-color: #3949ab;
   selected-tab-text-color: #ff1744;
@@ -392,6 +394,16 @@ $terminator-description-opacity: 0.8;
   color: $terminator-primary-font-color;
 
   letter-spacing: 0.1;
+
+  .page {
+    background-color: $terminator-background-color;
+  }
+
+  &.page {
+    background-color: $terminator-background-color;
+  }
+
+
 
   &.theme-splash-screen-background {
     background-color: #020105;
@@ -703,6 +715,7 @@ $terminator-description-opacity: 0.8;
   }
 
   &.tab-view {
+    background-color: $terminator-background-color;
     font-family: $default-font-family;
     tab-text-color: $terminator-primary-font-color;
     selected-tab-text-color: $terminator-red-color;
