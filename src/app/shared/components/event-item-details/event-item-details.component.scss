@@ -1,0 +1,23 @@
+.my-btn {
+  border-color: transparent;
+  border-width: 1;
+  z-index: 0;
+  background-color: transparent;
+  color: #3949ab;
+}
+
+.eventItemTitle {
+  padding-top: 10;
+  padding-bottom: 5;
+}
+
+.eventItemDesc {
+  margin-top: 20;
+}
+
+.eventItemIcon {
+  margin-top: 60;
+  &.fa {
+    font-size: 188;
+  }
+}

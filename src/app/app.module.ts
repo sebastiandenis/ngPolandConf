@@ -27,6 +27,7 @@ import * as imageModule from "nativescript-image";
 import * as applicationModule from "@nativescript/core/application";
 import { ThemeSplashScreenComponent } from "./shared/components/theme-splash-screen/theme-splash-screen.component";
 import { NgRippleModule } from "nativescript-ng-ripple";
+import { EventItemDetailsComponent } from './shared/components/event-item-details/event-item-details.component';
 
 registerElement(
     "PullToRefresh",
@@ -71,12 +72,14 @@ if (applicationModule.android) {
         MdToHtmlPipe,
         SwitchYearComponent,
         ThemeSplashScreenComponent,
-        SpeakerDetailsComponent
+        SpeakerDetailsComponent,
+        EventItemDetailsComponent
     ],
     entryComponents: [
         SpeakerDetailsComponent,
         SwitchYearComponent,
-        ThemeSplashScreenComponent
+        ThemeSplashScreenComponent,
+        EventItemDetailsComponent
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })
