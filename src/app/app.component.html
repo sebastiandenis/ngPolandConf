@@ -4,59 +4,77 @@ Learn more about the RadSideDrawer UI component and how it can be customized in 
 http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
 -->
 <RadSideDrawer [drawerTransition]="sideDrawerTransition">
-    <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
-        <StackLayout row="0" class="sidedrawer-header" style="background-color: white;margin-top: 20;">
-           <Image src="res://logong" ></Image>
-           
+    <GridLayout tkDrawerContent rows="190, *" class="sidedrawer sidedrawer-left"
+        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']">
+        <StackLayout row="0" class="sidedrawer-header" style="margin-top: 10;">
+            <NSImg [src]="
+          themeApplied ? 'res://terminator_sidebar_header' : 'res://logong'
+        " height="180" autoPlayAnimations="true" stretch="aspectFit"></NSImg>
         </StackLayout>
-    
+
         <ScrollView row="1">
             <StackLayout class="sidedrawer-content">
-                    <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
-                        <Label col="0" text="&#xf58e;" class="fa" style="margin-left: 10;text-align: center;"></Label>
-                        <Label col="1" text="Home" class="p-r-10"></Label>
-                    </GridLayout>
+                <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                    [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
+                    <Label col="0" text="&#xf58e;" class="fa" style="margin-left: 10;text-align: center;"></Label>
+                    <Label col="1" text="Home" class="p-r-10"></Label>
+                </GridLayout>
 
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/schedule')" (tap)="onNavItemTap('/schedule')">
+                <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                    [class.selected]="isComponentSelected('/schedule')" (tap)="onNavItemTap('/schedule')">
                     <Label col="0" text="&#xf017;" class="fa" style="margin-left: 10;text-align: center;"></Label>
                     <Label col="1" text="Schedule" class="p-r-10"></Label>
                 </GridLayout>
 
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/workshops')" (tap)="onNavItemTap('/workshops')">
+                <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                    [class.selected]="isComponentSelected('/workshops')" (tap)="onNavItemTap('/workshops')">
                     <Label col="0" text="&#xf11c;" class="fa" style="margin-left: 10;text-align: center;"></Label>
                     <Label col="1" text="Workshops" class="p-r-10"></Label>
                 </GridLayout>
 
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/ng-girls')" (tap)="onNavItemTap('/ng-girls')">
-                    <Label col="0" text="&#xf182;" class="fa" style="margin-left: 10;text-align: center;" ></Label>
+                <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                    [class.selected]="isComponentSelected('/ng-girls')" (tap)="onNavItemTap('/ng-girls')">
+                    <Label col="0" text="&#xf182;" class="fa" style="margin-left: 10;text-align: center;"></Label>
                     <Label col="1" text="ngGirls" class="p-r-10"></Label>
                 </GridLayout>
 
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/speakers')" (tap)="onNavItemTap('/speakers')">
-                    <Label col="0" android:text="&#xf0c0;" ios:text="&#xf0c0;" class="fa" 
-                    style="margin-left: 10;text-align: center;"
-                    ios:style="font-size: 15;"></Label>
+                <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                    [class.selected]="isComponentSelected('/speakers')" (tap)="onNavItemTap('/speakers')">
+                    <Label col="0" android:text="&#xf0c0;" ios:text="&#xf0c0;" class="fa"
+                        style="margin-left: 10;text-align: center;" ios:style="font-size: 15;"></Label>
                     <Label col="1" text="Speakers" class="p-r-10"></Label>
                 </GridLayout>
 
-               
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/info')" (tap)="onNavItemTap('/info')">
+                <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                    [class.selected]="isComponentSelected('/info')" (tap)="onNavItemTap('/info')">
                     <Label col="0" text="&#xf05a;" class="fa" style="margin-left: 10;text-align: center;"></Label>
                     <Label col="1" text="Info" class="p-r-10"></Label>
                 </GridLayout>
-    
-                <StackLayout class="hr-light"></StackLayout>
 
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/about')" (tap)="onNavItemTap('/about')">
-                    <Label col="0" android:text="&#xf121;" ios:text="&#xf121;" class="fa" 
-                    style="margin-left: 10;text-align: center;" 
-                    ios:style="font-size: 15;"></Label>
+                <GridLayout columns="auto, *" class="sidedrawer-list-item"
+                    [class.selected]="isComponentSelected('/about')" (tap)="onNavItemTap('/about')">
+                    <Label col="0" android:text="&#xf121;" ios:text="&#xf121;" class="fa"
+                        style="margin-left: 10;text-align: center;" ios:style="font-size: 15;"></Label>
                     <Label col="1" text="About" class="p-r-10"></Label>
                 </GridLayout>
+                <StackLayout class="hr-light"></StackLayout>
+                <GridLayout rows="auto, *" columns="*"  style="margin-top: 10;">
+                    <Switch #switch color="#3949ab" col="0" row="0" [checked]="themeApplied$ | async"
+                        (tap)="onThemeSwitchTap(switch)" (checkedChange)="onCheckedChange($event)"
+                        horizontalAlignment="center" style="margin-right: 10;"></Switch>
+
+                    <Label col="0" row="1" [text]="
+              switch.checked ? 'Hasta la vista, baby...' : 'Don\'t even try...'
+            " horizontalAlignment="center"
+                        style="margin-right: 10;margin-top: 10;" class="switchContainer"></Label>
+                </GridLayout>
+                <!-- <GridLayout  columns="*" rows="*, *" textAlignment="center" style="padding-top: 20;">
+                        <Button col="0" row="1" [text]="confId$ | async" (tap)="onChangeYear()" class="btn btn-primary" style="font-size: 18;"></Button>
+                        <Label  col="0" row="0" text="Current year:" textAlignment="center"></Label>
+            </GridLayout> -->
             </StackLayout>
         </ScrollView>
     </GridLayout>
-
     <page-router-outlet tkMainContent class="page page-content"></page-router-outlet>
+    <!-- <router-outlet></router-outlet> -->
 </RadSideDrawer>

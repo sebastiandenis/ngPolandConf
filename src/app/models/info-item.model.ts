@@ -3,6 +3,7 @@ export interface IInfoItemModel {
   order: string;
   icon: string;
   description: string;
+  confId: string;
   urlLink?: string;
 }
 
@@ -15,18 +16,20 @@ export enum InfoItemIcon {
 }
 
 export class InfoItem implements IInfoItemModel {
-  icon: string;
+  // icon: string;
   constructor(
     public title: string,
     public order: string,
-    iconName: string,
+    // iconName: string,
+    public icon: string,
     public description: string,
+    public confId: string,
     public urlLink?: string
   ) {
-    this.icon = this.resolveIcon(iconName);
+    // this.icon = this.resolveIcon(iconName);
   }
 
-  private resolveIcon(icon: string): string {
+  resolveIcon(icon: string): string {
     switch (icon.toLowerCase()) {
       case "workshops":
         return String.fromCharCode(InfoItemIcon.WORKSHOPS);

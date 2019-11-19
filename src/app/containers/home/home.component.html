@@ -1,0 +1,210 @@
+<ActionBar class="action-bar" style="border-width: 1; border-color: transparent;">
+    <!-- 
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()" class="my-nav-btn">
+    </NavigationButton>
+    <!-- 
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" [text]="'ngPolandConf ' + conference?.confYear"
+        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"></Label>
+</ActionBar>
+<ScrollView >
+    <GridLayout rows="auto, *" columns="*" style="height: 100%;" ios:style="padding-top: 60;">
+        <StackLayout *ngIf="!isLandscape" row="0" col="0" style="height: 120;width: 100%;" verticalAlignment="middle"
+            horizontalAlignment="center" 
+            class="homeDescContainer" [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']">
+            <Label text="Welcome to ngPoland Conference." class="homeDesc"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']" textWrap="true"
+                textAlignment="center" android:style="color: #ffffff;" ios:style="color: #3949ab;">
+            </Label>
+            <Label text="The biggest Angular Conference in CEE."
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']" class="homeDesc" textWrap="true"
+                textAlignment="center" android:style="color: #ffffff;" ios:style="color: #3949ab;">
+            </Label>
+        </StackLayout>
+
+        <StackLayout *ngIf="isLandscape" row="0" col="0" style="height: 70;width: 100%;" verticalAlignment="middle"
+            horizontalAlignment="center" class="homeDescContainer"
+            [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']">
+            <Label text="Welcome to ngPoland Conference, the biggest Angular Conference in CEE."
+                class="homeDesc" textWrap="true" textAlignment="center"
+                android:style="color: #ffffff;" ios:style="color: #3949ab;">
+            </Label>
+        </StackLayout>
+
+        <GridLayout *ngIf="!isLandscape" row="1" col="0" rows="*, *, *" columns="*, *" style="height: 100%;">
+            <StackLayout row="0" col="0" style="width: 100%;height: 100%">
+                <StackLayout #sl1 ripple (tap)="onNavItemTap('/schedule', sl1)"
+                    class="homeItemContainer"
+                    [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                    verticalAlignment="middle"
+                    horizontalAlignment="center">
+                    <Label text="&#xf017;" class="fa" 
+                        textAlignment="center"
+                        ></Label>
+                    <Label text="Schedule" textAlignment="center" class="homeItemLabel"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout row="0" col="1" style="width: 100%;height: 100%">
+                <StackLayout #sl2 ripple (tap)="onNavItemTap('/workshops', sl2)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center">
+                    <Label text="&#xf11c;" class="fa" style="font-size: 48;margin-bottom: 10;"
+                        textAlignment="center"></Label>
+                    <Label text="Workshops" class="homeItemLabel" textAlignment="center"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout row="1" col="0" style="width: 100%;height: 100%">
+                <StackLayout #sl3 (tap)="onNavItemTap('/ng-girls', sl3)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center">
+                    <Label text="&#xf182;" class="fa" style="font-size: 52;margin-bottom: 10;"
+                        textAlignment="center"></Label>
+                    <Label text="ngGirls" class="homeItemLabel" textAlignment="center"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout row="1" col="1" style="width: 100%;height: 100%">
+                <StackLayout #sl4 ripple (tap)="onNavItemTap('/speakers', sl4)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center">
+                    <Label text="&#xf0c0;" class="fa" style="margin-bottom: 10;"
+                        textAlignment="center"></Label>
+                    <Label text="Speakers" class="homeItemLabel" textAlignment="center"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout row="2" col="0" style="width: 100%;height: 100%">
+                <StackLayout #sl5 ripple (tap)="onNavItemTap('/info', sl5)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center">
+                    <Label text="&#xf05a;" class="fa" style="margin-bottom: 10;"
+                        textAlignment="center"></Label>
+                    <Label text="Info" class="homeItemLabel" textAlignment="center"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout row="2" col="1" style="width: 100%;height: 100%">
+                <StackLayout #sl6 ripple (tap)="onNavItemTap('/about', sl6)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center">
+                    <Label text="&#xf121;" class="fa" 
+                    style="font-size: 48;margin-bottom: 10;"
+                        textAlignment="center"></Label>
+                    <Label text="About" class="homeItemLabel" textAlignment="center"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"></Label>
+                </StackLayout>
+            </StackLayout>
+        </GridLayout>
+
+        <GridLayout *ngIf="isLandscape" row="1" col="0" rows="*, *" columns="*, *, *" style="height: 100%;">
+            <StackLayout row="0" col="0" style="width: 100%;height: 100%">
+                <StackLayout #sl1 ripple (tap)="onNavItemTap('/schedule', sl1)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
+                    <Label text="&#xf017;" class="fa" style="font-size: 34;margin-right: 10;"
+                        textAlignment="center" verticalAlignment="middle"></Label>
+                    <Label text="Schedule" class="homeItemLabel"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']" textAlignment="center"
+                        verticalAlignment="middle"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout row="0" col="1" style="width: 100%;height: 100%">
+                <StackLayout #sl2 ripple (tap)="onNavItemTap('/workshops', sl2)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
+                    <Label text="&#xf11c;" class="fa" style="font-size: 34;margin-right: 10;"
+                        textAlignment="center" verticalAlignment="middle"></Label>
+                    <Label text="Workshops" class="homeItemLabel" textAlignment="center"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                        verticalAlignment="middle"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout row="0" col="2" style="width: 100%;height: 100%">
+                <StackLayout #sl3 ripple (tap)="onNavItemTap('/ng-girls', sl3)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
+                    <Label text="&#xf182;" class="fa" style="font-size: 34;margin-right: 10;"
+                        textAlignment="center" verticalAlignment="middle"></Label>
+                    <Label text="ngGirls" class="homeItemLabel" textAlignment="center"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                        verticalAlignment="middle"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout row="1" col="0" style="width: 100%;height: 100%">
+                <StackLayout #sl4 ripple (tap)="onNavItemTap('/speakers', sl4)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
+                    <Label text="&#xf0c0;" class="fa" style="font-size: 34;margin-right: 10;"
+                        textAlignment="center" verticalAlignment="middle"></Label>
+                    <Label text="Speakers" class="homeItemLabel" textAlignment="center"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                        verticalAlignment="middle"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout row="1" col="1" style="width: 100%;height: 100%">
+                <StackLayout #sl5 ripple (tap)="onNavItemTap('/info', sl5)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
+                    <Label text="&#xf05a;" class="fa" style="font-size: 34;margin-right: 10;"
+                        textAlignment="center" verticalAlignment="middle"></Label>
+                    <Label text="Info" class="homeItemLabel" textAlignment="center"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                        verticalAlignment="middle"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout row="1" col="2" style="width: 100%;height: 100%">
+                <StackLayout #sl6 ripple (tap)="onNavItemTap('/about', sl6)"
+                class="homeItemContainer"
+                [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                 verticalAlignment="middle"
+                    horizontalAlignment="center" orientation="horizontal">
+                    <Label text="&#xf121;" class="fa" style="font-size: 34;margin-right: 10;"
+                        textAlignment="center" verticalAlignment="middle"></Label>
+                    <Label text="About" class="homeItemLabel" textAlignment="center"
+                        [ngClass]="[themeApplied ? conference.confTheme.cssClassName : '']"
+                        verticalAlignment="middle"></Label>
+                </StackLayout>
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</ScrollView>

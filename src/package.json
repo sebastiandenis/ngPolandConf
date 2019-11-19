@@ -1,6 +1,10 @@
 {
-    "main": "main.js",
-    "android": {
-        "v8Flags": "--expose_gc"
-    }
+  "main": "main.js",
+  "android": {
+    "v8Flags": "--expose_gc",
+    "requireModules": [
+      "nativescript-image"
+  ],
+    "markingMode": "none"
+  }
 }

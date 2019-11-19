@@ -1,0 +1,112 @@
+<StackLayout width="100%" style="padding: 3 8;" >
+  <GridLayout
+    columns="75, *, 75"
+    rows="5, auto, 45, 10"
+    width="100%"
+    height="auto"
+    class="item"
+    horizontalAlignment="left"
+    verticalAlignment="top"
+    style="padding: 10 5;"
+    [ngClass]="{'now': isNow()}"
+    class="scheduleItem"
+  >
+    <GridLayout columns="*" rows="auto, *" col="0" row="1" rowSpan="3" verticalAlignment="top">
+      <label
+        [text]="eventItem.startDate | date: 'HH:mm'"
+        col="0"
+        row="0"
+        textWrap="true"
+        verticalAlignment="top"
+        textAlignment="center"
+   
+        class="scheduleItemHour"
+      ></label>
+      <StackLayout col="0" row="1" verticalAlignment="center">
+        <label
+        visibility="{{ isNow() ? 'visible' : 'collapsed' }}"
+        class="fa"
+        text="&#xf0a9;"
+        verticalAlignment="center"
+        textAlignment="center"
+        style="color: #FBBC04; font-size: 24;margin-top: 5;"
+      ></label>
+      </StackLayout>
+     
+    </GridLayout>
+
+    <label
+      [text]="eventItem.title"
+      fontWeight="bold"
+      fontSize="14"
+      verticalAlignment="center"
+      textAlignment="left"
+      textWrap="true"
+      col="1"
+      row="1"
+      class="scheduleTitle"
+    ></label>
+
+    <StackLayout col="1" row="2" >
+      <GridLayout columns="auto, auto, auto, *" class="scheduleItemContent">
+        <label
+          col="0"
+          row="1"
+          class="fa"
+          text="&#xf2f2;"
+          verticalAlignment="center"
+          textAlignment="center"
+          style="color: #80868B; font-size: 16;margin-right: 10;"
+        ></label>
+        <label
+          col="1"
+          row="1"
+          [text]="eventItem.getEventDuration() + ' min'"
+          textWrap="true"
+          style="font-size: 13;margin-right: 30;"
+          class="scheduleItemDuration"
+          verticalAlignment="center"
+          textAlignment="center"
+        ></label>
+        <label
+          [visibility]="eventItem.presenter ? 'visible' : 'collapsed'"
+          col="2"
+          row="1"
+          class="fa"
+          text="&#xf007;"
+          verticalAlignment="center"
+          textAlignment="center"
+          (tap)="showModal()"
+          style="color: #80868B; font-size: 16;margin-right: 10;"
+        ></label>
+        <label
+        [visibility]="eventItem.presenter ? 'visible' : 'collapsed'"
+          col="3"
+          row="1"
+          [text]="eventItem.presenter?.name"
+          textWrap="true"
+          style="font-size: 12;"
+          class="scheduleItemName"
+          verticalAlignment="center"
+          textAlignment="left"
+          ripple (tap)="showModal()"
+        ></label>
+      </GridLayout>
+    </StackLayout>
+
+    <label
+      [text]="eventItem.getEventItemIcon()"
+      class="fa scheduleItemIcon"
+      fontWeight="normal"
+      fontSize="18"
+      verticalAlignment="center"
+      textAlignment="center"
+      horizontalAlignment="center"
+      textWrap="true"
+      col="2"
+      row="1"
+      rowSpan="2"
+      
+    ></label>
+  </GridLayout>
+</StackLayout>

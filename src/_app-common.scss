@@ -1,41 +1,41 @@
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
 // Font icon class
-.fa {
-    font-family: "FontAwesome",  "Font Awesome 5 Free";
-}
 
-.fa-b {
-    font-family: "FontAwesomeBrands", "Font Awesome 5 Brands";
-}
 // Common page class
-.page-content {
-    .page-placeholder {
-        color: $page-icon-color;
-        font-size: $page-content-placeholder-font-size;
-        vertical-align: center;
-        horizontal-align: center;
-    }
 
-    .page-icon {
-        font-size: 72;
-        vertical-align: top;
-        horizontal-align: center;
-        color: $page-icon-color;
-        margin-top: 20%;
-    }
+$default-font-family: "Roboto";
+
+.page-content {
+  .content-padding {
+    padding: 0 20;
+  }
+
+  .page-placeholder {
+    color: $page-icon-color;
+    font-size: $page-content-placeholder-font-size;
+    vertical-align: center;
+    horizontal-align: center;
+  }
+
+  .page-icon {
+    font-size: 72;
+    vertical-align: top;
+    horizontal-align: center;
+    color: $page-icon-color;
+    margin-top: 20%;
+  }
 }
 
 //Action bar
-ActionBar .action-bar-title {
-    horizontal-align: left;
+.action-bar {
+  .action-bar-title {
+    horizontal-align: center;
+    font-size: 16;
+  }
 }
 
-ActivityIndicator {
-    margin-top: 50;
-}
-
- // Drawer navigation custom styles
+// Drawer navigation custom styles
 $sidedrawer-header-image-size: 60;
 $sidedrawer-header-image-offset-top: 20;
 $sidedrawer-header-image-offset-bottom: 5;
@@ -44,57 +44,669 @@ $sidedrawer-list-icon-offset: 10;
 $sidedrawer-list-icon-size: 20;
 
 .sidedrawer {
-    &.sidedrawer-left {
-        background-color: $ab-background;
+  &.sidedrawer-left {
+    background-color: $ab-background;
 
-        .sidedrawer-header-image {
-            color: $background-dark;
-            height: $sidedrawer-header-image-size;
-            width: $sidedrawer-header-image-size;
-            font-size: $sidedrawer-header-image-size;
-            padding: 0;
-            margin-bottom: $sidedrawer-header-image-offset-bottom;
-            margin-top: $sidedrawer-header-image-offset-top;
-        }
-
-        .footnote {
-            color: rgba($ab-color, 0.5);
-        }
+    .sidedrawer-header-image {
+      color: $background-dark;
+      height: $sidedrawer-header-image-size;
+      width: $sidedrawer-header-image-size;
+      font-size: $sidedrawer-header-image-size;
+      padding: 0;
+      margin-bottom: $sidedrawer-header-image-offset-bottom;
+      margin-top: $sidedrawer-header-image-offset-top;
     }
 
-    .sidedrawer-header {
-        background-color: $ab-background;
-
-        .sidedrawer-header-brand {
-            color: $ab-color;
-        }
+    .footnote {
+      color: rgba($ab-color, 0.5);
     }
+  }
 
-    .sidedrawer-content {
-        background-color: $side-drawer-background;
+  .sidedrawer-header {
+    background-color: $ab-background;
 
-        $sidedrawer-list-item-offset-left: 15;
-        $sidedrawer-list-icon-offset: 10;
-        $sidedrawer-list-icon-size: 20;
-
-        .sidedrawer-list-item {
-            padding-left: $sidedrawer-list-item-offset-left;
-            Label {
-                vertical-align: center;
-                color: $blue-dark;
-            }
-            .fa {
-                width: $sidedrawer-list-icon-size;
-                margin-right: $sidedrawer-list-icon-offset;
-            }
-            &.selected {
-                background-color: $item-active-background;
-                Label {
-                    color: $item-active-color;
-                }
-            }
-        }
+    .sidedrawer-header-brand {
+      color: $ab-color;
     }
+  }
+
+  .sidedrawer-content {
+    background-color: $side-drawer-background;
+
+    $sidedrawer-list-item-offset-left: 15;
+    $sidedrawer-list-icon-offset: 10;
+    $sidedrawer-list-icon-size: 20;
+
+    .sidedrawer-list-item {
+      padding-left: $sidedrawer-list-item-offset-left;
+      label {
+        vertical-align: center;
+        color: $blue-dark;
+      }
+      .fa {
+        width: $sidedrawer-list-icon-size;
+        margin-right: $sidedrawer-list-icon-offset;
+      }
+      &.selected {
+        background-color: $item-active-background;
+        label {
+          color: $item-active-color;
+        }
+      }
+    }
+  }
 }
 
-@import 'ngpoland';
+ActionBar.action-bar {
+  background-color: #3949ab;
+  color: white;
+}
+
+.fa {
+  font-family: "FontAwesome";
+}
+
+.freedie-m {
+}
+
+.action-bar-title {
+  font-size: 14;
+}
+
+.sidedrawer {
+  &.sidedrawer-left {
+    background-color: #ffffff;
+    .sidedrawer-header {
+      background-color: #ffffff;
+    }
+    .sidedrawer-content {
+      background-color: #ffffff;
+
+      .sidedrawer-list-item {
+        label {
+          text-transform: none;
+        }
+      }
+    }
+
+    .switchContainer {
+      font-size: 14;
+      text-transform: none;
+    }
+  }
+}
+
+.homeDescContainer {
+  background-color: #3949ab;
+  text-transform: none;
+  .homeDesc {
+    font-size: 16;
+    padding-left: 10;
+    padding-right: 10;
+  }
+}
+
+.homeItemContainer {
+  text-transform: none;
+  background-color: #ffffff;
+  height: 100%;
+  width: 100%;
+
+  .fa {
+    color: #3949ab;
+    font-size: 50;
+    margin-bottom: 10;
+  }
+
+  .homeItemLabel {
+    color: #ff1744;
+    font-size: 14;
+  }
+}
+
+.workshopCardStyle {
+  text-transform: none;
+  color: #3c4043;
+  .workshopTitle {
+    font-weight: bold;
+    font-size: 16;
+  }
+  .workshopInstructorName {
+    color: #3949ab;
+  }
+  .workshopDescLabel {
+    color: #3c4043;
+    padding-top: 15;
+    font-size: 14;
+  }
+}
+
+.speakerDetail {
+  color: #3c4043;
+  .speakerDetailActionBar {
+    .title {
+      color: #ff1744;
+    }
+  }
+
+  .speakerDetailContent {
+    .speakerDetailTitle {
+      font-weight: bold;
+      font-size: 15;
+      text-transform: none;
+      opacity: 1;
+    }
+
+    .speakerDetailDescription {
+      opacity: 1;
+    }
+  }
+}
+
+.speakers {
+  background-color: #ffffff;
+  .speaker {
+    background-color: #ffffff;
+  }
+  .speakerCardStyle {
+    background-color: #ffffff;
+    color: #3c4043;
+  }
+  .speakerName {
+    font-weight: bold;
+    font-size: 15;
+    color: #3c4043;
+  }
+  .speakerRole {
+    font-size: 12;
+    color: #3c4043;
+  }
+}
+
+.ngGirls {
+  background-color: #ffffff;
+  font-family: $default-font-family;
+
+  .ngGirlsLogoImg {
+    opacity: 1;
+  }
+
+  .ngGirlsDesc {
+    color: #3c4043;
+    opacity: 1;
+  }
+}
+
+.infoPage {
+  background-color: #ffffff;
+  font-family: $default-font-family;
+
+  .cardStyle {
+    background-color: #ffffff;
+    color: #3c4043;
+
+    .fa {
+      color: #3c4043;
+      opacity: 1;
+    }
+  }
+
+  .infoTitle {
+    color: #ff1744;
+    font-weight: bold;
+    font-family: $default-font-family;
+    text-transform: none;
+    font-size: 18;
+    letter-spacing: 0;
+  }
+
+  .infoDesc {
+    color: #3c4043;
+    opacity: 1;
+  }
+
+  .moreInfoLabel {
+    color: #3c4043;
+    opacity: 1;
+  }
+}
+
+.aboutPage {
+  background-color: #ffffff;
+
+  .aboutPageDesc {
+    color: #3949ab;
+    font-size: 14;
+    font-family: $default-font-family;
+    text-transform: none;
+    opacity: 1;
+    line-height: unset;
+  }
+
+  .aboutPageAuthors {
+    color: #ff1744;
+    font-size: 14;
+    font-family: $default-font-family;
+    text-transform: none;
+    opacity: 1;
+    letter-spacing: 0;
+  }
+
+  .aboutPageAuthorsDesc {
+    color: #3c4043;
+    font-size: 14;
+    font-family: $default-font-family;
+    text-transform: none;
+    opacity: 1;
+    letter-spacing: 0;
+  }
+
+  .aboutPageGithubLink {
+    color: #3949ab;
+    font-family: $default-font-family;
+    text-decoration: underline;
+    opacity: 1;
+  }
+}
+
+
+.schedulePage {
+  background-color: #ffffff;
+
+  .scheduleItem {
+    background-color: #f1f3f4;
+    font-family: $default-font-family;
+
+    &.now {
+      border-color: #fbbc04;
+      border-style: solid;
+      border-width: 2;
+    }
+
+    .scheduleItemHour {
+      font-size: 18;
+      color: #3949ab;
+
+      font-family: $default-font-family;
+      opacity: 1;
+    }
+
+    .scheduleItemContent{
+      
+      .scheduleItemDuration {
+        color: #5F6368;
+
+        font-family: $default-font-family;
+        opacity: 1;
+      }
+
+      .scheduleItemName {
+        color: #5F6368;
+
+        font-family: $default-font-family;
+        opacity: 1;
+      }
+
+  
+    }
+
+    .scheduleTitle {
+      color: #3C4043;
+      font-family: $default-font-family;
+      opacity: 1;
+    }
+
+    .scheduleItemIcon {
+      color: #ff8099;
+      opacity: 1;
+    }
+
+    
+
+ 
+  }
+}
+
+.tab-view {
+  font-family: $default-font-family;
+  tab-text-color: #3949ab;
+  selected-tab-text-color: #ff1744;
+  tab-background-color: #ffffff;
+  android-selected-tab-highlight-color: #ff1744;
+}
+
+// ------------------------------------------------------------------
+// ----------------------- TERMINATOR THEME -------------------------
+// ------------------------------------------------------------------
+
+$terminator-font-family: "Terminator";
+$terminator-red-color: #ff1744;
+$terminator-primary-font-color: #e0dae8;
+$terminator-background-color: #0c102f;
+$terminator-lighter-background-color: #242743;
+$terminator-title-opacity: 0.7;
+$terminator-description-opacity: 0.8;
+
+.terminator {
+  font-family: $terminator-font-family;
+  color: $terminator-primary-font-color;
+
+  letter-spacing: 0.1;
+
+  &.theme-splash-screen-background {
+    background-color: #020105;
+  }
+
+  &.sidedrawer {
+    background-color: $terminator-background-color;
+
+    .sidedrawer-header {
+      background-color: $terminator-background-color;
+    }
+    .sidedrawer-content {
+      background-color: $terminator-background-color;
+      .sidedrawer-list-item {
+        label {
+          color: $terminator-primary-font-color;
+          text-transform: uppercase;
+          font-family: "Terminator";
+          font-size: 10;
+          letter-spacing: 0.15;
+
+          &.fa {
+            font-family: "FontAwesome";
+            font-size: 14;
+            color: $terminator-red-color;
+            opacity: 0.7;
+          }
+        }
+      }
+
+      .sidedrawer-list-item.selected {
+        background-color: $terminator-lighter-background-color;
+        label {
+          color: $terminator-primary-font-color;
+          &.fa {
+            color: $terminator-red-color;
+            opacity: 0.7;
+          }
+        }
+      }
+      .hr-light {
+        background-color: $terminator-lighter-background-color;
+      }
+
+      .switchContainer {
+        font-size: 10;
+        text-transform: uppercase;
+      }
+    }
+  }
+  &.action-bar-title {
+    font-family: $default-font-family;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  &.homeDescContainer {
+    background-color: $terminator-background-color;
+    .homeDesc {
+      font-size: 13;
+      padding-left: 10;
+      padding-right: 10;
+      margin-bottom: 5;
+      text-transform: uppercase;
+      letter-spacing: 0.1;
+      line-height: 5;
+    }
+  }
+
+  &.homeItemContainer {
+    background-color: $terminator-background-color;
+    height: 100%;
+    width: 100%;
+    .fa {
+      color: $terminator-red-color;
+      opacity: 0.7;
+      font-size: 50;
+    }
+
+    .homeItemLabel {
+      color: $terminator-primary-font-color;
+      font-size: 10;
+      text-transform: uppercase;
+      letter-spacing: 0.1;
+    }
+  }
+
+  &.workshopsList {
+    background-color: $terminator-background-color;
+  }
+  .workshopCardStyle {
+    color: $terminator-primary-font-color;
+    .workshopTitle {
+      font-size: 13;
+      text-transform: uppercase;
+      letter-spacing: 0.15;
+      opacity: 0.7;
+    }
+    .workshopInstructorName {
+      color: $terminator-primary-font-color;
+      font-family: $default-font-family;
+    }
+    .workshopDescLabel {
+      font-family: $default-font-family;
+      color: $terminator-primary-font-color;
+      padding-top: 15;
+      font-size: 14;
+      opacity: 0.8;
+    }
+  }
+
+  &.speakerDetail {
+    background-color: $terminator-background-color;
+    .speakerDetailActionBar {
+      background-color: $terminator-background-color;
+      font-family: $default-font-family;
+      .title {
+        color: $terminator-primary-font-color;
+      }
+    }
+
+    .speakerDetailContent {
+      background-color: $terminator-background-color;
+      font-family: $default-font-family;
+      color: $terminator-primary-font-color;
+
+      .speakerDetailTitle {
+        font-family: $terminator-font-family;
+        color: $terminator-red-color;
+        opacity: $terminator-title-opacity;
+        text-transform: uppercase;
+        letter-spacing: 0.1;
+        font-size: 13;
+        line-height: 5;
+      }
+
+      .speakerDetailDescription {
+        color: $terminator-primary-font-color;
+        opacity: $terminator-description-opacity;
+      }
+    }
+  }
+
+  &.speakers {
+    background-color: $terminator-background-color;
+    .speaker {
+      background-color: $terminator-background-color;
+      color: $terminator-primary-font-color;
+    }
+    .speakerCardStyle {
+      background-color: $terminator-background-color;
+      color: $terminator-primary-font-color;
+    }
+    .speakerName {
+      font-family: $default-font-family;
+      color: $terminator-red-color;
+      opacity: $terminator-title-opacity;
+    }
+
+    .speakerRole {
+      font-family: $default-font-family;
+      color: $terminator-primary-font-color;
+      opacity: $terminator-description-opacity;
+    }
+  }
+
+  &.ngGirls {
+    background-color: $terminator-background-color;
+    font-family: $default-font-family;
+
+    .ngGirlsLogoImg {
+      opacity: 0.7;
+    }
+
+    .ngGirlsDesc {
+      color: $terminator-primary-font-color;
+      opacity: $terminator-description-opacity;
+    }
+  }
+
+  &.infoPage {
+    background-color: $terminator-background-color;
+    font-family: $default-font-family;
+
+    .cardStyle {
+      background-color: $terminator-background-color;
+      color: $terminator-primary-font-color;
+
+      .fa {
+        color: $terminator-primary-font-color;
+        opacity: 0.4;
+      }
+    }
+
+    .infoTitle {
+      color: $terminator-red-color;
+      font-family: $terminator-font-family;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: 14;
+      letter-spacing: 0.1;
+    }
+
+    .infoDesc {
+      color: $terminator-primary-font-color;
+      opacity: $terminator-description-opacity;
+    }
+
+    .moreInfoLabel {
+      color: $terminator-primary-font-color;
+      opacity: $terminator-description-opacity;
+    }
+  }
+
+  &.aboutPage {
+    background-color: $terminator-background-color;
+
+    .aboutPageDesc {
+      font-size: 12;
+      color: $terminator-primary-font-color;
+      font-family: $terminator-font-family;
+      text-transform: uppercase;
+      opacity: $terminator-title-opacity;
+      line-height: 5;
+    }
+
+    .aboutPageAuthors {
+      color: $terminator-red-color;
+      font-size: 12;
+      font-family: $terminator-font-family;
+      text-transform: uppercase;
+      opacity: $terminator-title-opacity;
+      letter-spacing: 0.1;
+    }
+
+    .aboutPageAuthorsDesc {
+      color: $terminator-primary-font-color;
+      font-size: 10;
+      font-family: $terminator-font-family;
+      text-transform: uppercase;
+      opacity: $terminator-description-opacity;
+      letter-spacing: 0.1;
+    }
+
+    .aboutPageGithubLink {
+      color: $terminator-primary-font-color;
+      font-family: $default-font-family;
+      text-decoration: underline;
+      opacity: $terminator-title-opacity;
+    }
+  }
+
+  &.schedulePage {
+    background-color: $terminator-background-color;
+
+    .scheduleItem {
+      background-color: #f1f3f4;
+      background-color: $terminator-background-color;
+      font-family: $terminator-font-family;
+
+      &.now {
+        border-color: #fbbc04;
+        border-style: solid;
+        border-width: 2;
+      }
+
+      .scheduleItemHour {
+        font-size: 18;
+        color: #3949ab;
+
+        font-family: $default-font-family;
+        font-size: 18;
+        color: $terminator-red-color;
+        opacity: $terminator-title-opacity;
+      }
+
+      .scheduleItemContent{
+        
+        .scheduleItemDuration {
+          font-family: $default-font-family;
+          color: $terminator-primary-font-color;
+          opacity: $terminator-title-opacity;
+        }
+  
+        .scheduleItemName {
+          font-family: $default-font-family;
+          color: $terminator-primary-font-color;
+          opacity: $terminator-description-opacity;
+        }
+  
+    
+      }
+
+      .scheduleTitle {
+        font-family: $default-font-family;
+        color: $terminator-primary-font-color;
+        opacity: $terminator-title-opacity;
+      }
+
+      .scheduleItemIcon {
+        color: $terminator-red-color;
+        opacity: 0.5;
+      }
+  
+
+      
+
+   
+    }
+  }
+
+  &.tab-view {
+    font-family: $default-font-family;
+    tab-text-color: $terminator-primary-font-color;
+    selected-tab-text-color: $terminator-red-color;
+    tab-background-color: $terminator-lighter-background-color;
+    android-selected-tab-highlight-color: $terminator-red-color;
+  }
+}

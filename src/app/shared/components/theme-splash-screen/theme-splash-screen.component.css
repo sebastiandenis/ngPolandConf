@@ -1,0 +1,22 @@
+.animation {
+    animation-name: animation;
+    animation-duration: 6s;
+}
+
+@keyframes animation {
+    from {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

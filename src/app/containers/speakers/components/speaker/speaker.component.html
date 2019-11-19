@@ -1,0 +1,48 @@
+<StackLayout style="padding: 10 5;" #sl ripple (tap)="showModal(sl)" 
+ class="speaker">
+  <StackLayout class="speakerCardStyle" style="margin: 5;" >
+    <GridLayout rows="auto, *" columns="100, *" style="padding: 5 5;">
+      <StackLayout row="0" col="0" rowSpan="2"  verticalAlignment="center">
+        <!-- <WebImage
+          stretch="aspectFit"
+          borderRadius="500"
+          horizontalAlignment="center"
+          style="margin-right: 15;"
+          src="{{speaker?.photo.getImageUrl()}}"
+
+          android:visibility="collapsed"
+        >
+        </WebImage>
+        <Image   stretch="aspectFit"
+        borderRadius="500"
+        horizontalAlignment="center"
+        style="margin-right: 15;"
+        src="{{speaker?.photo.getImageUrl()}}"
+
+        ios:visibility="collapsed">
+
+        </Image> -->
+        <NSImg  src="{{speaker?.photo.getImageUrl()}}" placeholderImageUri="res://person" 
+        roundAsCircle="true" height="100"  stretch="aspectFit" style="margin-right: 15;"></NSImg>
+      </StackLayout>
+
+      <label
+        row="0"
+        col="1"
+        textWrap="true"
+        [text]="speaker.name"
+        verticalAlignment="center"
+        textAlignment="left"
+        class="speakerName"
+      ></label>
+      <label
+        row="1"
+        col="1"
+        [text]="speaker.role"
+        textWrap="true"
+        textAlignment="left"
+        class="speakerRole"
+      ></label>
+    </GridLayout>
+  </StackLayout>
+</StackLayout>

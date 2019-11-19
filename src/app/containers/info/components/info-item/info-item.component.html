@@ -1,0 +1,32 @@
+<StackLayout style="padding: 10 5;">
+    <StackLayout class="cardStyle">
+        <GridLayout columns="50, *" rows="50, auto, 30, 15" width="auto" height="auto" 
+            horizontalAlignment="left" verticalAlignment="center" style="padding: 10 20;">
+
+            <Label [text]="item.resolveIcon(item.icon)" class="fa" textAlignment="left" verticalAlignment="center" horizontalAlignment="center"
+                fontSize="36" row="0" col="0"  ></Label>
+
+
+            <Label [text]="item.title" verticalAlignment="center" textAlignment="left"
+                textWrap="true" col="1" row="0" style="margin-left: 10;" class="infoTitle"></Label>
+
+            <StackLayout col="0" row="1" verticalAlignment="center" colSpan="2" style="padding-top: 20;" class="infoDesc" >
+                <!-- <HtmlView #htmlView [html]="item.description | mdToHtml" >
+                </HtmlView> -->
+                <label [text]="item.description" textWrap="true"></label>
+            </StackLayout>
+
+
+
+
+
+            <StackLayout *ngIf="item.urlLink" col="0" row="2" colSpan="2" orientation="horizontal">
+                <Label text="More info:" verticalAlignment="center" textAlignment="left" class="moreInfoLabel"></Label>
+                <Label text="here" verticalAlignment="center" textAlignment="left" style="color: #3949ab;text-decoration: underline;margin-left: 5;"
+                    (tap)="onLinkTap()"></Label>
+            </StackLayout>
+
+
+        </GridLayout>
+    </StackLayout>
+</StackLayout>

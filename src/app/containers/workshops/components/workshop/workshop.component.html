@@ -1,0 +1,37 @@
+<StackLayout style="padding: 10 5;">
+  <StackLayout class="workshopCardStyle">
+    <GridLayout columns="70, *" rows="auto, 30, auto, 15" width="auto" height="auto" width="100%"
+       horizontalAlignment="center" verticalAlignment="center" style="padding: 10 20;"
+      textAlignment="left">
+      <label [text]="workshop.title" class="workshopTitle" verticalAlignment="center" textAlignment="left"
+        textWrap="true" col="1" row="0" style="color: #ff1744;"></label>
+      <label [text]="workshop.instructor.name" col="1" row="1" verticalAlignment="center" textAlignment="left"
+      class="workshopInstructorName" ripple (tap)="showModal()"></label>
+
+      <NSImg row="0" col="0" rowSpan="2" roundAsCircle="true" width="50" height="auto" stretch="aspectFit"
+        horizontalAlignment="center" verticalAlignment="center" style="margin-right: 15;"
+        [src]="workshop.instructor.photo.getImageUrl()" placeholderImageUri="res://person" (tap)="showModal()">
+      </NSImg>
+
+      <!-- <image
+        borderRadius="500"
+        row="0"
+        col="0"
+        rowSpan="2"
+        stretch="aspectFill"
+        horizontalAlignment="center"
+        verticalAlignment="center"
+        style="margin-right: 15;"
+        [src]="workshop.instructor.photo.getImageUrl()"
+        (tap)="showModal()"
+        height="98%"
+        width="auto"
+        ios:visibility="collapsed"
+      >
+      </image> -->
+
+      <label [text]="workshop.description" textWrap="true" textAlignment="left" verticalAlignment="center" class="workshopDescLabel"
+        col="0" row="2" colSpan="2" horlizontalAlignmet="left"></label>
+    </GridLayout>
+  </StackLayout>
+</StackLayout>
