@@ -10,8 +10,8 @@
         <StackLayout class="page page-content content-padding">
                     <Label  [text]="eventItem.title" textWrap="true" textAlignment="center" class="eventItemTitle"></Label>
                     <Speaker  *ngIf="eventItem.presenter" [speaker]="eventItem.presenter"></Speaker>
-                    <Label  *ngIf="eventItem.description.length>0" [text]="eventItem.description" textWrap="true" textAlignment="left" class="eventItemDesc"></Label>
-                    <Label  *ngIf="eventItem.description.length===0" class="eventItemIcon fa" [text]="eventItem.getEventItemIcon()" textWrap="true" textAlignment="center"></Label>
+                    <Label  *ngIf="hasDescription()" [text]="eventItem.description" textWrap="true" textAlignment="left" class="eventItemDesc"></Label>
+                    <Label  *ngIf="!hasDescription()" class="eventItemIcon fa" [text]="eventItem.getEventItemIcon()" textWrap="true" textAlignment="center"></Label>
         </StackLayout>
     </ScrollView>
 </GridLayout>
