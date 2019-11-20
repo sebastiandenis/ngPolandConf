@@ -46,6 +46,10 @@ export class EventItemDetailsComponent implements OnInit, OnDestroy {
             });
     }
 
+    hasDescription(): boolean {
+        return this.eventItem.description && this.eventItem.description.length > 0 ? true : false;
+    }
+
     close() {
         this.params.closeCallback();
     }
